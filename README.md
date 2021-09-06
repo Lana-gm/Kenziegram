@@ -1,10 +1,10 @@
 # Bibliotecas Instaladas
 
-Yup
-Axios
-Material-Ui
-Styled-Components
-React-Hook-Form + Resolvers
+Yup  
+Axios  
+Material-Ui  
+Styled-Components  
+React-Hook-Form + Resolvers  
 
 ## Scripts Disponíveis
 
