@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import LoginMobile from '../../assets/LoginMobile.png'
+import Login from '../../assets/Login.png'
 
 export const MainPage = styled.main`
     display: flex;
@@ -56,6 +57,16 @@ export const MainPage = styled.main`
 
     .margin {
         margin: 20px 0 0 0;
+    }
+
+    @media (min-width: 720px) {
+        background-image: url(${Login});
+
+        .text__box {
+        align-items: center;
+        margin: 0 0 50px 0;
+        }
+
     }
 
 
