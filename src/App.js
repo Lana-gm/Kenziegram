@@ -1,12 +1,12 @@
 import './App.css';
-import Login from './pages/Login';
+import Routes from './routes';
 import { GlobalStyle } from './global'
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Login />
+      <Routes />
     </div>
   );
 }
