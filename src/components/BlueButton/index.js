@@ -1,9 +1,9 @@
 import { BlueBtn } from "./style"
 
-const BlueButton = ({text}) => {
+const BlueButton = ({white = false, text, onClick}) => {
 
     return (
-        <BlueBtn>{text}</BlueBtn>
+        <BlueBtn white={white} onClick={onClick}>{text}</BlueBtn>
     )
 }
 
