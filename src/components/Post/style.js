@@ -47,9 +47,9 @@ export const Container = styled.div`
 
     .texto-publicacao {
         font-size: 14px;
-        width: 80%;
+        /* width: 80%; */
         color: white;
-        width: 20.5rem;
+        min-width: 20.5rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
