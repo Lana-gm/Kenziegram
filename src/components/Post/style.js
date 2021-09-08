@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     max-width: 975px;
-    min-height: 161px;
+    min-height: min-content;
     background-color: #242A38;
     border-radius: 8px;
     display: flex;
@@ -47,9 +47,7 @@ export const Container = styled.div`
 
     .texto-publicacao {
         font-size: 14px;
-        /* width: 80%; */
         color: white;
-        min-width: 20.5rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
