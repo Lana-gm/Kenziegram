@@ -39,6 +39,41 @@ export const UsersProvider = ({ children }) => {
       status: "ofline",
       img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
     },
+    {
+      name: "Manuel Jose",
+      email: "manuel@email.com",
+      password: "123456",
+      status: "online",
+      img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
+    },
+    {
+      name: "Camila Pereira Silva",
+      email: "Camila@email.com",
+      password: "123456",
+      status: "online",
+      img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
+    },
+    {
+      name: "Dirundina Sousa",
+      email: "Dirundina@email.com",
+      password: "123456",
+      status: "online",
+      img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
+    },
+    {
+      name: "Marlei Sousa",
+      email: "Marlei@email.com",
+      password: "123456",
+      status: "online",
+      img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
+    },
+    {
+      name: "Miqueias Novas",
+      email: "Miqueias@email.com",
+      password: "123456",
+      status: "online",
+      img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
+    },
   ]);
 
   return (
