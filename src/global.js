@@ -13,6 +13,8 @@ font-family: 'Nunito Sans', sans-serif;*/
     --blue-svg: #0CB0E8;
     --white: #FFFFFF;
     --gray: rgba(153, 153, 153, 0.40); // Cinza Transparente
+    --darkGray: #4E586E;
+    --blueIcons: #007BFF;
   }
 
   * {
@@ -23,8 +25,8 @@ font-family: 'Nunito Sans', sans-serif;*/
   }
 
   main {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
   }
 
   body, input {
