@@ -1,6 +1,9 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+
+/*font-family: 'Lato', sans-serif;
+font-family: 'Nunito Sans', sans-serif;*/
 
   :root {
     --bg: #1B1F29; // Background
@@ -11,15 +14,32 @@ export const GlobalStyle = createGlobalStyle`
     --gray: rgba(153, 153, 153, 0.40); // Cinza Transparente
   }
 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+  }
+
   main {
     width: 100%;
     height: 100%;
   }
 
   body, input {
-    margin: 0;
-    padding: 0;
-    font-family: Helvetica, Sans-Serif;
+    font-family: 'Nunito Sans', 'Lato', Helvetica, Sans-Serif;
     border: 0;
+  }
+
+  ul, li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
   }
 `;
