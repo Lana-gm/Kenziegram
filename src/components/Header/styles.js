@@ -7,7 +7,7 @@ export const Container = styled.div`
   right: 0;
   width: 100%;
   height: 70px;
-  background-color: var(--bg);
+  background-color: var(--bgLight);
 
   h1 {
     font-size: 2rem;

@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     --blue: linear-gradient(180deg, #007BFF 0%, #17A2B8 100%); // Azul Gradiente
     --white: #FFFFFF;
     --gray: rgba(153, 153, 153, 0.40); // Cinza Transparente
+    --darkGray: #4E586E;
+    --blueIcons: #007BFF;
   }
 
   main {
