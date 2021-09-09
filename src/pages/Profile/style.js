@@ -6,6 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 
     .posts {
         width: 90%;
