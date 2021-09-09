@@ -4,6 +4,8 @@ Yup
 Axios  
 Material-Ui  
 Styled-Components  
+React-Icons  
+React-Router-Dom  
 React-Hook-Form + Resolvers  
 
 ## Scripts Disponíveis

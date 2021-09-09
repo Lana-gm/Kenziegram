@@ -45,7 +45,7 @@ export const Container = styled.div`
 
   .selected {
     svg {
-      color: var(--blue);
+      color: var(--blue-svg);
     }
   }
 

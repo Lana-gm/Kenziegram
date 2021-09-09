@@ -2,6 +2,8 @@ import { Switch, Route } from "react-router-dom";
 import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import ProfilePage from "../pages/Profile";
+import Search from "../pages/Search";
+
 const Routes = () => {
   return (
     <Switch>
@@ -14,10 +16,10 @@ const Routes = () => {
         <Login />
       </Route>
       <Route path="/search">
-        
+        <Search />
       </Route>
       <Route path="/profile">
-          <ProfilePage />
+        <ProfilePage />
       </Route>
       <Route path="/profile/:id"></Route>
       <Route path="/profile/edit"></Route>

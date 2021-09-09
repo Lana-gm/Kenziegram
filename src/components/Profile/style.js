@@ -97,6 +97,7 @@ export const Container = styled.div`
         position: absolute;
         right: 3rem;
         top: 4rem;
+        cursor: pointer;
     }
   }
 `;
