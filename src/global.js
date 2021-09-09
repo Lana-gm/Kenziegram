@@ -13,6 +13,8 @@ font-family: 'Nunito Sans', sans-serif;*/
     --blue-svg: #0CB0E8;
     --white: #FFFFFF;
     --gray: rgba(153, 153, 153, 0.40); // Cinza Transparente
+    --darkGray: #4E586E;
+    --blueIcons: #007BFF;
   }
 
   * {
