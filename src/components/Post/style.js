@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     max-width: 975px;
     min-height: min-content;
-    background-color: #242A38;
+    background-color: var(--bgLight);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@ export const Container = styled.div`
 
     .icone-opicoes {
         position: absolute;
-        color: #007BFF;
+        color: var(--blueIcons);
         font-size: 24px;
         top: 1rem;
         right: 1rem;
@@ -42,7 +42,7 @@ export const Container = styled.div`
 
     .conteiner-publicacao {
         margin-top: 1rem;
-        text-align: justify;
+        text-align: start;
     }
 
     .texto-publicacao {
