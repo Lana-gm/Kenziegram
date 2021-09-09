@@ -70,6 +70,8 @@ export const MainPage = styled.main`
 
     @media (min-width: 720px) {
         background-image: url(${Login});
+        background-repeat: no-repeat;
+        background-size: cover;
 
         .mobile__return {
             display: none;

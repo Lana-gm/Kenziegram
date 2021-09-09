@@ -18,12 +18,12 @@ const Login = () => {
                 <h1>Bem-vindo</h1>
                 <p className="smalltext">Entre com sua conta</p>
             </div>
-            <div className="input__box">
+            <form className="input__box">
                 <GrayInput type="email" placeholder={'Email'} />
                 <GrayInput type="password" placeholder={'Senha'} />
                 <BlueButton text="Entrar" />
                 <Link className="smalltext margin">Esqueceu sua senha?</Link>
-            </div>
+            </form>
         </MainPage>
     )
 }
