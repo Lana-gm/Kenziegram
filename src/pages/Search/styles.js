@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.main`
   max-width: 975px;
   margin: 0 auto;
-  background-color: var(--bgLight);
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
@@ -75,7 +74,10 @@ export const Container = styled.main`
   }
 
   @media all and (min-width: 1000px) {
-    padding-top: 70px;
+    /*padding-top: 70px;*/
+    padding: 70px 0 0 0;
+
+    border-top: 4px solid var(--bg);
     .container-icon {
       display: none;
     }

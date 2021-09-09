@@ -7,7 +7,7 @@ export const Container = styled.div`
   right: 0;
   width: 100vw;
   height: 70px;
-  background-color: var(--bgLight);
+  background-color: var(--bg);
   z-index: 1;
 
   h1 {
@@ -53,6 +53,7 @@ export const Container = styled.div`
   @media all and (min-width: 975px) {
     top: 0;
     bottom: auto;
+    background-color: var(--bgLight);
 
     h1 {
       display: block;
