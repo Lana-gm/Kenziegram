@@ -9,7 +9,7 @@ const ProfilePage = () => {
       <Header />
       <Profile />
       <div className="posts">
-      <Post />
+        <Post />
         <Post />
         <Post />
         <Post />

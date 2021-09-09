@@ -88,6 +88,7 @@ export const Content = styled.div`
 
     .numero-postagens {
         margin-top: 3.5rem;
+        font-size: 16px;
     }
 
     .icone-opcoes {

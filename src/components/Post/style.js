@@ -75,6 +75,10 @@ export const Container = styled.div`
 
     @media(min-width: 1000px) {
         margin-bottom: 2rem;
+
+        .texto-publicacao {
+            font-size: 16px;
+        }
     }
 `
 

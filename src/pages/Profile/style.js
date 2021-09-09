@@ -5,9 +5,10 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 
     .posts {
-        width: 90vw;
+        width: 90%;
         margin-bottom: 5rem;
         display: flex;
         flex-direction: column;
@@ -16,7 +17,8 @@ export const Container = styled.div`
 
     @media(min-width: 1000px) {
         .posts {
-            align-items: center;
+            width: 100%;
         }
     }
+
 `
