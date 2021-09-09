@@ -1,7 +1,7 @@
-import * as s from "./styles";
+import * as S from "./styles";
 
 const Logo = () => {
-  return <s.H1>KenzieGram</s.H1>;
+  return <S.H1>KenzieGram</S.H1>;
 };
 
 export default Logo;
