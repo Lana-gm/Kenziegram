@@ -3,6 +3,7 @@ import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import ProfilePage from "../pages/Profile";
 import Search from "../pages/Search";
+import Register from "../pages/Register";
 
 const Routes = () => {
   return (
@@ -10,7 +11,9 @@ const Routes = () => {
       <Route exact path="/">
         <Landing />
       </Route>
-      <Route path="/register"></Route>
+      <Route path="/register">
+        <Register/>
+      </Route>
       <Route path="/home"></Route>
       <Route path="/login">
         <Login />
