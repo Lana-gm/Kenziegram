@@ -59,14 +59,26 @@ export const MainPage = styled.main`
         margin: 20px 0 0 0;
     }
 
+    .mobile__return {
+        position: absolute;
+        top: 10%;
+        left: 7%;
+        font-size: 40px;
+        color: white;
+        z-index: 1;
+    }
+
     @media (min-width: 720px) {
         background-image: url(${Login});
+
+        .mobile__return {
+            display: none;
+        }
 
         .text__box {
         align-items: center;
         margin: 0 0 50px 0;
         }
-
     }
 
 

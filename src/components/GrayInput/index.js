@@ -1,9 +1,9 @@
 import { InputShape } from "./style"
 
-const GrayInput = ({placeholder}) => {
+const GrayInput = ({placeholder, type}) => {
 
     return (
-        <InputShape placeholder={placeholder}/>
+        <InputShape type={type} placeholder={placeholder}/>
     )
 }
 
