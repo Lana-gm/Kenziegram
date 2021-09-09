@@ -1,4 +1,4 @@
-import * as s from "./styles";
+import * as S from "./styles";
 import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
@@ -8,7 +8,7 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 
 const Header = () => {
   return (
-    <s.Container>
+    <S.Container>
       <div className="content">
         <Logo />
         <nav className="content__nav">
@@ -61,7 +61,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-    </s.Container>
+    </S.Container>
   );
 };
 
