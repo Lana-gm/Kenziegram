@@ -10,6 +10,7 @@ export const Container = styled.div`
     flex-direction: column;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-bottom: 1rem;
 
     .icone-opicoes {
         position: absolute;
@@ -70,6 +71,10 @@ export const Container = styled.div`
         color: var(--white);
         margin-left: 0.2rem;
         margin-top: 0.4rem;
+    }
+
+    @media(min-width: 1000px) {
+        margin-bottom: 2rem;
     }
 `
 

@@ -5,9 +5,10 @@ export const Container = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
+  width: 100vw;
   height: 70px;
   background-color: var(--bgLight);
+  z-index: 1;
 
   h1 {
     font-size: 2rem;
