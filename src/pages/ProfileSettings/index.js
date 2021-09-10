@@ -98,16 +98,16 @@ const ProfileSettings = () => {
                 <p className="placeholder">Bio</p>
                 <p>{status}</p>
               </div>
-              {!edit ? (
-                <button className="button_desktop" onClick={handleClick}>
-                  Editar
-                </button>
-              ) : (
-                <button className="button_desktop" type="submit">
-                  Salvar
-                </button>
-              )}
             </S.ContainerInput>
+          )}
+          {!edit ? (
+            <button className="button_desktop" onClick={handleClick}>
+              Editar
+            </button>
+          ) : (
+            <button className="button_desktop" type="submit">
+              Salvar
+            </button>
           )}
         </S.ContainerMain>
       </S.ContainerPage>
