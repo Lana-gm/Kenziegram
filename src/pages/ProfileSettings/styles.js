@@ -131,6 +131,14 @@ export const ContainerMain = styled.main`
       border-bottom: 2px solid var(--gray);
     }
   }
+
+  .textarea_content {
+    width: 100%;
+    height: 70%;
+    background-color: var(--bg);
+    border: none;
+    color: var(--white);
+  }
 `;
 
 export const Container = styled.div`
