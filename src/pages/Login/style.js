@@ -8,8 +8,8 @@ export const MainPage = styled.main`
     align-content: center;
     justify-content: center;
     background-image: url(${LoginMobile});
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     .gray__gradient {
         position: absolute;
@@ -70,6 +70,8 @@ export const MainPage = styled.main`
 
     @media (min-width: 720px) {
         background-image: url(${Login});
+        background-repeat: no-repeat;
+        background-size: cover;
 
         .mobile__return {
             display: none;

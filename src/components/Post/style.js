@@ -4,16 +4,17 @@ import styled from "styled-components";
 export const Container = styled.div`
     max-width: 975px;
     min-height: min-content;
-    background-color: #242A38;
+    background-color: var(--bgLight);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-bottom: 1rem;
 
     .icone-opicoes {
         position: absolute;
-        color: #007BFF;
+        color: var(--blueIcons);
         font-size: 24px;
         top: 1rem;
         right: 1rem;
@@ -42,7 +43,7 @@ export const Container = styled.div`
 
     .conteiner-publicacao {
         margin-top: 1rem;
-        text-align: justify;
+        text-align: start;
     }
 
     .texto-publicacao {
@@ -70,6 +71,14 @@ export const Container = styled.div`
         color: var(--white);
         margin-left: 0.2rem;
         margin-top: 0.4rem;
+    }
+
+    @media(min-width: 1000px) {
+        margin-bottom: 2rem;
+
+        .texto-publicacao {
+            font-size: 16px;
+        }
     }
 `
 

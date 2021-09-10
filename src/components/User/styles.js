@@ -27,10 +27,16 @@ export const Container = styled.div`
 
   .profile__content__name {
     text-align: left;
+    line-height: 77px;
     color: var(--white);
   }
 
   @media all and (min-width: 1000px) {
     width: 350px;
+
+    &:nth-child(even) {
+      margin-left: 10px;
+      width: 360px;
+    }
   }
 `;

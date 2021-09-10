@@ -3,65 +3,96 @@ import { useState } from "react";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import * as S from "./styles";
+import { useContext } from "react";
+import { UsersContext } from "../../providers/Users";
+import { useForm } from "react-hook-form";
 
 const ProfileSettings = () => {
-  const [edit, setEdit] = useState(true);
+  const { users } = useContext(UsersContext);
+  const { name, img, status, email } = users[0];
+
+  const [edit, setEdit] = useState(false);
   const [input, setInput] = useState(false);
 
+  const { handleSubmit, register } = useForm();
+
+  const handleClick = () => {
+    setEdit(true);
+    setInput(true);
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
+    setInput(false);
+  };
+
   return (
-    <>
+    <S.Container>
       <Header />
       <S.ContainerPage>
         <S.HeaderEdit>
           <NavLink to="/profile" className="icone_seta">
             <BiLeftArrowAlt />
           </NavLink>
-          {edit ? (
-            <NavLink to="">
-              <p>Editar</p>
-            </NavLink>
+          {!edit ? (
+            <button onClick={handleClick}>Editar</button>
           ) : (
-            <NavLink to="">
-              <p>Salvar</p>
-            </NavLink>
+            <button type="submit">Salvar</button>
           )}
         </S.HeaderEdit>
         <h1>Editar Perfil</h1>
         <S.ContainerMain>
           <div className="change_picture">
-            <img src="" alt="" />
+            <img src={img} alt={name} />
             <p>Alterar foto de perfil</p>
           </div>
-          {/*
-          <div className="change_information">
-            <p>Nome de usuário</p>
-            <p>Kelvin</p>
-          </div>
-          <div className="change_information">
-            <p>Email</p>
-            <p>Kelvin@gmail.com</p>
-          </div>
-          <div className="change_information">
-            <p>Bio</p>
-            <p>Hello</p>
-          </div> */}
 
-          <div className="change_information">
-            <label>Nome de usuário</label>
-            <p>Kelvin</p>
-            {input ? <input type="text" /> : <div>Hello</div>}
-          </div>
-          <div className="change_information">
-            <label>Email</label>
-            <input type="text" />
-          </div>
-          <div className="change_information">
-            <label>Nome de usuário</label>
-            <input type="text" />
-          </div>
+          {input ? (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="change_information input_text">
+                <input
+                  type="text"
+                  {...register("name")}
+                  placeholder="Nome de usuário"
+                  className="input_content"
+                />
+              </div>
+              <div className="change_information input_text">
+                <input
+                  type="email"
+                  {...register("email")}
+                  placeholder="Email"
+                  className="input_content"
+                />
+              </div>
+              <div className="change_information input_text">
+                <input
+                  type="text"
+                  {...register("bio")}
+                  placeholder="Bio"
+                  className="input_content"
+                />
+              </div>
+            </form>
+          ) : (
+            <>
+              <div className="change_information">
+                <p className="placeholder">Nome de usuário</p>
+                <p>{name}</p>
+              </div>
+              <div className="change_information">
+                <p className="placeholder">Email</p>
+                <p>{email}</p>
+              </div>
+              <div className="change_information">
+                <p className="placeholder">Bio</p>
+                <p>{status}</p>
+              </div>
+            </>
+          )}
         </S.ContainerMain>
       </S.ContainerPage>
-    </>
+    </S.Container>
   );
 };
 

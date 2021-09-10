@@ -1,16 +1,13 @@
 import styled from 'styled-components'
-import LandingMobile from '../../assets/LandingMobile.png'
-import Landing from '../../assets/Landing.png'
+import RegisterMobile from '../../assets/RegisterMobile.png'
+import Register from '../../assets/Register.png'
 
 export const MainPage = styled.main`
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    background-image: url(${LandingMobile});
-    background-image: url(${Landing});
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url(${RegisterMobile});
     width: 100vw;
     height: 100vh;
 
@@ -30,60 +27,59 @@ export const MainPage = styled.main`
         z-index: 1;
     }
 
-    .input__btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .text__box {
         display: flex;
         flex-direction: column;
-        align-content: flex-start;
+        align-items: flex-start;
         justify-content: center;
-        margin: 120px 35px 20px 25px;
-        color: white;
+        margin: 0 0 50px 25px;
         z-index: 1;
-        text-align: left;
-    }
-
-    .btn__invisible {
-        background: none;
-        border: 0;
-        width: 50px;
-        font-size: 40px;
-        color: white;
     }
 
     h1 {
+        margin: 0;
         color: white;
         font-style: normal;
         font-weight: bold;
-        font-size: 38px;
+        font-size: 43px;
         line-height: 50px;
-        margin-bottom: 20px;
     }
 
-    .divider {
+    .smalltext {
+        margin: 0;
         color: white;
-        margin: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        text-decoration: none;
+    }
+
+    .margin {
+        margin: 20px 0 0 0;
+    }
+
+    .mobile__return {
+        position: absolute;
+        top: 10%;
+        left: 7%;
+        font-size: 40px;
+        color: white;
+        z-index: 1;
     }
 
     @media (min-width: 720px) {
-        align-items: center;
-        background-image: url(${Landing});
+        background-image: url(${Register});
         background-repeat: no-repeat;
         background-size: cover;
 
-        h1 {
-            font-size: 42px;
+        .mobile__return {
+            display: none;
         }
 
         .text__box {
-            margin: 0;
-            align-content: center;
-            width: 325px;
-            margin-bottom: 50px;
+        align-items: center;
+        margin: 0 0 50px 0;
         }
     }
 
