@@ -53,8 +53,8 @@ const Login = () => {
                 <p className="smalltext">Entre com sua conta</p>
             </div>
             <form className="input__box" onSubmit={handleSubmit(onSubmitFunction)}>
-                <input type="email" placeholder={'Email'} {...register('email')}/>
-                <input type="password" placeholder={'Senha'} {...register('password')}/>
+                <GrayInput type="email" name="email" placeholder={'Email'} register={register}/>
+                <GrayInput type="password" name="password" placeholder={'Senha'} register={register}/>
                 <BlueButton type='submit' text="Entrar" />
                 <Link className="smalltext margin">Esqueceu sua senha?</Link>
             </form>
