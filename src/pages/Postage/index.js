@@ -1,6 +1,8 @@
 import Header from "../../components/Header";
 import { useState } from "react";
-import SearchImage from "../../components/SearchImage";
+
+import SearchGallery from "../../components/SearchGallery";
+import CreatePost from "../../components/CreatePost";
 
 const Postage = () => {
   const [isShow, setIsShow] = useState(false);
@@ -8,7 +10,11 @@ const Postage = () => {
   return (
     <>
       <Header />
-      <SearchImage />
+      {isShow ? (
+        <SearchGallery isShow={isShow} setIsShow={setIsShow} />
+      ) : (
+        <CreatePost isShow={isShow} setIsShow={setIsShow} />
+      )}
     </>
   );
 };
