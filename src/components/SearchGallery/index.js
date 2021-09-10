@@ -4,7 +4,7 @@ import { BsImages } from "react-icons/bs";
 import { MdVideoLibrary } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
 
-const SearchImage = () => {
+const SearchGallery = () => {
   return (
     <S.Container>
       <div className="box-content">
@@ -30,4 +30,4 @@ const SearchImage = () => {
   );
 };
 
-export default SearchImage;
+export default SearchGallery;
