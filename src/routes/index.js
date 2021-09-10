@@ -3,6 +3,7 @@ import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import ProfilePage from "../pages/Profile";
 import Search from "../pages/Search";
+import ProfileSettings from "../pages/ProfileSettings";
 import Register from "../pages/Register";
 import Postage from "../pages/Postage";
 
@@ -29,7 +30,9 @@ const Routes = () => {
         <ProfilePage />
       </Route>
       <Route path="/profile/:id"></Route>
-      <Route path="/profile/edit"></Route>
+      <Route path="/profile-edit">
+        <ProfileSettings />
+      </Route>
     </Switch>
   );
 };
