@@ -1,0 +1,20 @@
+import { useEffect, useState, createContext, useContext } from 'react';
+import { firebaseApp } from '../../firebaseApi';
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+    const [loggedUser, setLoggedUser] = useState(null);
+
+    useEffect(() => {
+        firebaseApp.auth().onAuthStateChanged(setLoggedUser);
+    }, []);
+
+    return (
+        <AuthContext.Provider value={{ loggedUser }}>
+            {children}
+        </AuthContext.Provider>
+    );
+}
+
+export const useAuth = () => useContext(AuthContext);
