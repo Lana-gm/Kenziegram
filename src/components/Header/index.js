@@ -8,11 +8,15 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
 
 import { firebaseApp } from '../../firebaseApi';
+import { useAuth } from '../../providers/Auth';
 
 const Header = () => {
 
+  const { setLoggedUser } = useAuth();
+
   const handleLogOut = () => {
     firebaseApp.auth().signOut();
+    setLoggedUser(null);
   }
 
   return (
