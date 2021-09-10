@@ -10,11 +10,20 @@ export const ContainerPage = styled.div`
     color: var(--white);
   }
 
+  h3 {
+    color: var(--white);
+  }
+
   button {
     background-color: transparent;
     border: none;
     color: var(--blueIcons);
     font-size: 18px;
+  }
+
+  @media all and (min-width: 975px) {
+    display: flex;
+    align-items: flex-end;
   }
 `;
 
@@ -45,6 +54,10 @@ export const ContainerMain = styled.main`
   height: 572px;
   margin: 0 auto;
 
+  .profile_name {
+    display: none;
+  }
+
   .change_picture {
     width: 100%;
     height: 211px;
@@ -53,6 +66,7 @@ export const ContainerMain = styled.main`
     flex-direction: column;
     justify-content: inherit;
     align-items: center;
+    justify-content: space-evenly;
 
     p {
       color: var(--blue-svg);
@@ -75,6 +89,7 @@ export const ContainerMain = styled.main`
     color: var(--white);
     align-items: center;
     padding: 0 10px;
+    margin-bottom: 35px;
 
     .placeholder {
       opacity: 20%;
@@ -89,6 +104,7 @@ export const ContainerMain = styled.main`
       height: 34px;
       background-color: var(--bg);
       color: var(--white);
+      padding-left: 10px;
     }
   }
 
@@ -102,6 +118,7 @@ export const ContainerMain = styled.main`
     &::placeholder {
       padding-left: 10px;
       color: var(--white);
+      opacity: 25%;
     }
 
     &:focus {
@@ -117,9 +134,66 @@ export const ContainerMain = styled.main`
 `;
 
 export const Container = styled.div`
+  .button_desktop {
+    display: none;
+  }
+
   @media all and (min-width: 975px) {
     display: flex;
     flex-direction: column;
     height: 100vh;
+
+    .header_edit {
+      display: none;
+    }
+
+    .title_profile {
+      display: none;
+    }
+
+    .profile_name {
+      display: initial;
+    }
+
+    .main {
+      background-color: var(--bgLight);
+      width: 600px;
+      height: 580px;
+    }
+
+    .profile_box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .change_picture {
+      width: auto;
+    }
+
+    .change_information {
+      border: 1px solid var(--bg);
+    }
+
+    .form_input {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .button_mobile {
+      display: none;
+    }
+
+    .button_desktop {
+      display: initial;
+    }
+  }
+`;
+
+export const ContainerInput = styled.div`
+  @media all and (min-width: 975px) {
+    width: 500px;
+    margin: 0 auto;
   }
 `;

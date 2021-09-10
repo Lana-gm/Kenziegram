@@ -30,27 +30,35 @@ const ProfileSettings = () => {
     <S.Container>
       <Header />
       <S.ContainerPage>
-        <S.HeaderEdit>
+        <S.HeaderEdit className="header_edit">
           <NavLink to="/profile" className="icone_seta">
             <BiLeftArrowAlt />
           </NavLink>
           {!edit ? (
-            <button onClick={handleClick}>Editar</button>
+            <button className="button_mobile" onClick={handleClick}>
+              Editar
+            </button>
           ) : (
-            <button type="submit">Salvar</button>
+            <button className="button_mobile" type="submit">
+              Salvar
+            </button>
           )}
         </S.HeaderEdit>
-        <h1>Editar Perfil</h1>
-        <S.ContainerMain>
-          <div className="change_picture">
-            <img src={img} alt={name} />
-            <p>Alterar foto de perfil</p>
+        <h1 className="title_profile">Editar Perfil</h1>
+        <S.ContainerMain className="main">
+          <div className="profile_box">
+            <div className="change_picture">
+              <img src={img} alt={name} />
+              <p>Alterar foto de perfil</p>
+            </div>
+            <h3 className="profile_name">{name}</h3>
           </div>
 
           {input ? (
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="form_input" onSubmit={handleSubmit(onSubmit)}>
               <div className="change_information input_text">
                 <input
+                  value={name}
                   type="text"
                   {...register("name")}
                   placeholder="Nome de usuário"
@@ -59,6 +67,7 @@ const ProfileSettings = () => {
               </div>
               <div className="change_information input_text">
                 <input
+                  value={email}
                   type="email"
                   {...register("email")}
                   placeholder="Email"
@@ -67,6 +76,7 @@ const ProfileSettings = () => {
               </div>
               <div className="change_information input_text">
                 <input
+                  value={status}
                   type="text"
                   {...register("bio")}
                   placeholder="Bio"
@@ -75,7 +85,7 @@ const ProfileSettings = () => {
               </div>
             </form>
           ) : (
-            <>
+            <S.ContainerInput>
               <div className="change_information">
                 <p className="placeholder">Nome de usuário</p>
                 <p>{name}</p>
@@ -88,7 +98,16 @@ const ProfileSettings = () => {
                 <p className="placeholder">Bio</p>
                 <p>{status}</p>
               </div>
-            </>
+              {!edit ? (
+                <button className="button_desktop" onClick={handleClick}>
+                  Editar
+                </button>
+              ) : (
+                <button className="button_desktop" type="submit">
+                  Salvar
+                </button>
+              )}
+            </S.ContainerInput>
           )}
         </S.ContainerMain>
       </S.ContainerPage>
