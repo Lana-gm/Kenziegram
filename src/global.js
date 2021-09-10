@@ -25,8 +25,8 @@ font-family: 'Nunito Sans', sans-serif;*/
   }
 
   main {
-    width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
   }
 
   body, input {
