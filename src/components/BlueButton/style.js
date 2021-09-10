@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 
 export const BlueBtn = styled.button`
@@ -17,9 +17,9 @@ export const BlueBtn = styled.button`
     transition: 0.3s all;
 
     
-    ${props => 
+    ${props =>
         props.white &&
-            css`
+        css`
             background-color: white;
             background-image: none;
             color: #17A2B8;  
@@ -28,20 +28,18 @@ export const BlueBtn = styled.button`
 
     @media (min-width: 720px) {
         &:hover {
-            ${props => 
-                props.white ?
-                    css`
-                    background-color: rgb(220, 220, 220);
-                    background-image: none;
-                    color: #17A2B8;  
-                    `
-                    :
-                    css`
-                    background-image: linear-gradient(180deg, rgba(0, 113, 255, 1) 
-                                       0%, rgba(23, 152, 184, 1)
- 100%);;
-                    `
-            }
+            ${props =>
+        props.white ?
+            css`
+                background-color: rgb(220, 220, 220);
+                background-image: none;
+                color: #17A2B8;  
+                `
+            :
+            css`
+                background-image: linear-gradient(180deg, rgba(0, 113, 255, 1) 0%, rgba(23, 152, 184, 1) 100%);;
+                `
+    }
         }
     }
 `

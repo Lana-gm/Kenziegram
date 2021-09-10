@@ -18,8 +18,11 @@ const Register = () => {
     const { loggedUser } = useAuth();
 
     const formSchema = yup.object().shape({
+        user: yup.string().required("Usuário obrigatório"),
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
+        phone: yup.string(),
         password: yup.string().required("Senha obrigatória").min(8, "Senha deve ter ao menos 8 caracteres"),
+        confirm: yup.string().oneOf([yup.ref("password")], "Senhas diferentes")
     });
 
     const {
@@ -29,7 +32,7 @@ const Register = () => {
     } = useForm({
         resolver: yupResolver(formSchema)
     });
-        
+
     const history = useHistory();
     const onSubmitFunction = async (data) => {
         await firebaseApp
@@ -40,8 +43,8 @@ const Register = () => {
             });
     }
 
-    if(loggedUser) {
-        return <Redirect to='/home'/>
+    if (loggedUser) {
+        return <Redirect to='/home' />
     }
 
     return (
@@ -54,11 +57,11 @@ const Register = () => {
                 <h1>Crie sua conta</h1>
             </div>
             <form className="input__box" onSubmit={handleSubmit(onSubmitFunction)}>
-                <input type="text" placeholder={'Nome de Usuário'} />
-                <input type="email" placeholder={'Email'} {...register('email')}/>
-                <input type="number" placeholder={'Telefone'} />
-                <input type="password" placeholder={'Senha'} {...register('password')}/>
-                <input type="password" placeholder={'Confirme sua Senha'} />
+                <GrayInput type="text" name="user" placeholder={'Nome de Usuário'} register={register} />
+                <GrayInput type="email" name="email" placeholder={'Email'} register={register} />
+                <GrayInput type="text" name="phone" placeholder={'Telefone'} register={register}/>
+                <GrayInput type="password" name="password" placeholder={'Senha'} register={register} />
+                <GrayInput type="password" name="confirm" placeholder={'Confirme sua Senha'} register={register} />
                 <BlueButton type="submit" text="Cadastrar" />
                 <Link to="/login" className="smalltext margin">Já tem cadastro? <strong>Entre!</strong></Link>
             </form>
