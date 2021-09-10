@@ -15,10 +15,8 @@ import { useAuth } from '../../providers/Auth';
 
 const Register = () => {
 
-<<<<<<< HEAD
-=======
     const { loggedUser } = useAuth();
-
+    
     const formSchema = yup.object().shape({
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
         password: yup.string().required("Senha obrigatória").min(8, "Senha deve ter ao menos 8 caracteres"),
@@ -46,7 +44,6 @@ const Register = () => {
         return <Redirect to='/home'/>
     }
 
->>>>>>> 1935072c435cc964ad34de74edd34d7191e7fa17
     return (
         <MainPage>
             <div className="gray__gradient" />
@@ -56,21 +53,12 @@ const Register = () => {
             <div className="text__box">
                 <h1>Crie sua conta</h1>
             </div>
-<<<<<<< HEAD
-            <form className="input__box">
-                <GrayInput type="text" placeholder={'Nome de Usuário'} />
-                <GrayInput type="email" placeholder={'Email'} />
-                <GrayInput type="text" placeholder={'Telefone'} />
-                <GrayInput type="password" placeholder={'Senha'} />
-                <GrayInput type="password" placeholder={'Confirme sua Senha'} />
-=======
             <form className="input__box" onSubmit={handleSubmit(onSubmitFunction)}>
                 <input type="text" placeholder={'Nome de Usuário'} />
                 <input type="email" placeholder={'Email'} {...register('email')}/>
-                <input type="number" placeholder={'Telefone'} />
+                <input type="text" placeholder={'Telefone'} />
                 <input type="password" placeholder={'Senha'} {...register('password')}/>
                 <input type="password" placeholder={'Confirme sua Senha'} />
->>>>>>> 1935072c435cc964ad34de74edd34d7191e7fa17
                 <BlueButton type="submit" text="Cadastrar" />
                 <Link to="/login" className="smalltext margin">Já tem cadastro? <strong>Entre!</strong></Link>
             </form>

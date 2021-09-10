@@ -4,7 +4,7 @@ const GrayInput = ({placeholder, name, type, error = "", register, onChange, ...
 
     return (
         <InputShape type={type} placeholder={placeholder} name={name}
-        error={error} register={register} rest={rest} onChange={onChange}/>
+        error={error} {...register(name)} {...rest} onChange={onChange}/>
     )
 }
 
