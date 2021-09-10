@@ -1,12 +1,12 @@
-import './App.css';
-import GlobalStyle from './global';
+import "./App.css";
+import Routes from "./routes";
+import { GlobalStyle } from "./global";
 
 function App() {
   return (
     <div className="App">
-      <GlobalStyle>
-        <h1>Teste</h1>
-      </GlobalStyle>
+      <GlobalStyle />
+      <Routes />
     </div>
   );
 }
