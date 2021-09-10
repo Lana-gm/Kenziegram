@@ -1,12 +1,19 @@
 import { MainPage } from "./style"
 import { AiFillFacebook } from 'react-icons/ai'
 import { AiOutlineGoogle } from 'react-icons/ai'
-import { useHistory } from "react-router"
+import { useHistory, Redirect } from "react-router"
 import BlueButton from "../../components/BlueButton"
+
+import { useAuth } from '../../providers/Auth';
 
 const Landing = () => {
 
-    const history = useHistory()
+    const { loggedUser } = useAuth();
+    const history = useHistory();
+
+    if(loggedUser) {
+        return <Redirect to='/home'/>
+    }
 
     return (
         <MainPage>
