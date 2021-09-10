@@ -11,8 +11,8 @@ export const MainPage = styled.main`
     background-image: url(${Landing});
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     .gray__gradient {
         position: absolute;

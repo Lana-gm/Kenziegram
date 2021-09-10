@@ -19,7 +19,7 @@ const Register = () => {
             <form className="input__box">
                     <GrayInput type="text" placeholder={'Nome de Usuário'} />
                     <GrayInput type="email" placeholder={'Email'} />
-                    <GrayInput type="number" placeholder={'Telefone'} />
+                    <GrayInput type="text" placeholder={'Telefone'} />
                     <GrayInput type="password" placeholder={'Senha'} />
                     <GrayInput type="password" placeholder={'Confirme sua Senha'} />
                     <BlueButton text="Cadastrar" />
