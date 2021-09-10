@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Content = styled.div`
   min-height: 236px;
   background-color: var(--bgLight);
   position: relative;
@@ -8,6 +8,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 0.5rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  margin-bottom: 0.7rem;
 
   .cabecalho-informacoes {
     display: flex;
@@ -17,8 +20,6 @@ export const Container = styled.div`
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    margin-top: 3rem;
-    margin-left: 1rem;
   }
 
   .informacoes {
@@ -30,7 +31,7 @@ export const Container = styled.div`
   }
 
   .nome {
-    margin-top: 4rem;
+    margin-top: 1rem;
     font-size: 24px;
     color: var(--white);
     font-weight: bold;
@@ -56,26 +57,25 @@ export const Container = styled.div`
     font-weight: normal;
   }
 
-  
-    .icone-opcoes {
-      position: absolute;
-      font-size: 30px;
-      top: 1rem;
-      right: 1rem;
-      color: var(--blueIcons);
+  .icone-opcoes {
+    position: absolute;
+    font-size: 30px;
+    top: 1rem;
+    right: 1rem;
+    color: var(--blueIcons);
+  }
 
-    }
-
-    .icone-editar {
-        display: none;
-    }
-  
+  .icone-editar {
+    display: none;
+  }
 
   @media (min-width: 1000px) {
     background-color: var(--bg);
-    margin-top: 4.4rem;
-    border: 1px solid black;
     min-height: 216px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
 
     .cabecalho-informacoes {
       width: 975px;
@@ -86,18 +86,33 @@ export const Container = styled.div`
       margin-left: 0rem;
     }
 
+    .numero-postagens {
+        margin-top: 3.5rem;
+        font-size: 16px;
+    }
+
     .icone-opcoes {
-        display: none;
+      display: none;
     }
 
     .icone-editar {
-        display: inline-block;
-        color: var(--blueIcons);
-        font-size: 30px;
-        position: absolute;
-        right: 3rem;
-        top: 4rem;
-        cursor: pointer;
+      display: inline-block;
+      color: var(--blueIcons);
+      font-size: 30px;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
     }
+  }
+`;
+
+export const Container = styled.div`
+  @media (min-width: 1000px) {
+    border: 1px solid black;
+    width: 100vw;
+    margin-bottom: 3rem;
+    margin-top: 4.4rem;
+    min-height: 216px;
   }
 `;
