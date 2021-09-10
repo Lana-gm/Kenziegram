@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import ProfilePage from "../pages/Profile";
 import Search from "../pages/Search";
 import Register from "../pages/Register";
+import Postage from "../pages/Postage";
 
 const Routes = () => {
   return (
@@ -12,7 +13,7 @@ const Routes = () => {
         <Landing />
       </Route>
       <Route path="/register">
-        <Register/>
+        <Register />
       </Route>
       <Route path="/home"></Route>
       <Route path="/login">
@@ -20,6 +21,9 @@ const Routes = () => {
       </Route>
       <Route path="/search">
         <Search />
+      </Route>
+      <Route path="/postage">
+        <Postage />
       </Route>
       <Route path="/profile">
         <ProfilePage />
