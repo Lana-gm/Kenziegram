@@ -1,10 +1,12 @@
 import { InputShape } from "./style"
 
-const GrayInput = ({placeholder, type, error = "", register, ...rest}) => {
+const GrayInput = ({placeholder, name, register, type, error = "", onChange, ...rest}) => {
 
     return (
-        <InputShape type={type} placeholder={placeholder} 
-        error={error} register={register} rest={rest}/>
+        <>
+        <InputShape type={type} placeholder={placeholder} name={name}
+        error={error} {...register(name)} {...rest} onChange={onChange}/>
+        </>
     )
 }
 

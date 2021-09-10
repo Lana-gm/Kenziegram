@@ -3,8 +3,10 @@ import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import ProfilePage from "../pages/Profile";
 import Search from "../pages/Search";
+import ProfileSettings from "../pages/ProfileSettings";
 import Register from "../pages/Register";
-import Home from "../pages/Home"
+import Home from "../pages/Home";
+import Postage from "../pages/Postage";
 
 const Routes = () => {
   return (
@@ -13,7 +15,7 @@ const Routes = () => {
         <Landing />
       </Route>
       <Route path="/register">
-        <Register/>
+        <Register />
       </Route>
       <Route path="/home">
         <Home />
@@ -24,11 +26,16 @@ const Routes = () => {
       <Route path="/search">
         <Search />
       </Route>
+      <Route path="/postage">
+        <Postage />
+      </Route>
       <Route path="/profile">
         <ProfilePage />
       </Route>
       <Route path="/profile/:id"></Route>
-      <Route path="/profile/edit"></Route>
+      <Route path="/profile-edit">
+        <ProfileSettings />
+      </Route>
     </Switch>
   );
 };
