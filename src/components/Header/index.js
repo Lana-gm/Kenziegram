@@ -7,7 +7,14 @@ import { BsPersonSquare } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
 
+import { firebaseApp } from '../../firebaseApi';
+
 const Header = () => {
+
+  const handleLogOut = () => {
+    firebaseApp.auth().signOut();
+  }
+
   return (
     <S.Container>
       <div className="content">
@@ -63,6 +70,7 @@ const Header = () => {
               <NavLink
                 className="list__item__link"
                 activeClassName="selected"
+                onClick={handleLogOut}
                 to="/login"
               >
                 <RiLogoutBoxRLine />
