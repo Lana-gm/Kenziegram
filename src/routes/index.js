@@ -2,6 +2,8 @@ import { Switch, Route } from "react-router-dom";
 import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import Search from "../pages/Search";
+import ProfileSettings from "../pages/ProfileSettings";
+
 const Routes = () => {
   return (
     <Switch>
@@ -18,7 +20,9 @@ const Routes = () => {
       </Route>
       <Route path="/profile"></Route>
       <Route path="/profile/:id"></Route>
-      <Route path="/profile/edit"></Route>
+      <Route path="/profile-edit">
+        <ProfileSettings />
+      </Route>
     </Switch>
   );
 };
