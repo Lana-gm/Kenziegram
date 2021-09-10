@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import KelvinImg from "../../assets/kelvin.jpg";
 import BlueButton from "../BlueButton";
-const CreatePost = () => {
+const CreatePost = ({ setIsShow, isShow }) => {
   return (
     <S.Container>
       <div className="content">

@@ -10,7 +10,11 @@ const Postage = () => {
   return (
     <>
       <Header />
-      {isShow ? <SearchGallery /> : <CreatePost />}
+      {isShow ? (
+        <SearchGallery isShow={isShow} setIsShow={setIsShow} />
+      ) : (
+        <CreatePost isShow={isShow} setIsShow={setIsShow} />
+      )}
     </>
   );
 };

@@ -4,7 +4,7 @@ import { BsImages } from "react-icons/bs";
 import { MdVideoLibrary } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
 
-const SearchGallery = () => {
+const SearchGallery = ({ setIsShow, isShow }) => {
   return (
     <S.Container>
       <div className="box-content">
