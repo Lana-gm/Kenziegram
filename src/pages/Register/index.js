@@ -54,11 +54,11 @@ const Register = () => {
                 <h1>Crie sua conta</h1>
             </div>
             <form className="input__box" onSubmit={handleSubmit(onSubmitFunction)}>
-                <input type="text" placeholder={'Nome de Usuário'} />
-                <input type="email" placeholder={'Email'} {...register('email')}/>
-                <input type="text" placeholder={'Telefone'} />
-                <input type="password" placeholder={'Senha'} {...register('password')}/>
-                <input type="password" placeholder={'Confirme sua Senha'} />
+                <GrayInput type="text" placeholder={'Nome de Usuário'} />
+                <GrayInput type="email" name="email" placeholder={'Email'} register={register} />
+                <GrayInput type="text" placeholder={'Telefone'} />
+                <GrayInput type="password" name="password" placeholder={'Senha'} register={register} />
+                <GrayInput type="password" placeholder={'Confirme sua Senha'} />
                 <BlueButton type="submit" text="Cadastrar" />
                 <Link to="/login" className="smalltext margin">Já tem cadastro? <strong>Entre!</strong></Link>
             </form>
