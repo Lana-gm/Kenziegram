@@ -1,27 +1,31 @@
-import Header from "../../components/Header";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
-import * as S from "./styles";
-import { useContext } from "react";
-import { UsersContext } from "../../providers/Users";
 import { useForm } from "react-hook-form";
+import { UsersContext } from "../../providers/Users";
+import Header from "../../components/Header";
+import * as S from "./styles";
 
 const ProfileSettings = () => {
   const { users } = useContext(UsersContext);
+
   const { name, img, status, email } = users[0];
 
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState(false);
 
-  const { handleSubmit, register } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const handleClick = () => {
     setEdit(true);
     setInput(true);
   };
 
-  const onSubmit = (data) => {
+  const handleForm = (data) => {
     console.log(data);
     setInput(false);
   };
@@ -54,34 +58,41 @@ const ProfileSettings = () => {
             <h3 className="profile_name">{name}</h3>
           </div>
 
-          {input ? (
-            <form className="form_input" onSubmit={handleSubmit(onSubmit)}>
+          {input && edit ? (
+            <form className="form_input" onSubmit={handleSubmit(handleForm)}>
               <div className="change_information input_text">
                 <input
-                  value={name}
-                  type="text"
-                  {...register("name")}
+                  defaultValue={name}
+                  {...register("name", { required: true })}
                   placeholder="Nome de usuário"
                   className="input_content"
                 />
               </div>
               <div className="change_information input_text">
                 <input
-                  value={email}
+                  defaultValue={email}
                   type="email"
-                  {...register("email")}
+                  {...register("email", { required: true })}
                   placeholder="Email"
                   className="input_content"
                 />
               </div>
               <div className="change_information input_text">
-                <input
-                  value={status}
+                <textarea
+                  className="textarea_content"
+                  defaultValue={status}
+                  {...register("bio", { required: true })}
+                  placeholder="Bio"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+                {/* <input
+                  defaultValue={status}
                   type="text"
                   {...register("bio")}
                   placeholder="Bio"
                   className="input_content"
-                />
+                /> */}
               </div>
             </form>
           ) : (

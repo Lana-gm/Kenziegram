@@ -134,10 +134,28 @@ export const ContainerMain = styled.main`
 
   .textarea_content {
     width: 100%;
-    height: 70%;
+    height: 30px;
     background-color: var(--bg);
     border: none;
     color: var(--white);
+    transition: 0.5s all ease-in-out;
+    padding: 8px 0 0 10px;
+
+    &::placeholder {
+      padding-left: 10px;
+      color: var(--white);
+      opacity: 25%;
+    }
+
+    &:focus {
+      padding-left: 10px;
+    }
+
+    &:focus {
+      background-color: rgb(153 153 153 / 8%);
+      caret-color: var(--gray);
+      border-bottom: 2px solid var(--gray);
+    }
   }
 `;
 
