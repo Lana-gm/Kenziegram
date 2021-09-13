@@ -5,8 +5,11 @@ import { BsPencilSquare } from "react-icons/bs";
 import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { useHistory } from "react-router";
 
 const Profile = () => {
+  const history = useHistory();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -15,6 +18,10 @@ const Profile = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleEdit = () => {
+    history.push("/profile-edit");
   };
 
   return (
@@ -39,7 +46,7 @@ const Profile = () => {
           </Menu>
         </div>
         <div className="cabecalho-informacoes">
-          <BsPencilSquare className="icone-editar" />
+          <BsPencilSquare className="icone-editar" onClick={handleEdit} />
           <img
             src="https://img.freepik.com/vetores-gratis/homem-perfil-caricatura_18591-58483.jpg?size=338&ext=jpg"
             alt="imagem do perfil"
