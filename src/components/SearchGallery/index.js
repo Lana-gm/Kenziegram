@@ -3,7 +3,8 @@ import BlueButton from "../BlueButton";
 import { BsImages } from "react-icons/bs";
 import { MdVideoLibrary } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
-const SearchImage = () => {
+
+const SearchGallery = ({ setIsShow, isShow }) => {
   return (
     <S.Container>
       <div className="box-content">
@@ -15,13 +16,13 @@ const SearchImage = () => {
             <BsImages className="content-main__icon" />
             <MdVideoLibrary className="content-main__icon" />
             <h4 className="content-main__text">Adicionar Fotos e Vídeos</h4>
-            <BlueButton text="Adicionar IMG"></BlueButton>
+            <BlueButton text="Adicionar"></BlueButton>
           </div>
           <div className="content__progress">
             <div className="content__progess__box"></div>
           </div>
           <div className="content__prox-page">
-            <GrFormNextLink />
+            <GrFormNextLink className="prox-page__icon" />
           </div>
         </div>
       </div>
@@ -29,4 +30,4 @@ const SearchImage = () => {
   );
 };
 
-export default SearchImage;
+export default SearchGallery;
