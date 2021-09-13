@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerPage = styled.div`
-  height: calc(100vh - 70px);
+  /* height: calc(100vh - 70px); */
   background-color: var(--bg);
 
   h1 {
@@ -24,6 +24,7 @@ export const ContainerPage = styled.div`
   @media all and (min-width: 975px) {
     display: flex;
     align-items: flex-end;
+    margin-top: 70px;
   }
 `;
 
@@ -49,7 +50,7 @@ export const HeaderEdit = styled.div`
 export const ContainerMain = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   width: 336px;
   height: 572px;
   margin: 0 auto;
@@ -67,6 +68,7 @@ export const ContainerMain = styled.main`
     justify-content: inherit;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 38px;
 
     p {
       color: var(--blue-svg);
@@ -188,9 +190,10 @@ export const Container = styled.div`
     }
 
     .profile_box {
+      width: 500px;
+      margin: 0 auto;
+      justify-content: space-between;
       display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
       align-items: center;
     }
 

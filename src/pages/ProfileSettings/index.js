@@ -9,10 +9,9 @@ import * as S from "./styles";
 const ProfileSettings = () => {
   const { users } = useContext(UsersContext);
 
-  const { name, img, status, email } = users[0];
+  const { name, img, status, number } = users[0];
 
   const [edit, setEdit] = useState(false);
-  const [input, setInput] = useState(false);
 
   const {
     register,
@@ -20,14 +19,9 @@ const ProfileSettings = () => {
     formState: { errors },
   } = useForm();
 
-  const handleClick = () => {
-    setEdit(true);
-    setInput(true);
-  };
-
   const handleForm = (data) => {
     console.log(data);
-    setInput(false);
+    setEdit(false);
   };
 
   return (
@@ -38,15 +32,6 @@ const ProfileSettings = () => {
           <NavLink to="/profile" className="icone_seta">
             <BiLeftArrowAlt />
           </NavLink>
-          {!edit ? (
-            <button className="button_mobile" onClick={handleClick}>
-              Editar
-            </button>
-          ) : (
-            <button className="button_mobile" type="submit">
-              Salvar
-            </button>
-          )}
         </S.HeaderEdit>
         <h1 className="title_profile">Editar Perfil</h1>
         <S.ContainerMain className="main">
@@ -58,67 +43,58 @@ const ProfileSettings = () => {
             <h3 className="profile_name">{name}</h3>
           </div>
 
-          {input && edit ? (
-            <form className="form_input" onSubmit={handleSubmit(handleForm)}>
-              <div className="change_information input_text">
-                <input
-                  defaultValue={name}
-                  {...register("name", { required: true })}
-                  placeholder="Nome de usuário"
-                  className="input_content"
-                />
-              </div>
-              <div className="change_information input_text">
-                <input
-                  defaultValue={email}
-                  type="email"
-                  {...register("email", { required: true })}
-                  placeholder="Email"
-                  className="input_content"
-                />
-              </div>
-              <div className="change_information input_text">
-                <textarea
-                  className="textarea_content"
-                  defaultValue={status}
-                  {...register("bio", { required: true })}
-                  placeholder="Bio"
-                  cols="30"
-                  rows="10"
-                ></textarea>
-                {/* <input
-                  defaultValue={status}
-                  type="text"
-                  {...register("bio")}
-                  placeholder="Bio"
-                  className="input_content"
-                /> */}
-              </div>
-            </form>
-          ) : (
+          {!edit ? (
             <S.ContainerInput>
               <div className="change_information">
                 <p className="placeholder">Nome de usuário</p>
                 <p>{name}</p>
               </div>
               <div className="change_information">
-                <p className="placeholder">Email</p>
-                <p>{email}</p>
+                <p className="placeholder">Número de telefone</p>
+                <p>{number}</p>
               </div>
               <div className="change_information">
                 <p className="placeholder">Bio</p>
                 <p>{status}</p>
               </div>
+              <button onClick={() => setEdit(true)}>Editar</button>
             </S.ContainerInput>
-          )}
-          {!edit ? (
-            <button className="button_desktop" onClick={handleClick}>
-              Editar
-            </button>
           ) : (
-            <button className="button_desktop" type="submit">
-              Salvar
-            </button>
+            <S.ContainerInput>
+              <form onSubmit={handleSubmit(handleForm)}>
+                <div className="change_information input_text">
+                  <input
+                    defaultValue={name}
+                    {...register("name", { required: true })}
+                    placeholder="Nome de usuário"
+                    className="input_content"
+                  />
+                  {/* {errors.name && errors.name.type === "required" && (
+                    <span>This is required</span>
+                  )} */}
+                </div>
+                <div className="change_information input_text">
+                  <input
+                    defaultValue={number}
+                    type="text"
+                    {...register("number", { required: true })}
+                    placeholder="Número de telefone"
+                    className="input_content"
+                  />
+                </div>
+                <div className="change_information input_text">
+                  <textarea
+                    className="textarea_content"
+                    defaultValue={status}
+                    {...register("bio", { required: true })}
+                    placeholder="Bio"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                </div>
+                <button type="submit">Salvar</button>
+              </form>
+            </S.ContainerInput>
           )}
         </S.ContainerMain>
       </S.ContainerPage>
