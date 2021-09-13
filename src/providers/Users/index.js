@@ -9,7 +9,6 @@ export const UsersProvider = ({ children }) => {
       email: "kelvin@email.com",
       password: "123456",
       status: "online",
-      number: "5555-5555",
       img: "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
     },
     {
