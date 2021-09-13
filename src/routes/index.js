@@ -18,16 +18,11 @@ const Routes = () => {
       <Route path="/register">
         <Register />
       </Route>
-<<<<<<< HEAD
-      <Route path="/recovery">
-        <Recovery/>
-      </Route>
-      <Route path="/home">
-
-=======
       <Route path="/home">
         <Home />
->>>>>>> fbad2979b6b5b2ccdce5cf07a04e63c9d8815a36
+      </Route>
+      <Route path="/recovery">
+        <Recovery />
       </Route>
       <Route path="/login">
         <Login />
@@ -41,7 +36,9 @@ const Routes = () => {
       <Route path="/profile">
         <ProfilePage />
       </Route>
-      <Route path="/profile/:id"></Route>
+      <Route path="/profile/:id">
+
+      </Route>
       <Route path="/profile-edit">
         <ProfileSettings />
       </Route>

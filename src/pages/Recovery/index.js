@@ -5,7 +5,7 @@ import { MainPage } from "./style"
 import { Link, useHistory } from "react-router-dom"
 
 const Recovery = () => {
-        
+
     const history = useHistory();
 
     return (
