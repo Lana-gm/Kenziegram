@@ -10,11 +10,6 @@ export const Container = styled.div`
   background-color: var(--bg);
   z-index: 1;
 
-  h1 {
-    font-size: 2rem;
-    display: none;
-  }
-
   .content {
     height: 100%;
     max-width: 975px;

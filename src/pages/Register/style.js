@@ -64,7 +64,7 @@ export const MainPage = styled.main`
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        margin: 0 0 50px 25px;
+        margin: 80px 0 50px 25px;
         z-index: 1;
     }
 
