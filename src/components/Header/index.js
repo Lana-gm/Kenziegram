@@ -75,7 +75,7 @@ const Header = () => {
                 className="list__item__link"
                 activeClassName="selected"
                 onClick={handleLogOut}
-                to="/login"
+                to="/"
               >
                 <RiLogoutBoxRLine />
               </NavLink>

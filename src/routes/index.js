@@ -7,6 +7,7 @@ import ProfileSettings from "../pages/ProfileSettings";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import Postage from "../pages/Postage";
+import Recovery from "../pages/Recovery";
 
 const Routes = () => {
   return (
@@ -20,6 +21,9 @@ const Routes = () => {
       <Route path="/home">
         <Home />
       </Route>
+      <Route path="/recovery">
+        <Recovery />
+      </Route>
       <Route path="/login">
         <Login />
       </Route>
@@ -32,7 +36,9 @@ const Routes = () => {
       <Route path="/profile">
         <ProfilePage />
       </Route>
-      <Route path="/profile/:id"></Route>
+      <Route path="/profile/:id">
+
+      </Route>
       <Route path="/profile-edit">
         <ProfileSettings />
       </Route>
