@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useHistory, Redirect } from 'react-router-dom';
 
-import { firebaseApp } from '../../firebaseApi';
+import { firebaseApp, db } from '../../firebaseApi';
 import { useAuth } from '../../providers/Auth';
 
 const Register = () => {
@@ -39,6 +39,13 @@ const Register = () => {
             .auth()
             .createUserWithEmailAndPassword(data.email, data.password)
             .then((user) => {
+                db.collection('Users').doc(user.user.uid).set({
+                    user: data.user,
+                    email: data.email,
+                    phone: data.phone,
+                    bio: '', 
+                    posts: 0
+                });
                 history.push('/login');
             });
     }
