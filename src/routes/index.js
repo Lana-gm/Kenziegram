@@ -5,6 +5,7 @@ import ProfilePage from "../pages/Profile";
 import Search from "../pages/Search";
 import ProfileSettings from "../pages/ProfileSettings";
 import Register from "../pages/Register";
+import Home from "../pages/Home";
 import Postage from "../pages/Postage";
 import Recovery from "../pages/Recovery";
 
@@ -17,11 +18,16 @@ const Routes = () => {
       <Route path="/register">
         <Register />
       </Route>
+<<<<<<< HEAD
       <Route path="/recovery">
         <Recovery/>
       </Route>
       <Route path="/home">
 
+=======
+      <Route path="/home">
+        <Home />
+>>>>>>> fbad2979b6b5b2ccdce5cf07a04e63c9d8815a36
       </Route>
       <Route path="/login">
         <Login />
