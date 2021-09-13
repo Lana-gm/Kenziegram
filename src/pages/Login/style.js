@@ -91,6 +91,10 @@ export const MainPage = styled.main`
         margin: 20px 0 0 0;
     }
 
+    .register {
+        margin: 10px 0 0 0;
+    }
+
     .mobile__return {
         position: absolute;
         top: 10%;

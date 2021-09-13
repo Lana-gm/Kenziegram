@@ -8,7 +8,6 @@ export const MainPage = styled.main`
     align-content: center;
     justify-content: center;
     background-image: url(${LandingMobile});
-    background-image: url(${Landing});
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
@@ -20,6 +19,13 @@ export const MainPage = styled.main`
         width: 100%;
         height: 100%;
         z-index: 0;
+    }
+
+    .billa {
+        font-family: "Billa";
+        font-weight: 100;
+        font-size: 6rem;
+        text-align: center;
     }
 
     .input__box {
