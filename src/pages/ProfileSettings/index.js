@@ -17,6 +17,7 @@ const ProfileSettings = () => {
   let docRef = {};
 
   const [edit, setEdit] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const { handleSubmit, register } = useForm();
 
@@ -83,14 +84,25 @@ const ProfileSettings = () => {
           <div className="profile_box">
             <div className="change_picture">
               <img src={userData.img_url} alt={userData.user} />
-              <input
-                type="file"
-                //value="Alterar"
-                name="adicionar"
-                id="fileButton"
-                accept="image/*, video.mp4"
-                onChange={(e) => upgradeProfileImage(e)}
-              />
+              {showModal ? (
+                <S.Modal>
+                  <p>Escolha sua nova foto de perfil</p>
+                  <input
+                    type="file"
+                    //value="Alterar"
+                    name="adicionar"
+                    id="fileButton"
+                    accept="image/*, video.mp4"
+                    onChange={(e) => upgradeProfileImage(e)}
+                  />
+                  <label for="file">Downloading progress:</label>
+                  <progress max="100"> </progress>
+                  <button onClick={() => setShowModal(false)}>X</button>
+                </S.Modal>
+              ) : null}
+              <button onClick={() => setShowModal(true)}>
+                Alterar foto de perfil
+              </button>
             </div>
             <h3 className="profile_name">{userData.user}</h3>
           </div>
