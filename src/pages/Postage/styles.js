@@ -27,3 +27,7 @@ export const InfoContent = styled.div`
           border-radius: 100%;
         `}
 `;
+ 
+export const Container = styled.div`
+  overflow: hidden;
+`

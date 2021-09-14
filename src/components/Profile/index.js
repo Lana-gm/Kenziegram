@@ -7,19 +7,20 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useHistory } from "react-router";
 
-import { db } from '../../firebaseApi';
-import { useAuth } from '../../providers/Auth';
+import { db } from "../../firebaseApi";
+import { useAuth } from "../../providers/Auth";
+
+import { firebaseApp } from "../../firebaseApi";
 
 const Profile = () => {
-  
-  const { loggedUser } = useAuth();
+  const { loggedUser, setLoggedUser } = useAuth();
 
   const [userData, setUserData] = React.useState({});
   let docRef = {};
 
   React.useEffect(() => {
     if (loggedUser !== null) {
-      docRef = db.collection('Users').doc(loggedUser.uid);
+      docRef = db.collection("Users").doc(loggedUser.uid);
 
       docRef.get().then((doc) => {
         setUserData(doc.data());
@@ -43,6 +44,12 @@ const Profile = () => {
     history.push("/profile-edit");
   };
 
+  const handleLogOut = () => {
+    firebaseApp.auth().signOut();
+    setLoggedUser(null);
+    history.push("/");
+  };
+
   return (
     <s.Container>
       <s.Content>
@@ -60,26 +67,26 @@ const Profile = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Editar</MenuItem>
-            <MenuItem onClick={handleClose}>Sair</MenuItem>
+            <MenuItem onClick={handleEdit}>Editar</MenuItem>
+            <MenuItem onClick={handleLogOut}>Sair</MenuItem>
           </Menu>
         </div>
         <div className="cabecalho-informacoes">
           <BsPencilSquare className="icone-editar" onClick={handleEdit} />
-          <img
-            src={userData.img_url}
-            alt="imagem do perfil"
-          />
+          <img src={userData.img_url} alt="imagem do perfil" />
           <div className="informacoes">
             <p className="nome">{userData.user}</p>
-            <p className="bio">
-              {userData.bio}
+            <p className="bio">{userData.bio}</p>
+            <div className="numero__container">
+            <p className="numero-postagens">
+              {userData.posts} <span>publicações</span>
             </p>
+            <p className="numero-postagens">
+              {userData.posts} <span>amigos</span>
+            </p>
+            </div>
           </div>
         </div>
-        <p className="numero-postagens">
-          {userData.posts} <span>postagens</span>
-        </p>
       </s.Content>
     </s.Container>
   );

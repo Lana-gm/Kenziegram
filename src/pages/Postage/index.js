@@ -13,7 +13,7 @@ const Postage = () => {
   const [file, setFile] = useState(null);
 
   return (
-    <>
+    <S.Container>
       <Header />
       {isShow ? (
         <SearchGallery setImage={setImage} setFile={setFile} isShow={isShow} setIsShow={setIsShow} />
@@ -27,7 +27,7 @@ const Postage = () => {
           isShow={!isShow}
         ></S.InfoContent>
       </S.Info>
-    </>
+    </S.Container>
   );
 };
 

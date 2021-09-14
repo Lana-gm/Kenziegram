@@ -47,6 +47,19 @@ export const HeaderEdit = styled.div`
   }
 `;
 
+export const Modal = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 export const ContainerMain = styled.main`
   display: flex;
   flex-direction: column;
@@ -171,6 +184,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
+    justify-content: center;
 
     .header_edit {
       display: none;

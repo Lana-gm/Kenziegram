@@ -43,7 +43,7 @@ const Storys = () => {
         {scrollHorizontal !== 0 ? (
           <IoChevronBackCircleSharp onClick={handleBack} id="back" />
         ) : null}
-        {scrollHorizontal !== width - 975 ? (
+        {scrollHorizontal !== width - 975 && width > 975? (
           <IoChevronBackCircleSharp onClick={handleNext} id="next" />
         ) : null}
       </ul>
