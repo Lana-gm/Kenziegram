@@ -5,8 +5,30 @@ import { BsPencilSquare } from "react-icons/bs";
 import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { useHistory } from "react-router";
+
+import { db } from '../../firebaseApi';
+import { useAuth } from '../../providers/Auth';
 
 const Profile = () => {
+  
+  const { loggedUser } = useAuth();
+
+  const [userData, setUserData] = React.useState({});
+  let docRef = {};
+
+  React.useEffect(() => {
+    if (loggedUser !== null) {
+      docRef = db.collection('Users').doc(loggedUser.uid);
+
+      docRef.get().then((doc) => {
+        setUserData(doc.data());
+      });
+    }
+  }, [loggedUser]);
+
+  const history = useHistory();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -15,6 +37,10 @@ const Profile = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleEdit = () => {
+    history.push("/profile-edit");
   };
 
   return (
@@ -39,20 +65,20 @@ const Profile = () => {
           </Menu>
         </div>
         <div className="cabecalho-informacoes">
-          <BsPencilSquare className="icone-editar" />
+          <BsPencilSquare className="icone-editar" onClick={handleEdit} />
           <img
             src="https://img.freepik.com/vetores-gratis/homem-perfil-caricatura_18591-58483.jpg?size=338&ext=jpg"
             alt="imagem do perfil"
           />
           <div className="informacoes">
-            <p className="nome">Nome do usuário</p>
+            <p className="nome">{userData.user}</p>
             <p className="bio">
-              Estudante de desenvolvimento web na Kenzie Academy Brasil
+              {userData.bio}
             </p>
           </div>
         </div>
         <p className="numero-postagens">
-          1000 <span>postagens</span>
+          {userData.posts} <span>postagens</span>
         </p>
       </s.Content>
     </s.Container>

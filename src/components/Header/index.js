@@ -5,8 +5,20 @@ import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { MdChatBubble } from "react-icons/md";
 import { BsPersonSquare } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
+import { FiPlusSquare } from "react-icons/fi";
+
+import { firebaseApp } from '../../firebaseApi';
+import { useAuth } from '../../providers/Auth';
 
 const Header = () => {
+
+  const { setLoggedUser } = useAuth();
+
+  const handleLogOut = () => {
+    firebaseApp.auth().signOut();
+    setLoggedUser(null);
+  }
+
   return (
     <S.Container>
       <div className="content">
@@ -35,6 +47,15 @@ const Header = () => {
               <NavLink
                 className="list__item__link"
                 activeClassName="selected"
+                to="/postage"
+              >
+                <FiPlusSquare />
+              </NavLink>
+            </li>
+            <li className="list__item">
+              <NavLink
+                className="list__item__link"
+                activeClassName="selected"
                 to="/message"
               >
                 <MdChatBubble />
@@ -53,7 +74,8 @@ const Header = () => {
               <NavLink
                 className="list__item__link"
                 activeClassName="selected"
-                to="/login"
+                onClick={handleLogOut}
+                to="/"
               >
                 <RiLogoutBoxRLine />
               </NavLink>

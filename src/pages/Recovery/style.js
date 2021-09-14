@@ -1,13 +1,13 @@
 import styled from 'styled-components'
-import LoginMobile from '../../assets/LoginMobile.png'
-import Login from '../../assets/Login.png'
+import RecoverMobile from '../../assets/RecoverMobile.png'
+import Recover from '../../assets/Recover.png'
 
 export const MainPage = styled.main`
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    background-image: url(${LoginMobile});
+    background-image: url(${RecoverMobile});
     width: 100vw;
     height: 100vh;
 
@@ -74,6 +74,7 @@ export const MainPage = styled.main`
         font-style: normal;
         font-weight: bold;
         font-size: 43px;
+        text-align: left;
         line-height: 50px;
     }
 
@@ -91,10 +92,6 @@ export const MainPage = styled.main`
         margin: 20px 0 0 0;
     }
 
-    .register {
-        margin: 10px 0 0 0;
-    }
-
     .mobile__return {
         position: absolute;
         top: 10%;
@@ -105,7 +102,7 @@ export const MainPage = styled.main`
     }
 
     @media (min-width: 720px) {
-        background-image: url(${Login});
+        background-image: url(${Recover});
         background-repeat: no-repeat;
         background-size: cover;
 
