@@ -10,6 +10,10 @@ export const Container = styled.div`
   background-color: var(--bg);
   z-index: 1;
 
+  h1 {
+    display: none;
+  }
+
   .content {
     height: 100%;
     max-width: 975px;
@@ -62,6 +66,10 @@ export const Container = styled.div`
 
     .content__nav {
       flex-basis: 50%;
+    }
+
+    .list {
+      justify-content: space-between;
     }
 
     .list__item-hidden {
