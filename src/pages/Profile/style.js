@@ -1,26 +1,24 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+
+  .posts {
+    width: 90%;
+    margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    width: 100vw;
-    overflow-x: hidden;
+  }
 
+  @media (min-width: 1000px) {
     .posts {
-        width: 90%;
-        margin-bottom: 5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      width: 100%;
     }
-
-    @media(min-width: 1000px) {
-        .posts {
-            width: 100%;
-        }
-    }
-
-`
+  }
+`;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import Billa from './assets/Billabong.ttf'
+import Billa from "./assets/Billabong.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -34,7 +34,7 @@ font-family: 'Nunito Sans', sans-serif;*/
   }
 
   main {
-    min-width: 100vw;
+    width: 100%;
     min-height: 100vh;
   }
 
