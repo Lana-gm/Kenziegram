@@ -6,7 +6,7 @@ export const Container = styled.div`
   left: 0;
   right: 0;
   width: 100vw;
-  height: 70px;
+  height: 55px;
   background-color: var(--bg);
   border-bottom: 1px solid black;
   z-index: 1;
@@ -54,6 +54,7 @@ export const Container = styled.div`
     top: 0;
     bottom: auto;
     background-color: var(--bgLight);
+    padding: 10px;
 
     h1 {
       display: block;
@@ -66,7 +67,7 @@ export const Container = styled.div`
     }
 
     .content__nav {
-      flex-basis: 50%;
+      flex-basis: 30%;
     }
 
     .list {
@@ -79,7 +80,7 @@ export const Container = styled.div`
 
     .list__item__link {
       svg {
-        font-size: 25px;
+        font-size: 26px;
       }
     }
   }
