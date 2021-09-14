@@ -15,12 +15,9 @@ export const Container = styled.main`
     width: 100%;
   }
 
-  .icon-close {
+  .logo {
     position: absolute;
-    top: 20px;
-    left: 0;
-    color: var(--white);
-    font-size: 30px;
+    top: 0.5rem;
   }
 
   .container-search {
@@ -38,6 +35,7 @@ export const Container = styled.main`
     font-size: 2rem;
     color: var(--white);
     padding-bottom: 1rem;
+    margin-top: 6rem;
   }
 
   .content {
@@ -93,6 +91,11 @@ export const Container = styled.main`
     .container-search__text {
       font-size: 2rem;
       padding-bottom: 2rem;
+      margin-top: 0rem;
+    }
+
+    .logo {
+      display: none;
     }
   }
 `;
