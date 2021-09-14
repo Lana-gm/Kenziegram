@@ -41,7 +41,6 @@ export const Container = styled.main`
   .content {
     width: 100%;
     display: flex;
-    /*align-items: center;*/
     background-color: rgb(153 153 153 / 8%);
     border-radius: 7px;
     padding: 3px;
