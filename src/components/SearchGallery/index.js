@@ -19,10 +19,15 @@ const SearchGallery = ({ setIsShow, isShow }) => {
             <BlueButton text="Adicionar"></BlueButton>
           </div>
           <div className="content__progress">
-            <div className="content__progess__box"></div>
+            <progress className="content__progess__box"></progress>
           </div>
           <div className="content__prox-page">
-            <GrFormNextLink className="prox-page__icon" />
+            <button
+              className="prox-page__btn"
+              onClick={() => setIsShow(!isShow)}
+            >
+              <GrFormNextLink />
+            </button>
           </div>
         </div>
       </div>
