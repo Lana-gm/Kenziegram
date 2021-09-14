@@ -9,6 +9,7 @@ import { db, storageRef } from "../../firebaseApi";
 import { doc, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../providers/Auth";
 import { getDownloadURL } from "@firebase/storage";
+import { useHistory } from "react-router";
 
 const ProfileSettings = () => {
   const { loggedUser } = useAuth();
@@ -19,6 +20,8 @@ const ProfileSettings = () => {
   const [edit, setEdit] = useState(false);
 
   const { handleSubmit, register } = useForm();
+
+  const history = useHistory();
 
   useEffect(() => {
     if (loggedUser !== null) {
@@ -38,6 +41,7 @@ const ProfileSettings = () => {
       bio: data.bio,
     });
     setEdit(false);
+    history.push("/profile");
   };
 
   const upgradeProfileImage = (e) => {
