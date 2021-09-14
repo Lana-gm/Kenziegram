@@ -15,8 +15,17 @@ export const onUserList = (setUsers) => {
     .collection("Users")
     .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          getUsersFromFirebase.push({...doc.data(), key: doc.id,
-          });
+          let dataExists = false;
+          for (let i = 0; i <= getUsersFromFirebase.length; i++) {
+            if(getUsersFromFirebase[i] !== undefined) {
+              if (getUsersFromFirebase[i].email === doc.data().email) {
+                dataExists = true;
+              }
+            }            
+          }
+          if(!dataExists) {
+            getUsersFromFirebase.push({...doc.data(), key: doc.id,}); 
+          }                   
         });
         setUsers(getUsersFromFirebase);
     });
