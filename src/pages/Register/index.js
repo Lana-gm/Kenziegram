@@ -18,7 +18,7 @@ const Register = () => {
     const { loggedUser } = useAuth();
 
     const formSchema = yup.object().shape({
-        user: yup.string().required("Usuário obrigatório"),
+        user: yup.string().max(10, "Máximo de 10 caractéres").required("Usuário obrigatório"),
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
         phone: yup.string(),
         password: yup.string().required("Senha obrigatória").min(8, "Senha deve ter ao menos 8 caracteres"),
@@ -55,6 +55,8 @@ const Register = () => {
         return <Redirect to='/home' />
     }
 
+    console.log(!!errors.user)
+
     return (
         <MainPage>
             <div className="gray__gradient" />
@@ -65,11 +67,11 @@ const Register = () => {
                 <h1>Crie sua conta</h1>
             </div>
             <form className="input__box" onSubmit={handleSubmit(onSubmitFunction)}>
-                <GrayInput type="text" name="user" placeholder={'Nome de Usuário'} register={register} />
-                <GrayInput type="email" name="email" placeholder={'Email'} register={register} />
-                <GrayInput type="text" name="phone" placeholder={'Telefone'} register={register}/>
-                <GrayInput type="password" name="password" placeholder={'Senha'} register={register} />
-                <GrayInput type="password" name="confirm" placeholder={'Confirme sua Senha'} register={register} />
+                <GrayInput type="text" error={!!errors.user} name="user" placeholder={'Nome de Usuário'} register={register} />
+                <GrayInput type="email" error={!!errors.email} name="email" placeholder={'Email'} register={register} />
+                <GrayInput type="text" error={!!errors.phone} name="phone" placeholder={'Telefone'} register={register}/>
+                <GrayInput type="password" error={!!errors.password} name="password" placeholder={'Senha'} register={register} />
+                <GrayInput type="password" error={!!errors.confirm} name="confirm" placeholder={'Confirme sua Senha'} register={register} />
                 <BlueButton type="submit" text="Cadastrar" />
                 <Link to="/login" className="smalltext margin">Já tem cadastro? <strong>Entre!</strong></Link>
             </form>

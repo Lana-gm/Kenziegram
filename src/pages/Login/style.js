@@ -89,10 +89,12 @@ export const MainPage = styled.main`
 
     .margin {
         margin: 20px 0 0 0;
+        font-weight: 600;
     }
 
     .register {
         margin: 10px 0 0 0;
+        font-weight: 600;
     }
 
     .mobile__return {
