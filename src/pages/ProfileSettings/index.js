@@ -5,13 +5,14 @@ import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Kelvin from "../../assets/kelvin.jpg";
-
-import { db } from "../../firebaseApi";
+import { db, storageRef } from "../../firebaseApi";
+import { doc, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../providers/Auth";
+import { getDownloadURL } from "@firebase/storage";
 
 const ProfileSettings = () => {
   const { loggedUser } = useAuth();
-
+  const [UpdateProfile, setUpdateProfile] = useState();
   const [userData, setUserData] = useState({});
   let docRef = {};
 
@@ -23,15 +24,49 @@ const ProfileSettings = () => {
     if (loggedUser !== null) {
       docRef = db.collection("Users").doc(loggedUser.uid);
 
-      docRef.get().then((doc) => {
+      docRef.onSnapshot((doc) => {
         setUserData(doc.data());
       });
     }
   }, [loggedUser]);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const docRef = doc(db, "Users", loggedUser.uid);
+    await updateDoc(docRef, {
+      user: data.name,
+      phone: data.phone,
+      bio: data.bio,
+    });
     setEdit(false);
+  };
+
+  const upgradeProfileImage = (e) => {
+    // get file
+    const file = e.target.files[0];
+
+    // create ref
+    const uploadTask = storageRef.child(`profile/${userData.user}`).put(file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is" + progress + "% done");
+      },
+      (error) => {
+        console.log("Não foi possível fazer o upload", error);
+      },
+      () => {
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          console.log("url: ", downloadURL);
+
+          db.collection("Users").doc(loggedUser.uid).update({
+            img_url: downloadURL,
+          });
+        });
+      }
+    );
   };
 
   return (
@@ -48,7 +83,14 @@ const ProfileSettings = () => {
           <div className="profile_box">
             <div className="change_picture">
               <img src={userData.img_url} alt={userData.user} />
-              <p>Alterar foto de perfil</p>
+              <input
+                type="file"
+                //value="Alterar"
+                name="adicionar"
+                id="fileButton"
+                accept="image/*, video.mp4"
+                onChange={(e) => upgradeProfileImage(e)}
+              />
             </div>
             <h3 className="profile_name">{userData.user}</h3>
           </div>
@@ -60,8 +102,8 @@ const ProfileSettings = () => {
                 <p>{userData.user}</p>
               </div>
               <div className="change_information">
-                <p className="placeholder">Email</p>
-                <p>{userData.email}</p>
+                <p className="placeholder">Phone</p>
+                <p>{userData.phone}</p>
               </div>
               <div className="change_information">
                 <p className="placeholder">Bio</p>
@@ -86,10 +128,10 @@ const ProfileSettings = () => {
                 </div>
                 <div className="change_information input_text">
                   <input
-                    defaultValue={userData.email}
-                    type="email"
-                    {...register("email", { required: true })}
-                    placeholder="Email"
+                    defaultValue={userData.phone}
+                    type="text"
+                    {...register("phone", { required: true })}
+                    placeholder="Phone"
                     className="input_content"
                   />
                 </div>
