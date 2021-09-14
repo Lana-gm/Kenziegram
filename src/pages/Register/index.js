@@ -44,7 +44,8 @@ const Register = () => {
                     email: data.email,
                     phone: data.phone,
                     bio: '', 
-                    posts: 0
+                    posts: 0,
+                    img_url: 'https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg'
                 });
                 history.push('/login');
             });
