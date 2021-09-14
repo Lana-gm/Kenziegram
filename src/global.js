@@ -35,7 +35,7 @@ font-family: 'Nunito Sans', sans-serif;*/
 
   main {
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
   }
 
   body, input {
