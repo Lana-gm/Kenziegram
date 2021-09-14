@@ -25,7 +25,7 @@ export const Container = styled.main`
 
   .container-search {
     flex-basis: 35%;
-    max-width: 975px;
+    max-width: 725px;
     width: 100%;
     display: flex;
     flex-direction: column;

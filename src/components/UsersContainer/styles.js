@@ -12,10 +12,10 @@ export const Container = styled.div`
 
   @media all and (min-width: 1000px) {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding: 0.5rem 0 0 0;
-    max-width: 975px;
+    max-width: 725px;
     margin: 0 auto;
 
     ::-webkit-scrollbar {

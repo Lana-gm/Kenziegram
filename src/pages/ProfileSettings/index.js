@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import Kelvin from "../../assets/kelvin.jpg";
 
 import { db } from "../../firebaseApi";
+import { doc, updateDoc } from 'firebase/firestore';
 import { useAuth } from "../../providers/Auth";
 
 const ProfileSettings = () => {
@@ -23,14 +24,18 @@ const ProfileSettings = () => {
     if (loggedUser !== null) {
       docRef = db.collection("Users").doc(loggedUser.uid);
 
-      docRef.get().then((doc) => {
+      docRef.onSnapshot((doc) => {
         setUserData(doc.data());
       });
     }
   }, [loggedUser]);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const docRef = doc(db, 'Users', loggedUser.uid);
+    await updateDoc(docRef, {
+      user: data.name,
+      bio: data.bio
+    });
     setEdit(false);
   };
 
@@ -47,7 +52,7 @@ const ProfileSettings = () => {
         <S.ContainerMain className="main">
           <div className="profile_box">
             <div className="change_picture">
-              <img src={Kelvin} alt={userData.user} />
+              <img src={userData.img_url} alt={userData.user} />
               <p>Alterar foto de perfil</p>
             </div>
             <h3 className="profile_name">{userData.user}</h3>
