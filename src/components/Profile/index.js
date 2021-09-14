@@ -67,7 +67,7 @@ const Profile = () => {
         <div className="cabecalho-informacoes">
           <BsPencilSquare className="icone-editar" onClick={handleEdit} />
           <img
-            src="https://img.freepik.com/vetores-gratis/homem-perfil-caricatura_18591-58483.jpg?size=338&ext=jpg"
+            src={userData.img_url}
             alt="imagem do perfil"
           />
           <div className="informacoes">

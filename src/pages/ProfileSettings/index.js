@@ -47,7 +47,7 @@ const ProfileSettings = () => {
         <S.ContainerMain className="main">
           <div className="profile_box">
             <div className="change_picture">
-              <img src={Kelvin} alt={userData.user} />
+              <img src={userData.img_url} alt={userData.user} />
               <p>Alterar foto de perfil</p>
             </div>
             <h3 className="profile_name">{userData.user}</h3>
