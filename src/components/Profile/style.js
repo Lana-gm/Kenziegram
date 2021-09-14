@@ -7,8 +7,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-bottom: 0.5rem;
-  padding-top: 2rem; */
   padding: 20px 20px 0 20px;
   margin-bottom: 0.7rem;
   width: 100vw;
