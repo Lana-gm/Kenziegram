@@ -9,7 +9,6 @@ export const Content = styled.div`
   align-items: center;
   padding-bottom: 0.5rem;
   padding-top: 2rem;
-  padding-left: 1rem;
   margin-bottom: 0.7rem;
 
   .cabecalho-informacoes {
@@ -87,8 +86,8 @@ export const Content = styled.div`
     }
 
     .numero-postagens {
-        margin-top: 3.5rem;
-        font-size: 16px;
+      margin-top: 3.5rem;
+      font-size: 16px;
     }
 
     .icone-opcoes {
@@ -98,9 +97,9 @@ export const Content = styled.div`
     .icone-editar {
       display: inline-block;
       color: var(--blueIcons);
-      font-size: 30px;
+      font-size: 25px;
       position: absolute;
-      right: 1rem;
+      right: 0rem;
       top: 1rem;
       cursor: pointer;
     }

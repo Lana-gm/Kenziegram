@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: var(--bgLight);
-  width: 100%;
+  width: 90vw;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
 
   .profile__img {
     width: 70px;
