@@ -10,7 +10,7 @@ const Postage = () => {
   const [isShow, setIsShow] = useState(true);
 
   return (
-    <>
+    <S.Container>
       <Header />
       {isShow ? (
         <SearchGallery isShow={isShow} setIsShow={setIsShow} />
@@ -24,7 +24,7 @@ const Postage = () => {
           isShow={!isShow}
         ></S.InfoContent>
       </S.Info>
-    </>
+    </S.Container>
   );
 };
 

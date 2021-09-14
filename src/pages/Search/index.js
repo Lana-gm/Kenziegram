@@ -2,7 +2,7 @@ import * as S from "./styles";
 
 import UsersContainer from "../../components/UsersContainer";
 import Header from "../../components/Header";
-import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 import Logo from "../../components/Logo";
 
 const Search = () => {

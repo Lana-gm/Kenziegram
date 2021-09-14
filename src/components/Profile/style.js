@@ -10,6 +10,7 @@ export const Content = styled.div`
   padding-bottom: 0.5rem;
   padding-top: 2rem;
   margin-bottom: 0.7rem;
+  width: 100vw;
 
   .cabecalho-informacoes {
     display: flex;
