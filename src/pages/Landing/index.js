@@ -19,7 +19,7 @@ const Landing = () => {
         <MainPage>
             <div className="gray__gradient" />
             <div className="text__box">
-                <h1>Faça conexões na Kenzie Brasil</h1>
+                <h1>Faça conexões na <span>Kenziegram</span></h1>
                 <p>Conecte-se com estudantes e membros do curso que abre portas para o mundo da tecnologia.</p>
             </div>
             <div className="input__box">
