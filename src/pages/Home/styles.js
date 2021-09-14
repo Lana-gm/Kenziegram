@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
   overflow-x: hidden;
+
+  .ola {
+    color: white;
+    z-index: 5000;
+  }
 
   .posts {
     width: 90%;
