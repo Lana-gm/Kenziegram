@@ -57,6 +57,7 @@ const Login = () => {
                 <GrayInput type="password" name="password" placeholder={'Senha'} register={register}/>
                 <BlueButton type='submit' text="Entrar" />
                 <Link to="/recovery" className="smalltext margin">Esqueceu sua senha?</Link>
+                <Link to="/register" className="smalltext register">Não tem cadastro?</Link>
             </form>
         </MainPage>
     )

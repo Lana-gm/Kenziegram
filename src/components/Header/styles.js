@@ -11,7 +11,6 @@ export const Container = styled.div`
   z-index: 1;
 
   h1 {
-    font-size: 2rem;
     display: none;
   }
 
@@ -67,6 +66,10 @@ export const Container = styled.div`
 
     .content__nav {
       flex-basis: 50%;
+    }
+
+    .list {
+      justify-content: space-between;
     }
 
     .list__item-hidden {

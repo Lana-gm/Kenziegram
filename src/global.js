@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Billa from './assets/Billabong.ttf'
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -14,7 +15,7 @@ font-family: 'Nunito Sans', sans-serif;*/
     --white: #FFFFFF;
     --gray: rgba(153, 153, 153, 0.40); // Cinza Transparente
     --darkGray: #4E586E;
-    --blueIcons: #007BFF;
+    --blueIcons: #0CB0E8;
   }
 
   * {
@@ -22,6 +23,14 @@ font-family: 'Nunito Sans', sans-serif;*/
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+  }
+
+  @font-face {
+    font-family: "Billa";
+    src: url(${Billa});
+    font-weight: normal;
+    font-style: normal;
+    font-weight: lighter;
   }
 
   main {

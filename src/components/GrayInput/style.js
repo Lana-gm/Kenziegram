@@ -23,6 +23,10 @@ export const InputShape = styled.input`
         line-height: 21px;
     }
 
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 50px rgba(100, 100, 100, 0.5) inset;
+    }
+
     &:hover {
         background: rgba(100, 100, 100, 0.5);
     }
