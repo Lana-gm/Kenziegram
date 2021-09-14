@@ -77,11 +77,16 @@ const Profile = () => {
           <div className="informacoes">
             <p className="nome">{userData.user}</p>
             <p className="bio">{userData.bio}</p>
+            <div className="numero__container">
+            <p className="numero-postagens">
+              {userData.posts} <span>publicações</span>
+            </p>
+            <p className="numero-postagens">
+              {userData.posts} <span>amigos</span>
+            </p>
+            </div>
           </div>
         </div>
-        <p className="numero-postagens">
-          {userData.posts} <span>postagens</span>
-        </p>
       </s.Content>
     </s.Container>
   );
