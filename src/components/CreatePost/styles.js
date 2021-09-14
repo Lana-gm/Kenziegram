@@ -56,6 +56,7 @@ export const Container = styled.section`
     width: 100%;
     font-size: 1rem;
     max-width: 500px;
+    resize: none;
   }
   .content__button {
     display: flex;
@@ -80,6 +81,12 @@ export const Container = styled.section`
 
     .content {
       border-radius: 25px;
+      position: relative;
+    }
+
+    .content__button {
+      position: absolute;
+      bottom: 1rem;
     }
   }
 

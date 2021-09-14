@@ -3,16 +3,16 @@ import * as S from "./styles";
 import UsersContainer from "../../components/UsersContainer";
 import Header from "../../components/Header";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
+import Logo from "../../components/Logo";
 
 const Search = () => {
   return (
     <>
       <Header />
       <S.Container>
-        <div className="container-icon">
-          <AiOutlineClose className="icon-close" />
+        <div className="logo">
+          <Logo />
         </div>
-
         <div className="container-search">
           <h3 className="container-search__text">Pesquisar</h3>
           <div className="content">
