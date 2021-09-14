@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import Home from "../pages/Home";
 import Postage from "../pages/Postage";
 import Recovery from "../pages/Recovery";
+import ProfilePageId from "../pages/ProfileId";
 
 const Routes = () => {
   return (
@@ -37,7 +38,7 @@ const Routes = () => {
         <ProfilePage />
       </Route>
       <Route path="/profile/:id">
-
+        <ProfilePageId />
       </Route>
       <Route path="/profile-edit">
         <ProfileSettings />

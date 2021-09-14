@@ -1,24 +1,24 @@
 import Header from "../../components/Header";
-import Storys from "../../components/Storys";
-import * as s from "./styles";
+import Profile from "../../components/Profile";
 import Post from "../../components/Post";
+import * as s from "./style";
 import Fade from "react-reveal/Fade";
 
-const Home = () => {
+const ProfilePageId = () => {
   return (
     <s.Container>
-      <Storys />
+      <Header />
+      <Profile />
       <div className="posts">
         <Fade>
-          <Post />
+          <Post options="false" />
           <Post />
           <Post />
           <Post />
         </Fade>
       </div>
-      <Header />
     </s.Container>
   );
 };
 
-export default Home;
+export default ProfilePageId;

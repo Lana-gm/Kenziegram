@@ -8,7 +8,12 @@ export const Container = styled.div`
   width: 100vw;
   height: 70px;
   background-color: var(--bg);
+  border-bottom: 1px solid black;
   z-index: 1;
+
+  h1 {
+    display: none;
+  }
 
   .content {
     height: 100%;
@@ -62,6 +67,10 @@ export const Container = styled.div`
 
     .content__nav {
       flex-basis: 50%;
+    }
+
+    .list {
+      justify-content: space-between;
     }
 
     .list__item-hidden {

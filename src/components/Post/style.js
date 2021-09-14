@@ -60,7 +60,7 @@ export const Container = styled.div`
     }
 
     .icone-curtir {
-        color: #007BFF;
+        color: var(--blue-svg);
         font-size: 24px;
         cursor: pointer;
         margin-bottom: 1rem;

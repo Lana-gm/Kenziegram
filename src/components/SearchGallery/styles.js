@@ -1,13 +1,25 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  min-height: 100vh;
-  padding-bottom: 70px;
+  min-height: 78vh;
+  padding-bottom: 1rem;
   max-width: 975px;
   margin: 0 auto;
+  animation: ease-in 500ms both slidein;
+
+  @keyframes slidein {
+    from {
+      transform: translateX(150px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
 
   .box-content {
-    background-color: var(--white);
+    background-color: var(--bgLight);
     height: 77vh;
     border-radius: 0 0 25px 25px;
     width: 100%;
@@ -43,7 +55,7 @@ export const Container = styled.section`
 
   .content-main__icon {
     font-size: 50px;
-    color: var(--bg);
+    color: var(--white);
   }
 
   svg + svg {
@@ -53,7 +65,7 @@ export const Container = styled.section`
   .content-main__text {
     padding: 1.5rem 0;
     font-size: 1.5rem;
-    color: var(--bg);
+    color: var(--white);
   }
 
   .content__progress {
@@ -75,14 +87,22 @@ export const Container = styled.section`
     flex-basis: 22%;
   }
 
-  .prox-page__icon {
-    color: var(--blueIcons);
+  .prox-page__btn {
+    background-color: transparent;
+    border: none;
     position: absolute;
     right: 30px;
-    font-size: 40px;
+
+    svg {
+      font-size: 40px;
+      path {
+        stroke: var(--blueIcons);
+      }
+    }
   }
 
   @media all and (min-width: 1000px) {
+    min-height: 93vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;

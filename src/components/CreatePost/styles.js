@@ -1,13 +1,25 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  min-height: 100vh;
-  padding-bottom: 70px;
+  min-height: 78vh;
+  padding-bottom: 1rem;
   max-width: 975px;
   margin: 0 auto;
+  animation: ease-in 500ms both slidein;
+
+  @keyframes slidein {
+    from {
+      transform: translateX(150px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
 
   .content {
-    background-color: var(--white);
+    background-color: var(--bgLight);
     height: 77vh;
     border-radius: 0 0 25px 25px;
     width: 100%;
@@ -33,7 +45,7 @@ export const Container = styled.section`
   }
   .content__description__text {
     font-size: 1.2rem;
-    color: var(--bg);
+    color: var(--white);
     padding-bottom: 0.5rem;
   }
   .content__description__textarea {
@@ -44,6 +56,7 @@ export const Container = styled.section`
     width: 100%;
     font-size: 1rem;
     max-width: 500px;
+    resize: none;
   }
   .content__button {
     display: flex;
@@ -60,12 +73,28 @@ export const Container = styled.section`
   }
 
   @media all and (min-width: 1000px) {
+    min-height: 93vh;
+
     display: flex;
     align-items: flex-end;
     justify-content: center;
 
     .content {
       border-radius: 25px;
+      position: relative;
+    }
+
+    .content__button {
+      position: absolute;
+      bottom: 1rem;
+    }
+  }
+
+  @media all and (min-height: 1080px) {
+    .box__figure__img {
+      object-fit: contain;
+      width: 100%;
+      height: 300px;
     }
   }
 `;

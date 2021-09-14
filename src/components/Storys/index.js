@@ -33,20 +33,20 @@ const Storys = () => {
           Amigos
         </Link>
       </div>
-      <div id="usuariosId" onScroll={handleScroll}>
+      <ul id="usuariosId" onScroll={handleScroll}>
         {users.map((user, index) => (
-          <div className="usuario" key={index}>
+          <li className="usuario" key={index}>
             <img src={user.img} alt="imagem do usuario" className="imagem" />
             <p className="nome">{user.name}</p>
-          </div>
+          </li>
         ))}
         {scrollHorizontal !== 0 ? (
           <IoChevronBackCircleSharp onClick={handleBack} id="back" />
         ) : null}
-        {scrollHorizontal !== width - 975 ? (
+        {scrollHorizontal !== width - 975 && width > 975? (
           <IoChevronBackCircleSharp onClick={handleNext} id="next" />
         ) : null}
-      </div>
+      </ul>
     </s.Container>
   );
 };

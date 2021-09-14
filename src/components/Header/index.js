@@ -56,15 +56,6 @@ const Header = () => {
               <NavLink
                 className="list__item__link"
                 activeClassName="selected"
-                to="/message"
-              >
-                <MdChatBubble />
-              </NavLink>
-            </li>
-            <li className="list__item">
-              <NavLink
-                className="list__item__link"
-                activeClassName="selected"
                 to="/profile"
               >
                 <BsPersonSquare />
