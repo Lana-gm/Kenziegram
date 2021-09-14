@@ -18,7 +18,7 @@ const Register = () => {
     const { loggedUser } = useAuth();
 
     const formSchema = yup.object().shape({
-        user: yup.string().required("Usuário obrigatório"),
+        user: yup.string().max(10, "Máximo de 10 caractéres").required("Usuário obrigatório"),
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
         phone: yup.string(),
         password: yup.string().required("Senha obrigatória").min(8, "Senha deve ter ao menos 8 caracteres"),
