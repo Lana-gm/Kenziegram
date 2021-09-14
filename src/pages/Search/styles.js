@@ -4,12 +4,15 @@ export const Container = styled.main`
   max-width: 975px;
   margin: 0 auto;
   display: flex;
+  height: 100vh;
   flex-direction: column;
+  align-items: center;
   padding: 0 1rem;
 
   .container-icon {
-    flex-basis: 10%;
+    flex-basis: 15%;
     position: relative;
+    width: 100%;
   }
 
   .icon-close {
@@ -22,6 +25,8 @@ export const Container = styled.main`
 
   .container-search {
     flex-basis: 35%;
+    max-width: 975px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -74,10 +79,9 @@ export const Container = styled.main`
   }
 
   @media all and (min-width: 1000px) {
-    /*padding-top: 70px;*/
     padding: 70px 0 0 0;
-
     border-top: 4px solid var(--bg);
+
     .container-icon {
       display: none;
     }
@@ -85,6 +89,7 @@ export const Container = styled.main`
     .icon-close {
       display: none;
     }
+
     .container-search__text {
       font-size: 2rem;
       padding-bottom: 2rem;
