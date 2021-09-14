@@ -7,6 +7,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  cursor: pointer;
+  padding-left: 0.5rem;
 
   .profile__img {
     width: 70px;
@@ -19,10 +21,6 @@ export const Container = styled.div`
     flex-basis: 100%;
     margin-left: 1rem;
     height: 100%;
-
-    &:last-child() {
-      border: none;
-    }
   }
 
   .profile__content__name {
@@ -33,10 +31,15 @@ export const Container = styled.div`
 
   @media all and (min-width: 1000px) {
     width: 350px;
+    margin: 3px;
+    transition: 500ms all ease-in-out;
 
-    &:nth-child(even) {
-      margin-left: 10px;
-      width: 360px;
+    &:hover {
+      transform: translate(-5px, -5px);
+    }
+
+    .profile__content {
+      border-bottom: none;
     }
   }
 `;
