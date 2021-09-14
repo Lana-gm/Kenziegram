@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import Profile from "../../components/Profile";
 import Post from "../../components/Post";
 import * as s from "./style";
+import Fade from "react-reveal/Fade";
 
 const ProfilePage = () => {
   return (
@@ -9,10 +10,12 @@ const ProfilePage = () => {
       <Header />
       <Profile />
       <div className="posts">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Fade>
+          <Post options="true" />
+          <Post options="true" />
+          <Post options="true" />
+          <Post options="true" />
+        </Fade>
       </div>
     </s.Container>
   );
