@@ -1,3 +1,5 @@
+import * as S from "./styles";
+
 import Header from "../../components/Header";
 import { useState } from "react";
 
@@ -5,7 +7,7 @@ import SearchGallery from "../../components/SearchGallery";
 import CreatePost from "../../components/CreatePost";
 
 const Postage = () => {
-  const [isShow, setIsShow] = useState(false);
+  const [isShow, setIsShow] = useState(true);
 
   return (
     <>
@@ -15,6 +17,13 @@ const Postage = () => {
       ) : (
         <CreatePost isShow={isShow} setIsShow={setIsShow} />
       )}
+      <S.Info className="page">
+        <S.InfoContent className="page-current" isShow={isShow}></S.InfoContent>
+        <S.InfoContent
+          className="page-current"
+          isShow={!isShow}
+        ></S.InfoContent>
+      </S.Info>
     </>
   );
 };
