@@ -55,9 +55,12 @@ const ModalProfile = ({ setShowModal, showModal }) => {
           X
         </button>
         <div className="Content">
-          <p className="content__title">Escolha sua nova foto de perfil</p>
+          <label className="arquive_select" for="selecao-arquivo">
+            Selecione um arquivo
+          </label>
           <div className="content__box-form">
             <input
+              id="selecao-arquivo"
               className="box-form__input"
               type="file"
               accept="image/*, video.mp4"
@@ -68,6 +71,7 @@ const ModalProfile = ({ setShowModal, showModal }) => {
             Downloading progress:
           </label>
           <progress value={progress} className="content__progress" max="100" />
+          {progress >= 100 ? <p>Foto carregada com sucesso!</p> : null}
         </div>
       </div>
     </S.Display>

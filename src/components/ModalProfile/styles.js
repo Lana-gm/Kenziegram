@@ -56,4 +56,21 @@ export const Display = styled.div`
     appearance: none;
     width: 50%;
   }
+
+  p {
+    color: var(--white);
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .arquive_select {
+    background-color: var(--blueIcons);
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px;
+  }
 `;
