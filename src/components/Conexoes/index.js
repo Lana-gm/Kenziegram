@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import { UsersContext } from "../../providers/Users";
 import * as s from "./style";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
+import { useHistory } from "react-router-dom";
 
-const Storys = () => {
+const Conexoes = () => {
   const [scrollHorizontal, setScrollHorizontal] = useState(0);
   const [width, setWidth] = useState();
+
+  const history = useHistory();
 
   const { users } = useContext(UsersContext);
 
@@ -25,25 +27,30 @@ const Storys = () => {
     setWidth(scrollWidth);
   };
 
+  const handleProfile = () => {
+    history.push("/profile/:id");
+  };
+
   return (
     <s.Container>
       <div className="titulos">
-        <p className="titulo">Storys</p>
-        <Link className="amigos" to="/search">
-          Amigos
-        </Link>
+        <p className="titulo">Conexões</p>
       </div>
       <ul id="usuariosId" onScroll={handleScroll}>
         {users.map((user, index) => (
-          <li className="usuario" key={index}>
-            <img src={user.img} alt="imagem do usuario" className="imagem" />
-            <p className="nome">{user.name}</p>
+          <li className="usuario" key={index} onClick={handleProfile}>
+            <img
+              src={user.img_url}
+              alt="imagem do usuario"
+              className="imagem"
+            />
+            <p className="nome">{user.user}</p>
           </li>
         ))}
         {scrollHorizontal !== 0 ? (
           <IoChevronBackCircleSharp onClick={handleBack} id="back" />
         ) : null}
-        {scrollHorizontal !== width - 975 && width > 975? (
+        {scrollHorizontal !== width - 959 ? (
           <IoChevronBackCircleSharp onClick={handleNext} id="next" />
         ) : null}
       </ul>
@@ -51,4 +58,4 @@ const Storys = () => {
   );
 };
 
-export default Storys;
+export default Conexoes;
