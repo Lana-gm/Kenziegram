@@ -9,6 +9,7 @@ import { db, storageRef } from "../../firebaseApi";
 import { doc, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../providers/Auth";
 import { getDownloadURL } from "@firebase/storage";
+import { useHistory } from "react-router";
 
 const ProfileSettings = () => {
   const { loggedUser } = useAuth();
@@ -17,8 +18,11 @@ const ProfileSettings = () => {
   let docRef = {};
 
   const [edit, setEdit] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const { handleSubmit, register } = useForm();
+
+  const history = useHistory();
 
   useEffect(() => {
     if (loggedUser !== null) {
@@ -38,6 +42,7 @@ const ProfileSettings = () => {
       bio: data.bio,
     });
     setEdit(false);
+    history.push("/profile");
   };
 
   const upgradeProfileImage = (e) => {
@@ -83,18 +88,25 @@ const ProfileSettings = () => {
           <div className="profile_box">
             <div className="change_picture">
               <img src={userData.img_url} alt={userData.user} />
-              <input
-                type="file"
-                //value="Alterar"
-                name="adicionar"
-                id="fileButton"
-                accept="image/*, video.mp4"
-                onChange={(e) => upgradeProfileImage(e)}
-              />
+              {showModal ? (
+                <S.Modal>
+                  <p>Escolha sua nova foto de perfil</p>
+                  <input
+                    type="file"
+                    //value="Alterar"
+                    name="adicionar"
+                    id="fileButton"
+                    accept="image/*, video.mp4"
+                    onChange={(e) => upgradeProfileImage(e)}
+                  />
+                  <label for="file">Downloading progress:</label>
+                  <progress max="100"> </progress>
+                  <button onClick={() => setShowModal(false)}>X</button>
+                </S.Modal>
+              ) : null}
             </div>
-            <h3 className="profile_name">{userData.user}</h3>
           </div>
-
+          
           {!edit ? (
             <S.ContainerInput>
               <div className="change_information">
@@ -113,6 +125,9 @@ const ProfileSettings = () => {
             </S.ContainerInput>
           ) : (
             <S.ContainerInput>
+              <button onClick={() => setShowModal(true)} className="alterar-foto">
+                Alterar foto de perfil
+              </button>
               <form className="form_input" onSubmit={handleSubmit(onSubmit)}>
                 <div className="change_information input_text">
                   <input
