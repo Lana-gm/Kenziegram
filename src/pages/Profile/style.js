@@ -34,14 +34,14 @@ export const Container = styled.div`
         width: 100%;
         max-width: 1000px;
         padding: 20px;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
 
   }
 
   @media (min-width: 1920px) {
     .picture__container {
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 20px;
     }
 
@@ -52,7 +52,7 @@ export const Container = styled.div`
 
 
     .picture__container {
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 20px;
     }
 
