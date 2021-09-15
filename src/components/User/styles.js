@@ -32,7 +32,7 @@ export const Container = styled.div`
   @media all and (min-width: 1000px) {
     width: 350px;
     margin: 3px;
-    transition: 500ms all ease-in-out;
+    transition: 200ms all ease-in-out;
 
     &:hover {
       transform: translate(-5px, -5px);

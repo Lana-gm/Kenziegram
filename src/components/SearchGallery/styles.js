@@ -7,6 +7,19 @@ export const Container = styled.section`
   margin: 0 auto;
   animation: ease-in 500ms both slidein;
 
+  .add-file {
+    background-color: var(--blueIcons);
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
   @keyframes slidein {
     from {
       transform: translateX(150px);
@@ -44,6 +57,7 @@ export const Container = styled.section`
     justify-content: flex-end;
     height: 100%;
     width: 100%;
+    padding-bottom: 7rem;
   }
 
   .content-main {
