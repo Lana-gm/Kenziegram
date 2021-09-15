@@ -70,10 +70,6 @@ export const ContainerMain = styled.main`
     justify-content: space-evenly;
     margin-bottom: 38px;
 
-    p {
-      color: var(--blue-svg);
-    }
-
     img {
       width: 100px;
       height: 100px;

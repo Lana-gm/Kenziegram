@@ -21,6 +21,10 @@ export const Display = styled.div`
     position: absolute;
     right: 20px;
     top: 20px;
+    background-color: transparent;
+    border: none;
+    color: var(--blueIcons);
+    font-size: 18px;
   }
 
   .Content {
@@ -31,7 +35,20 @@ export const Display = styled.div`
     align-items: center;
     width: 320px;
     height: 300px;
-    background-color: var(--white);
+    background-color: var(--bgLight);
+  }
+
+  .content__title {
+    color: var(--blue-svg);
+  }
+
+  .box-form__input {
+    /*background-color: var(--blue);*/
+    color: var(--white);
+  }
+
+  .box-form__label {
+    color: var(--white);
   }
 
   .content__progress {

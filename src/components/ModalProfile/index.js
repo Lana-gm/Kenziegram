@@ -64,7 +64,7 @@ const ModalProfile = ({ setShowModal, showModal }) => {
               onChange={(e) => upgradeProfileImage(e)}
             />
           </div>
-          <label className="box-form__label" for="file">
+          <label className="box-form__label" htmlFor="file">
             Downloading progress:
           </label>
           <progress value={progress} className="content__progress" max="100" />
