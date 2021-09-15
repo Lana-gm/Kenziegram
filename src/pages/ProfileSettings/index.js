@@ -104,13 +104,9 @@ const ProfileSettings = () => {
                   <button onClick={() => setShowModal(false)}>X</button>
                 </S.Modal>
               ) : null}
-              <button onClick={() => setShowModal(true)}>
-                Alterar foto de perfil
-              </button>
             </div>
-            <h3 className="profile_name">{userData.user}</h3>
           </div>
-
+          
           {!edit ? (
             <S.ContainerInput>
               <div className="change_information">
@@ -129,6 +125,9 @@ const ProfileSettings = () => {
             </S.ContainerInput>
           ) : (
             <S.ContainerInput>
+              <button onClick={() => setShowModal(true)} className="alterar-foto">
+                Alterar foto de perfil
+              </button>
               <form className="form_input" onSubmit={handleSubmit(onSubmit)}>
                 <div className="change_information input_text">
                   <input
