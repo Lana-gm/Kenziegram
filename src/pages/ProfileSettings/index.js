@@ -1,19 +1,19 @@
-import Header from "../../components/Header";
-import { BiLeftArrowAlt } from "react-icons/bi";
-import { NavLink } from "react-router-dom";
 import * as S from "./styles";
+
+import Header from "../../components/Header";
+import ModalProfile from "../../components/ModalProfile";
+
 import { useState, useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Kelvin from "../../assets/kelvin.jpg";
-import { db, storageRef } from "../../firebaseApi";
+import { BiLeftArrowAlt } from "react-icons/bi";
+import { db } from "../../firebaseApi";
 import { doc, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../providers/Auth";
-import { getDownloadURL } from "@firebase/storage";
-import { useHistory } from "react-router";
 
 const ProfileSettings = () => {
   const { loggedUser } = useAuth();
-  const [UpdateProfile, setUpdateProfile] = useState();
+
   const [userData, setUserData] = useState({});
   let docRef = {};
 
@@ -45,35 +45,6 @@ const ProfileSettings = () => {
     history.push("/profile");
   };
 
-  const upgradeProfileImage = (e) => {
-    // get file
-    const file = e.target.files[0];
-
-    // create ref
-    const uploadTask = storageRef.child(`profile/${userData.user}`).put(file);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is" + progress + "% done");
-      },
-      (error) => {
-        console.log("Não foi possível fazer o upload", error);
-      },
-      () => {
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          console.log("url: ", downloadURL);
-
-          db.collection("Users").doc(loggedUser.uid).update({
-            img_url: downloadURL,
-          });
-        });
-      }
-    );
-  };
-
   return (
     <S.Container>
       <Header />
@@ -88,25 +59,15 @@ const ProfileSettings = () => {
           <div className="profile_box">
             <div className="change_picture">
               <img src={userData.img_url} alt={userData.user} />
-              {showModal ? (
-                <S.Modal>
-                  <p>Escolha sua nova foto de perfil</p>
-                  <input
-                    type="file"
-                    //value="Alterar"
-                    name="adicionar"
-                    id="fileButton"
-                    accept="image/*, video.mp4"
-                    onChange={(e) => upgradeProfileImage(e)}
-                  />
-                  <label for="file">Downloading progress:</label>
-                  <progress max="100"> </progress>
-                  <button onClick={() => setShowModal(false)}>X</button>
-                </S.Modal>
-              ) : null}
+              {showModal && (
+                <ModalProfile
+                  setShowModal={setShowModal}
+                  showModal={showModal}
+                />
+              )}
             </div>
           </div>
-          
+
           {!edit ? (
             <S.ContainerInput>
               <div className="change_information">
@@ -125,7 +86,10 @@ const ProfileSettings = () => {
             </S.ContainerInput>
           ) : (
             <S.ContainerInput>
-              <button onClick={() => setShowModal(true)} className="alterar-foto">
+              <button
+                onClick={() => setShowModal(true)}
+                className="alterar-foto"
+              >
                 Alterar foto de perfil
               </button>
               <form className="form_input" onSubmit={handleSubmit(onSubmit)}>
@@ -137,9 +101,6 @@ const ProfileSettings = () => {
                     placeholder="Nome de usuário"
                     className="input_content"
                   />
-                  {/* {errors.name && errors.name.type === "required" && (
-                    <span>This is required</span>
-                  )} */}
                 </div>
                 <div className="change_information input_text">
                   <input
