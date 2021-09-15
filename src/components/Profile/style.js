@@ -94,6 +94,7 @@ export const Content = styled.div`
       width: 100%;
       position: relative;
       flex-direction: row;
+      justify-content: flex-start;
     }
 
     .numero__container {
