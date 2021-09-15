@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 188px;
+  height: 210px;
   width: 100vw;
   background-color: var(--bgLight);
-  padding: 1rem 0rem 1rem;
+  padding: 1rem 0rem 0rem 1rem;
   position: relative;
 
   .titulos {
@@ -16,20 +16,13 @@ export const Container = styled.div`
     color: var(--white);
     font-size: 30px;
     font-weight: bold;
-    margin-left: 1rem;
-  }
-
-  .amigos {
-    color: var(--blueIcons);
-    font-weight: bold;
-    font-size: 18px;
-    padding-top: 0.5rem;
-    margin-right: 1rem;
+    margin-left: 0rem;
   }
 
   #usuariosId {
     display: flex;
     margin-top: 1rem;
+    padding-bottom: 3rem;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -42,7 +35,8 @@ export const Container = styled.div`
     margin-right: 0.5rem;
     margin-left: 0.5rem;
     min-width: 4.5rem;
-    max-height: 6rem;
+    max-height: 5.2rem;
+    cursor: pointer;
   }
 
   .nome {
@@ -50,11 +44,9 @@ export const Container = styled.div`
   }
 
   .imagem {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
-    border: 2px solid;
-    border-image: linear-gradient(135deg, red 0%, blue 100%) 1;
   }
 
   .x {

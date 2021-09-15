@@ -116,7 +116,6 @@ export const Content = styled.div`
       margin: 0 50px 0 0 ;
     }
 
-
     .icone-opcoes {
       display: none;
     }
@@ -144,7 +143,7 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1920px) {
-    width: 53%;
+    width: 51%;
   }
 
 `;

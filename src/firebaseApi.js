@@ -12,6 +12,7 @@ export const db = firebaseApp.firestore();
 export const storageRef = firebaseApp.storage().ref();
 
 const getUsersFromFirebase = [];
+const getPostsFromFirebase = [];
 
 export const onUserList = (setUsers) => {
     return db
@@ -32,4 +33,25 @@ export const onUserList = (setUsers) => {
         });
         setUsers(getUsersFromFirebase);
     });
+};
+
+export const onPostList = (setPosts, user) => {
+  return db
+  .collection("Posts").doc('001').collection(user.uid)
+  .onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let dataExists = false;
+        for (let i = 0; i <= getPostsFromFirebase.length; i++) {
+          if(getPostsFromFirebase[i] !== undefined) {
+            if (getPostsFromFirebase[i].key === doc.id) {
+              dataExists = true;
+            }
+          }            
+        }
+        if(!dataExists) {
+          getPostsFromFirebase.push({...doc.data(), key: doc.id,}); 
+        }                   
+      });
+      setPosts(getPostsFromFirebase);
+  });
 };
