@@ -57,7 +57,7 @@ export const Container = styled.main`
     height: 30px;
     font-size: 1rem;
     background-color: transparent;
-    transition: 1s all ease-in-out;
+    transition: 300ms all ease-in-out;
     color: var(--white);
 
     &::placeholder {
