@@ -14,6 +14,11 @@
             width: 310px;
             height: 310px;
             margin-bottom: 8px;
+            transition: 0.2s ease-in-out;
+        }
+
+        .picture:hover {
+            filter: brightness(50%);
         }
 
     }
