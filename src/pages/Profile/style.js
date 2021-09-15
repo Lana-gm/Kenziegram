@@ -1,32 +1,38 @@
 import styled from "styled-components";
 
+export const Main = styled.main`
+    display: flex;
+    justify-content: center;
+
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: center;
   align-items: center;
   height: fit-content;
   width: 100%;
   overflow-x: hidden;
 
-  /* .posts {
-    width: 90%;
-    margin-bottom: 5rem;
+  .picture__wrap {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
+    justify-content: center;
+  }
 
   .picture__container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
-        width: 100%;
+        justify-content: flex-start;
+        width: 360px;
         padding: 20px;
     }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 720px) {
     .picture__container {
-        width: 75%;
+        width: 100%;
+        max-width: 1000px;
         padding: 20px;
         justify-content: space-between;
     }
@@ -35,10 +41,18 @@ export const Container = styled.div`
 
   @media (min-width: 1920px) {
     .picture__container {
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
-        width: 53%;
+        padding: 20px;
+    }
+
+  }
+
+  @media (min-width: 2000px) {
+    max-width: 2000px;
+
+
+    .picture__container {
+        justify-content: space-between;
         padding: 20px;
     }
 

@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import Storys from "../../components/Storys";
+import Conexoes from "../../components/Conexoes";
 import * as s from "./styles";
 import Post from "../../components/Post";
 import Fade from "react-reveal/Fade";
@@ -7,7 +7,7 @@ import Fade from "react-reveal/Fade";
 const Home = () => {
   return (
     <s.Container>
-      <Storys />
+      <Conexoes />
       <div className="posts">
         <Fade>
           <Post />
