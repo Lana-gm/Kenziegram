@@ -4,9 +4,23 @@ import * as s from "./style";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useHistory } from "react-router-dom";
 
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > * + *": {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
+
 const Conexoes = () => {
   const [scrollHorizontal, setScrollHorizontal] = useState(0);
   const [width, setWidth] = useState();
+
+  const classes = useStyles();
 
   const history = useHistory();
 
@@ -39,11 +53,17 @@ const Conexoes = () => {
       <ul id="usuariosId" onScroll={handleScroll}>
         {users.map((user, index) => (
           <li className="usuario" key={index} onClick={handleProfile}>
-            <img
-              src={user.img_url}
-              alt="imagem do usuario"
-              className="imagem"
-            />
+            {user.img_url ? (
+              <img
+                src={user.img_url}
+                alt="imagem do usuario"
+                className="imagem"
+              />
+            ) : (
+              <div className={classes.root}>
+                <CircularProgress className="carregamento" />
+              </div>
+            )}
             <p className="nome">{user.user}</p>
           </li>
         ))}
