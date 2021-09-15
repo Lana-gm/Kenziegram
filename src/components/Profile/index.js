@@ -12,21 +12,29 @@ import { useAuth } from "../../providers/Auth";
 
 import { firebaseApp } from "../../firebaseApi";
 
-const Profile = () => {
+const Profile = ({ id = null }) => {
   const { loggedUser, setLoggedUser } = useAuth();
 
   const [userData, setUserData] = React.useState({});
-  let docRef = {};
 
-  React.useEffect(() => {
-    if (loggedUser !== null) {
+  const getUser = (loggedUser, id) => {
+    let docRef = {};
+    if (loggedUser !== null && !!id === false) {
       docRef = db.collection("Users").doc(loggedUser.uid);
-
+      docRef.get().then((doc) => {
+        setUserData(doc.data());
+      });
+    } else if (loggedUser !== null && !!id === true) {
+      docRef = db.collection("Users").doc(id);
       docRef.get().then((doc) => {
         setUserData(doc.data());
       });
     }
-  }, [loggedUser]);
+  };
+
+  React.useEffect(() => {
+    getUser(loggedUser, id);
+  }, [loggedUser, id]);
 
   const history = useHistory();
 
@@ -78,12 +86,12 @@ const Profile = () => {
             <p className="nome">{userData.user}</p>
             <p className="bio">{userData.bio}</p>
             <div className="numero__container">
-            <p className="numero-postagens">
-              {userData.posts} <span>publicações</span>
-            </p>
-            <p className="numero-postagens">
-              {userData.posts} <span>amigos</span>
-            </p>
+              <p className="numero-postagens">
+                {userData.posts} <span>publicações</span>
+              </p>
+              <p className="numero-postagens">
+                {userData.posts} <span>amigos</span>
+              </p>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ const Routes = () => {
       <Route path="/profile">
         <ProfilePage />
       </Route>
-      <Route path="/profile/:id">
+      <Route path="/profileid/:id">
         <ProfilePageId />
       </Route>
       <Route path="/profile-edit">
