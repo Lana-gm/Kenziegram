@@ -1,24 +1,21 @@
 import * as S from "./styles";
 import Logo from "../Logo";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
-import { MdChatBubble } from "react-icons/md";
-import { BsPersonSquare } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
-import { CgProfile } from 'react-icons/cg'
+import { CgProfile } from "react-icons/cg";
 
-import { firebaseApp } from '../../firebaseApi';
-import { useAuth } from '../../providers/Auth';
+import { firebaseApp } from "../../firebaseApi";
+import { useAuth } from "../../providers/Auth";
 
 const Header = () => {
-
   const { setLoggedUser } = useAuth();
 
   const handleLogOut = () => {
     firebaseApp.auth().signOut();
     setLoggedUser(null);
-  }
+  };
 
   return (
     <S.Container>
@@ -63,14 +60,13 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="list__item list__item-hidden">
-              <NavLink
+              <Link
                 className="list__item__link"
-                activeClassName="selected"
                 onClick={handleLogOut}
-                to="/"
+                to="/login"
               >
                 <RiLogoutBoxRLine />
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </nav>
