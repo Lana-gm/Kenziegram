@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.ul`
   width: 100vw;
   flex-basis: 75%;
   display: flex;
@@ -19,6 +19,7 @@ export const Container = styled.div`
     padding: 0.5rem 0 0 0;
     max-width: 725px;
     margin: 0 auto;
+    flex-basis: 60%;
 
     ::-webkit-scrollbar {
       width: 10px;

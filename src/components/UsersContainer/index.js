@@ -6,16 +6,28 @@ import { useContext } from "react";
 import { UsersContext } from "../../providers/Users";
 import User from "../User";
 
-const UsersContainer = () => {
+const UsersContainer = ({ inputValue, setInputValue, filtered }) => {
   const { users } = useContext(UsersContext);
-
+  console.log(users);
   return (
     <S.Container>
-      {users.map((user, index) => (
-        <Fade>
-          <User key={index} user={user} />
-        </Fade>
-      ))}
+      {!!filtered
+        ? filtered.map((user, index) => (
+            <Fade>
+              <li>
+                {users.filter}
+                <User key={index} user={user} />
+              </li>
+            </Fade>
+          ))
+        : users.map((user, index) => (
+            <Fade>
+              <li>
+                {users.filter}
+                <User key={index} user={user} />
+              </li>
+            </Fade>
+          ))}
     </S.Container>
   );
 };
