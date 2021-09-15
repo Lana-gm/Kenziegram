@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-    max-width: 975px;
+    max-width: 100%;
+    min-width: 330px;
     min-height: min-content;
     background-color: var(--bgLight);
     border-radius: 8px;
@@ -21,24 +22,28 @@ export const Container = styled.div`
         cursor: pointer;
     }
 
+    img {
+            width: 300px;
+            height: 300px;
+        }
+
     .informacoes {
         display: flex;
         margin-top: 1rem;
         margin-left: 1rem;
     }
 
-    img {
+    .avatar {
         width: 70px;
         height: 70px;
         border-radius: 50%;
     }
 
     .nome {
-        margin-top: 1rem;
-        margin-left: 0.5rem;
+        margin-top: 1.3rem;
+        margin-left: 0.8rem;
         color: var(--white);
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 20px;
     }
 
     .conteiner-publicacao {
@@ -51,30 +56,18 @@ export const Container = styled.div`
         color: white;
         padding-left: 1rem;
         padding-right: 1rem;
+        margin-bottom: 10px;
     }
 
-    .conteiner-curtidas {
-        display: flex;
-        margin-left:1rem;
-        margin-top: 1rem;
-    }
-
-    .icone-curtir {
-        color: var(--blue-svg);
-        font-size: 24px;
-        cursor: pointer;
-        margin-bottom: 1rem;
-    }
-
-    .curtidas {
-        font-size: 16px;
-        color: var(--white);
-        margin-left: 0.2rem;
-        margin-top: 0.4rem;
-    }
-
-    @media(min-width: 1000px) {
+    @media(min-width: 720px) {
         margin-bottom: 2rem;
+        box-sizing: border-box;
+        width: 570px;
+
+        img {
+            width: 570px;
+            height: 570px;
+        }
 
         .texto-publicacao {
             font-size: 16px;
