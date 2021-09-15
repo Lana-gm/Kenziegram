@@ -9,7 +9,7 @@ import FirebaseConfig from "./firebaseConfig";
 
 export const firebaseApp = firebase.initializeApp(FirebaseConfig);
 export const db = firebaseApp.firestore();
-export const storageRef = firebase.storage().ref();
+export const storageRef = firebaseApp.storage().ref();
 
 const getUsersFromFirebase = [];
 

@@ -3,13 +3,30 @@ import KelvinImg from "../../assets/kelvin.jpg";
 import BlueButton from "../BlueButton";
 import { useState } from 'react';
 
+import { db, storageRef, firebaseApp } from '../../firebaseApi';
+import { useAuth } from '../../providers/Auth';
+
 const CreatePost = ({ image, file, setIsShow, isShow }) => {
 
+  const { loggedUser } = useAuth();
+
   const [description, setDescription] = useState('');
+  const [downloadURL, setDownloadURL] = useState('');
 
   const handleSave = () => {
-    let postFile = file;
-    
+    const postFile = file;
+    const uploadTask = storageRef.child(`users/${loggedUser.uid}/${postFile.name}`).put(postFile);
+
+    uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+      setDownloadURL(url);
+    });
+
+    db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
+      img_url: downloadURL,
+      description: description,
+      likes: 0,
+      comments: 0
+    });
   }
 
   return (
