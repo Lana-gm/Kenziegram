@@ -24,13 +24,17 @@ const FormProfile = ({ setEdit, edit }) => {
 
   const history = useHistory();
   const onSubmit = async (data) => {
+    // const { user, phone, bio } = data;
+    console.log(data);
     const docRef = doc(db, "Users", loggedUser.uid);
     await updateDoc(docRef, {
       user: data.name,
       phone: data.phone,
       bio: data.bio,
     });
-    setEdit(!edit);
+    setEdit(false);
+
+    // {user || phone || bio === "" ?}
     history.push("/profile");
   };
 
@@ -40,7 +44,7 @@ const FormProfile = ({ setEdit, edit }) => {
         <input
           defaultValue={userData.user}
           type="text"
-          {...register("name", { required: true })}
+          {...register("name")}
           placeholder="Nome de usuário"
           className="input_content"
         />
@@ -49,7 +53,7 @@ const FormProfile = ({ setEdit, edit }) => {
         <input
           defaultValue={userData.phone}
           type="text"
-          {...register("phone", { required: true })}
+          {...register("phone")}
           placeholder="Phone"
           className="input_content"
         />
@@ -58,7 +62,7 @@ const FormProfile = ({ setEdit, edit }) => {
         <textarea
           className="textarea_content"
           defaultValue={userData.bio}
-          {...register("bio", { required: true })}
+          {...register("bio")}
           placeholder="Bio"
           cols="30"
           rows="10"
