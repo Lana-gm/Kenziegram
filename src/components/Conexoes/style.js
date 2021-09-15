@@ -49,6 +49,10 @@ export const Container = styled.div`
     border-radius: 100%;
   }
 
+  .carregamento {
+    margin-left: 1rem;
+  }
+
   .x {
     color: white;
     z-index: 100;

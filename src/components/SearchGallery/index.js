@@ -4,14 +4,14 @@ import { BsImages } from "react-icons/bs";
 import { MdVideoLibrary } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
 
-const SearchGallery = ({ setImage, setFile, setIsShow, isShow }) => {
-
+const SearchGallery = ({ file, setImage, setFile, setIsShow, isShow }) => {
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(URL.createObjectURL(e.target.files[0]));
       setFile(e.target.files[0]);
+      setIsShow(!isShow);
     }
-  }
+  };
 
   return (
     <S.Container>
@@ -30,12 +30,14 @@ const SearchGallery = ({ setImage, setFile, setIsShow, isShow }) => {
             <progress className="content__progess__box"></progress>
           </div>
           <div className="content__prox-page">
-            <button
-              className="prox-page__btn"
-              onClick={() => setIsShow(!isShow)}
-            >
-              <GrFormNextLink />
-            </button>
+            {file !== null && (
+              <button
+                className="prox-page__btn"
+                onClick={() => setIsShow(!isShow)}
+              >
+                <GrFormNextLink />
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,39 +1,45 @@
 import * as S from "./styles";
 import KelvinImg from "../../assets/kelvin.jpg";
 import BlueButton from "../BlueButton";
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import { db, storageRef, firebaseApp } from '../../firebaseApi';
-import { useAuth } from '../../providers/Auth';
+import { db, storageRef, firebaseApp } from "../../firebaseApi";
+import { useAuth } from "../../providers/Auth";
 
-const CreatePost = ({ image, file, setIsShow, isShow }) => {
-
+const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
   const { loggedUser } = useAuth();
 
-  const [description, setDescription] = useState('');
-  const [downloadURL, setDownloadURL] = useState('');
+  const [description, setDescription] = useState("");
+  const [downloadURL, setDownloadURL] = useState("");
 
   const history = useHistory();
 
   const handleSave = () => {
     const postFile = file;
-    const uploadTask = storageRef.child(`users/${loggedUser.uid}/${postFile.name}`).put(postFile);
+    const uploadTask = storageRef
+      .child(`users/${loggedUser.uid}/${postFile.name}`)
+      .put(postFile);
 
     uploadTask.snapshot.ref.getDownloadURL().then((url) => {
       setDownloadURL(url);
     });
 
-    db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
+    db.collection("Posts").doc("001").collection(loggedUser.uid).doc().set({
       user_id: loggedUser.uid,
       img_url: downloadURL,
       description: description,
       likes: 0,
-      comments: 0
+      comments: 0,
     });
 
-    history.push('/home');
-  }
+    history.push("/home");
+  };
+
+  const handleCancel = () => {
+    setIsShow(true);
+    setFile(null);
+  };
 
   return (
     <S.Container>
@@ -56,7 +62,7 @@ const CreatePost = ({ image, file, setIsShow, isShow }) => {
           ></textarea>
         </div>
         <div className="content__button">
-          <BlueButton text="Cancelar" />
+          <BlueButton text="Cancelar" onClick={handleCancel} />
           <BlueButton text="Salvar" onClick={handleSave} />
         </div>
       </div>
