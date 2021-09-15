@@ -12,27 +12,35 @@ const CreatePost = ({ image, file, setIsShow, isShow }) => {
   const { loggedUser } = useAuth();
 
   const [description, setDescription] = useState('');
-  const [downloadURL, setDownloadURL] = useState('');
 
   const history = useHistory();
 
   const handleSave = () => {
     const postFile = file;
-    const uploadTask = storageRef.child(`users/${loggedUser.uid}/${postFile.name}`).put(postFile);
+    const timestamp = new Date().getTime();
+    const uploadTask = storageRef.child(`users/${loggedUser.uid}/${timestamp}${postFile.name}`).put(postFile);
 
-    uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-      setDownloadURL(url);
-    });
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log("Não foi possível fazer o upload", error);
+      },
+      () => {
+        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+          db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
+            user_id: loggedUser.uid,
+            img_url: url,
+            description: description,
+            likes: 0,
+            comments: 0
+          });
+          history.push('/home');
+        });
+      }
+    );
 
-    db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
-      user_id: loggedUser.uid,
-      img_url: downloadURL,
-      description: description,
-      likes: 0,
-      comments: 0
-    });
-
-    history.push('/home');
+    
   }
 
   return (
