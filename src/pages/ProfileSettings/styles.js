@@ -47,26 +47,13 @@ export const HeaderEdit = styled.div`
   }
 `;
 
-export const Modal = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  width: 300px;
-  height: 300px;
-  background-color: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-`;
-
 export const ContainerMain = styled.main`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
   width: 336px;
   height: 572px;
   margin: 0 auto;
+  position: relative;
 
   .profile_name {
     display: none;
@@ -82,10 +69,6 @@ export const ContainerMain = styled.main`
     align-items: center;
     justify-content: space-evenly;
     margin-bottom: 38px;
-
-    p {
-      color: var(--blue-svg);
-    }
 
     img {
       width: 100px;
@@ -156,6 +139,7 @@ export const ContainerMain = styled.main`
     color: var(--white);
     transition: 0.5s all ease-in-out;
     padding: 8px 0 0 10px;
+    resize: none;
 
     &::placeholder {
       padding-left: 10px;
@@ -176,6 +160,8 @@ export const ContainerMain = styled.main`
 `;
 
 export const Container = styled.div`
+  padding-bottom: 4rem;
+
   .button_desktop {
     display: none;
   }
@@ -212,10 +198,6 @@ export const Container = styled.div`
       align-items: center;
     }
 
-    .change_picture {
-      width: auto;
-    }
-
     .change_information {
       border: 1px solid var(--bg);
     }
@@ -236,6 +218,13 @@ export const Container = styled.div`
 `;
 
 export const ContainerInput = styled.div`
+  .alterar-foto {
+    position: absolute;
+    top: 11rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   @media all and (min-width: 975px) {
     width: 500px;
     margin: 0 auto;

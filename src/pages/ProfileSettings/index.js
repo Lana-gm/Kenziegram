@@ -1,28 +1,24 @@
-import Header from "../../components/Header";
-import { BiLeftArrowAlt } from "react-icons/bi";
-import { NavLink } from "react-router-dom";
 import * as S from "./styles";
+
+import Header from "../../components/Header";
+import ModalProfile from "../../components/ModalProfile";
+import FormProfile from "../../components/FormProfile";
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import Kelvin from "../../assets/kelvin.jpg";
-import { db, storageRef } from "../../firebaseApi";
-import { doc, updateDoc } from "firebase/firestore";
+import { NavLink } from "react-router-dom";
+
+import { BiLeftArrowAlt } from "react-icons/bi";
+import { db } from "../../firebaseApi";
+
 import { useAuth } from "../../providers/Auth";
-import { getDownloadURL } from "@firebase/storage";
-import { useHistory } from "react-router";
 
 const ProfileSettings = () => {
   const { loggedUser } = useAuth();
-  const [UpdateProfile, setUpdateProfile] = useState();
+
   const [userData, setUserData] = useState({});
   let docRef = {};
 
   const [edit, setEdit] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  const { handleSubmit, register } = useForm();
-
-  const history = useHistory();
 
   useEffect(() => {
     if (loggedUser !== null) {
@@ -33,46 +29,6 @@ const ProfileSettings = () => {
       });
     }
   }, [loggedUser]);
-
-  const onSubmit = async (data) => {
-    const docRef = doc(db, "Users", loggedUser.uid);
-    await updateDoc(docRef, {
-      user: data.name,
-      phone: data.phone,
-      bio: data.bio,
-    });
-    setEdit(false);
-    history.push("/profile");
-  };
-
-  const upgradeProfileImage = (e) => {
-    // get file
-    const file = e.target.files[0];
-
-    // create ref
-    const uploadTask = storageRef.child(`profile/${userData.user}`).put(file);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is" + progress + "% done");
-      },
-      (error) => {
-        console.log("Não foi possível fazer o upload", error);
-      },
-      () => {
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          console.log("url: ", downloadURL);
-
-          db.collection("Users").doc(loggedUser.uid).update({
-            img_url: downloadURL,
-          });
-        });
-      }
-    );
-  };
 
   return (
     <S.Container>
@@ -88,27 +44,13 @@ const ProfileSettings = () => {
           <div className="profile_box">
             <div className="change_picture">
               <img src={userData.img_url} alt={userData.user} />
-              {showModal ? (
-                <S.Modal>
-                  <p>Escolha sua nova foto de perfil</p>
-                  <input
-                    type="file"
-                    //value="Alterar"
-                    name="adicionar"
-                    id="fileButton"
-                    accept="image/*, video.mp4"
-                    onChange={(e) => upgradeProfileImage(e)}
-                  />
-                  <label for="file">Downloading progress:</label>
-                  <progress max="100"> </progress>
-                  <button onClick={() => setShowModal(false)}>X</button>
-                </S.Modal>
-              ) : null}
-              <button onClick={() => setShowModal(true)}>
-                Alterar foto de perfil
-              </button>
+              {showModal && (
+                <ModalProfile
+                  setShowModal={setShowModal}
+                  showModal={showModal}
+                />
+              )}
             </div>
-            <h3 className="profile_name">{userData.user}</h3>
           </div>
 
           {!edit ? (
@@ -129,40 +71,13 @@ const ProfileSettings = () => {
             </S.ContainerInput>
           ) : (
             <S.ContainerInput>
-              <form className="form_input" onSubmit={handleSubmit(onSubmit)}>
-                <div className="change_information input_text">
-                  <input
-                    defaultValue={userData.user}
-                    type="text"
-                    {...register("name", { required: true })}
-                    placeholder="Nome de usuário"
-                    className="input_content"
-                  />
-                  {/* {errors.name && errors.name.type === "required" && (
-                    <span>This is required</span>
-                  )} */}
-                </div>
-                <div className="change_information input_text">
-                  <input
-                    defaultValue={userData.phone}
-                    type="text"
-                    {...register("phone", { required: true })}
-                    placeholder="Phone"
-                    className="input_content"
-                  />
-                </div>
-                <div className="change_information input_text">
-                  <textarea
-                    className="textarea_content"
-                    defaultValue={userData.bio}
-                    {...register("bio", { required: true })}
-                    placeholder="Bio"
-                    cols="30"
-                    rows="10"
-                  ></textarea>
-                </div>
-                <button type="submit">Salvar</button>
-              </form>
+              <button
+                onClick={() => setShowModal(true)}
+                className="alterar-foto"
+              >
+                Alterar foto de perfil
+              </button>
+              <FormProfile setEdit={setEdit} edit={edit} />
             </S.ContainerInput>
           )}
         </S.ContainerMain>

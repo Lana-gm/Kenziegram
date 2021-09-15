@@ -94,6 +94,7 @@ export const Content = styled.div`
       width: 100%;
       position: relative;
       flex-direction: row;
+      justify-content: flex-start;
     }
 
     .numero__container {
@@ -136,7 +137,7 @@ export const Container = styled.div`
   @media (min-width: 1000px) {
     width: 75%;
     border-bottom: 1px solid rgb(10, 10, 10);
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     margin-top: 4.4rem;
     min-height: 216px;
     padding: 0 100px 0 100px;
