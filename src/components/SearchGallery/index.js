@@ -24,7 +24,10 @@ const SearchGallery = ({ file, setImage, setFile, setIsShow, isShow }) => {
             <BsImages className="content-main__icon" />
             <MdVideoLibrary className="content-main__icon" />
             <h4 className="content-main__text">Adicionar Fotos e Vídeos</h4>
-            <BlueButton type="file" onChange={handleChange}></BlueButton>
+            <label className="add-file" for="selecao-arquivo">
+              Selecione um arquivo
+            </label>
+            <input id="selecao-arquivo" type="file" onChange={handleChange}></input>
           </div>
           {/* <div className="content__progress">
             <progress className="content__progess__box"></progress>
