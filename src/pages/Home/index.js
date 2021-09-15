@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import Conexoes from "../../components/Conexoes";
+import Conexoes  from "../../components/Conexoes";
 import * as s from "./styles";
 import Post from "../../components/Post";
 import Fade from "react-reveal/Fade";

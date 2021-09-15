@@ -134,7 +134,7 @@ export const Content = styled.div`
 
 export const Container = styled.div`
   @media (min-width: 1000px) {
-    width: 73%;
+    width: 75%;
     border-bottom: 1px solid rgb(10, 10, 10);
     margin-bottom: 1rem;
     margin-top: 4.4rem;
