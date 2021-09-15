@@ -12,28 +12,43 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
 
   const [description, setDescription] = useState("");
   const [downloadURL, setDownloadURL] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   const history = useHistory();
 
   const handleSave = () => {
     const postFile = file;
+
+    const timestamp = new Date().getTime();
     const uploadTask = storageRef
-      .child(`users/${loggedUser.uid}/${postFile.name}`)
+      .child(`users/${loggedUser.uid}/${timestamp}${postFile.name}`)
       .put(postFile);
 
-    uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-      setDownloadURL(url);
-    });
+    setDisabled(true);
 
-    db.collection("Posts").doc("001").collection(loggedUser.uid).doc().set({
-      user_id: loggedUser.uid,
-      img_url: downloadURL,
-      description: description,
-      likes: 0,
-      comments: 0,
-    });
-
-    history.push("/home");
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log("Não foi possível fazer o upload", error);
+      },
+      () => {
+        history.push("/home");
+        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+          db.collection("Posts")
+            .doc("001")
+            .collection(loggedUser.uid)
+            .doc()
+            .set({
+              user_id: loggedUser.uid,
+              img_url: url,
+              description: description,
+              likes: 0,
+              comments: 0,
+            });
+        });
+      }
+    );
   };
 
   const handleCancel = () => {
@@ -63,7 +78,7 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
         </div>
         <div className="content__button">
           <BlueButton text="Cancelar" onClick={handleCancel} />
-          <BlueButton text="Salvar" onClick={handleSave} />
+          <BlueButton disabled={disabled} text="Salvar" onClick={handleSave} />
         </div>
       </div>
     </S.Container>

@@ -1,12 +1,13 @@
 import * as s from "./style";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { AiFillLike } from "react-icons/ai";
+import PictureFrame from "../PictureFrame";
 
 import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-export const Post = ({ options = false }) => {
+export const Post = ({ options = false, source = "" }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -40,25 +41,21 @@ export const Post = ({ options = false }) => {
         </div>
       )}
       <div className="informacoes">
-        <img
+        <img className="avatar"
           src="https://img.freepik.com/vetores-gratis/homem-perfil-caricatura_18591-58483.jpg?size=338&ext=jpg"
           alt="imagem do perfil"
         />
-        <p className="nome">Nome do usuário</p>
+        <p className="nome">Kelvinho Mão de Código</p> {/* USER NAME AQUI */}
       </div>
       <div className="conteiner-publicacao">
-        <p className="texto-publicacao">
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words
+        <p className="texto-publicacao"> {/* DESCRIÇÃO AQUI */}
+          O pai tá on!
         </p>
       </div>
-      <div className="conteiner-curtidas">
-        <AiFillLike className="icone-curtir" />
-        <p className="curtidas">5</p>
+      <div className="picture__container"> {/* FOTO POSTADA AQUI */}
+        <PictureFrame source="https://media-exp1.licdn.com/dms/image/C4E03AQGKw2lrXe5efA/profile-displayphoto-shrink_800_800/0/1624205145920?e=1637193600&v=beta&t=3KOWb0F-yFx4QYhDaq8B77aBkF76ZAkjcuJqG2xd-Ek" alt="uau" />
       </div>
+
     </s.Container>
   );
 };
