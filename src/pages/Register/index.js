@@ -40,6 +40,7 @@ const Register = () => {
             .createUserWithEmailAndPassword(data.email, data.password)
             .then((user) => {
                 db.collection('Users').doc(user.user.uid).set({
+                    id: user.user.uid,
                     user: data.user,
                     email: data.email,
                     phone: data.phone,
