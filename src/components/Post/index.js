@@ -73,8 +73,8 @@ export const Post = ({ options = false, source = "", post }) => {
           </Menu>
         </div>
       )}
-      {user !== undefined && (
-        <div className="informacoes" onClick={() => handleProfile(user.key)}>
+      {user.user !== undefined && (
+        <div className="informacoes" onClick={() => handleProfile(user.id)}>
           <img className="avatar" src={user.img_url} alt="imagem do perfil" />
           <p className="nome">{user.user}</p> {/* USER NAME AQUI */}
         </div>

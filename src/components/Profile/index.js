@@ -1,7 +1,6 @@
 import * as s from "./style";
 import { BsFillGearFill } from "react-icons/bs";
 import { GoGear } from "react-icons/go";
-
 import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -90,7 +89,10 @@ const Profile = ({ id = null, self = false }) => {
               </div>
               {self && (
                 <button className="icone-editar" onClick={handleEdit}>
-                  <span className="engrena"><GoGear/></span> Editar Perfil
+                  <span className="engrena">
+                    <GoGear />
+                  </span>{" "}
+                  Editar Perfil
                 </button>
               )}
             </div>

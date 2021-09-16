@@ -90,12 +90,18 @@ export const MainPage = styled.main`
 
   .margin {
     margin: 20px 0 0 0;
-    font-weight: 600;
+  }
+
+  .bold {
+    font-weight: bold;
   }
 
   .register {
     margin: 10px 0 0 0;
-    font-weight: 600;
+  }
+
+  .initial {
+    display: none;
   }
 
   .mobile__return {
@@ -119,6 +125,11 @@ export const MainPage = styled.main`
     .text__box {
       align-items: center;
       margin: 0 0 50px 0;
+    }
+
+    .initial {
+      display: block;
+      margin: 10px 0 0 0;
     }
   }
 `;

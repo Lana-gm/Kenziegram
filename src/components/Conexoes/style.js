@@ -20,6 +20,7 @@ export const Container = styled.div`
   }
 
   #usuariosId {
+    min-height: 100px;
     display: flex;
     margin-top: 1rem;
     overflow-x: auto;
@@ -31,7 +32,7 @@ export const Container = styled.div`
   }
 
   .usuario {
-    width: 6rem;
+    min-width: 5.5rem;
     height: 6.8rem;
     cursor: pointer;
   }
