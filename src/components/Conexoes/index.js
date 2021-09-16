@@ -43,6 +43,8 @@ const Conexoes = () => {
     setWidth(scrollWidth);
   };
 
+  console.log(width - scrollHorizontal);
+
   const handleProfile = (id) => {
     if (loggedUser.uid === id) {
       history.push("/profile");

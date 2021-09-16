@@ -27,7 +27,12 @@ const SearchGallery = ({ file, setImage, setFile, setIsShow, isShow }) => {
             <label className="add-file" for="selecao-arquivo">
               Selecione um arquivo
             </label>
-            <input id="selecao-arquivo" type="file" onChange={handleChange}></input>
+            <input
+              id="selecao-arquivo"
+              type="file"
+              onChange={handleChange}
+              accept="image/*, video.mp4"
+            ></input>
           </div>
           {/* <div className="content__progress">
             <progress className="content__progess__box"></progress>
