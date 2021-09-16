@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { onPostList } from "../../firebaseApi";
 import { useAuth } from "../../providers/Auth";
 
-const ProfilePage = () => {
+const ProfilePage = ({self = false}) => {
   const { loggedUser } = useAuth();
 
   const [posts, setPosts] = useState([]);
@@ -23,7 +23,7 @@ const ProfilePage = () => {
     <s.Main>
       <s.Container>
         <Header />
-        <Profile />
+        <Profile self={self} />
         <div className="picture__wrap">
           <div className="picture__container">
             {posts.map((post) => (
