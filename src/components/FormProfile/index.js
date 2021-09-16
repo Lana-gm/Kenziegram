@@ -24,11 +24,18 @@ const FormProfile = ({ setEdit, edit }) => {
 
   const history = useHistory();
   const onSubmit = async (data) => {
-    // const { user, phone, bio } = data;
-    console.log(data);
+    const { user, phone, bio } = data;
+
     const docRef = doc(db, "Users", loggedUser.uid);
+
+    console.log(docRef);
+
+    // if (user === "") {
+    //   data.user = userData.user;
+    // }
+
     await updateDoc(docRef, {
-      user: data.name,
+      user: data.user,
       phone: data.phone,
       bio: data.bio,
     });
@@ -44,7 +51,7 @@ const FormProfile = ({ setEdit, edit }) => {
         <input
           defaultValue={userData.user}
           type="text"
-          {...register("name")}
+          {...register("user")}
           placeholder="Nome de usuário"
           className="input_content"
         />
