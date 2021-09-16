@@ -12,7 +12,7 @@ import { useAuth } from "../../providers/Auth";
 
 import { firebaseApp } from "../../firebaseApi";
 
-const Profile = ({ id = null }) => {
+const Profile = ({ id = null, self = false }) => {
   const { loggedUser, setLoggedUser } = useAuth();
 
   const [userData, setUserData] = React.useState({});
@@ -80,7 +80,8 @@ const Profile = ({ id = null }) => {
           </Menu>
         </div>
         <div className="cabecalho-informacoes">
-          <BsPencilSquare className="icone-editar" onClick={handleEdit} />
+          { self &&
+            <BsPencilSquare className="icone-editar" onClick={handleEdit} />}
           <img src={userData.img_url} alt="imagem do perfil" />
           <div className="informacoes">
             <p className="nome">{userData.user}</p>
