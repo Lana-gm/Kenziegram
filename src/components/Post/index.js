@@ -7,7 +7,7 @@ import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-export const Post = ({ options = false, source = "" }) => {
+export const Post = ({ options = false, source = "", post }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {

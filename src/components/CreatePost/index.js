@@ -35,6 +35,13 @@ const CreatePost = ({ image, file, setIsShow, isShow }) => {
             likes: 0,
             comments: 0
           });
+          db.collection('Feed').doc().set({
+            user_id: loggedUser.uid,
+            img_url: url,
+            description: description,
+            likes: 0,
+            comments: 0
+          });
           history.push('/home');
         });
       }

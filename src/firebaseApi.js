@@ -13,6 +13,7 @@ export const storageRef = firebaseApp.storage().ref();
 
 const getUsersFromFirebase = [];
 const getPostsFromFirebase = [];
+const getFeedFromFirebase = [];
 
 export const onUserList = (setUsers) => {
     return db
@@ -53,5 +54,26 @@ export const onPostList = (setPosts, user) => {
         }                   
       });
       setPosts(getPostsFromFirebase);
+  });
+};
+
+export const onFeedList = (setFeed) => {
+  return db
+  .collection("Feed")
+  .onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let dataExists = false;
+        for (let i = 0; i <= getFeedFromFirebase.length; i++) {
+          if(getFeedFromFirebase[i] !== undefined) {
+            if (getFeedFromFirebase[i].key === doc.id) {
+              dataExists = true;
+            }
+          }            
+        }
+        if(!dataExists) {
+          getFeedFromFirebase.push({...doc.data(), key: doc.id,}); 
+        }                   
+      });
+      setFeed(getFeedFromFirebase);
   });
 };
