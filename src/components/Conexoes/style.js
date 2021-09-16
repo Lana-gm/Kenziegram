@@ -64,7 +64,7 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1000px) {
-    width: 975px;
+    width: 570px;
     margin-top: 5rem;
 
     #back {
