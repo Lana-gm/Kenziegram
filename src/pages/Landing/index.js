@@ -3,16 +3,49 @@ import { AiFillFacebook } from 'react-icons/ai'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { useHistory, Redirect } from "react-router"
 import BlueButton from "../../components/BlueButton"
+import { useState } from 'react';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { db } from '../../firebaseApi';
+
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 import { useAuth } from '../../providers/Auth';
 
 const Landing = () => {
+
+    const [existingUser, setExistingUser] = useState(undefined);
 
     const { loggedUser } = useAuth();
     const history = useHistory();
 
     if(loggedUser) {
         return <Redirect to='/home'/>
+    }
+
+    const handleGoogleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            db.collection('Users').doc(user.uid).set({
+                id: user.uid,
+                user: user.displayName,
+                email: user.email,
+                phone: user.phoneNumber,
+                posts: '--',
+                bio: 'Google user', 
+                img_url: user.photoURL
+            });            
+          }).catch((error) => {
+            const errorMessage = error.message;
+            toast(errorMessage);
+          });
     }
 
     return (
@@ -31,10 +64,11 @@ const Landing = () => {
                         <AiFillFacebook />
                     </button>
                     <button className="btn__invisible">
-                        <AiOutlineGoogle />
+                        <AiOutlineGoogle onClick={handleGoogleSignIn}/>
                     </button>
                 </div>
             </div>
+            <ToastContainer />
         </MainPage>
     )
 }
