@@ -42,7 +42,7 @@ const Login = () => {
         history.push("/home");
       })
       .catch((error) => {
-        toast(error.message);
+        toast("Usuário ou senha incorreto!");
       });
   };
 
@@ -75,10 +75,13 @@ const Login = () => {
         />
         <BlueButton type="submit" text="Entrar" />
         <Link to="/recovery" className="smalltext margin">
-          Esqueceu sua senha?
+          Esqueceu sua <span className="bold">senha?</span>
         </Link>
         <Link to="/register" className="smalltext register">
-          Não tem cadastro?
+          Não tem <span className="bold">cadastro?</span>
+        </Link>
+        <Link to="/" className="smalltext initial">
+          <span className="bold">Inicio</span>
         </Link>
       </form>
       <ToastContainer />
