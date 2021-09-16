@@ -3,9 +3,6 @@ import Billa from "../assets/Billabong.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 
-/*font-family: 'Lato', sans-serif;
-font-family: 'Nunito Sans', sans-serif;*/
-
   :root {
     --bg: #1B1F29; // Background
     --bgLight: #242A38; // Background Light
