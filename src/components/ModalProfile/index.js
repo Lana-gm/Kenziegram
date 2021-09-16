@@ -33,6 +33,7 @@ const ModalProfile = ({ setShowModal, showModal }) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
+      (error) => {},
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           db.collection("Users").doc(loggedUser.uid).update({
