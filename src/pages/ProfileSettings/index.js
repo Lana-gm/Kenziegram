@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import ModalProfile from "../../components/ModalProfile";
 import FormProfile from "../../components/FormProfile";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { db } from "../../firebaseApi";
@@ -29,6 +29,10 @@ const ProfileSettings = () => {
       });
     }
   }, [loggedUser]);
+
+  if (!loggedUser) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <S.Container>

@@ -5,6 +5,7 @@ import * as S from "./style";
 
 import PictureFrame from "../../components/PictureFrame";
 import { useEffect, useState } from "react";
+import { Redirect } from "react-router";
 import { onPostList } from "../../firebaseApi";
 import { useParams } from "react-router";
 import { useAuth } from "../../providers/Auth";
@@ -24,6 +25,10 @@ const ProfilePageId = () => {
       };
     }
   }, [id, loggedUser]);
+
+  if (!loggedUser) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <S.Main>
