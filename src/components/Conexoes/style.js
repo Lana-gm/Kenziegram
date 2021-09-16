@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 210px;
+  height: 190px;
   width: 100vw;
   background-color: var(--bgLight);
   padding: 1rem 0rem 0rem 1rem;
@@ -20,9 +20,10 @@ export const Container = styled.div`
   }
 
   #usuariosId {
+    /* min-width: 175px; */
     display: flex;
     margin-top: 1rem;
-    padding-bottom: 3rem;
+    /* margin-right: 1rem; */
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -32,21 +33,29 @@ export const Container = styled.div`
   }
 
   .usuario {
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-    min-width: 4.5rem;
-    max-height: 5.2rem;
+    /* margin-right: 0.5rem;
+    margin-left: 0.5rem; */
+    min-width:5.5rem;
+    height: 6.8rem;
     cursor: pointer;
   }
 
   .nome {
     color: var(--white);
+    max-width: 40ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: inherit;
   }
 
   .imagem {
     width: 60px;
     height: 60px;
     border-radius: 100%;
+  }
+
+  .carregamento {
+    margin-left: 1rem;
   }
 
   .x {

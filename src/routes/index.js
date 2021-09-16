@@ -35,10 +35,10 @@ const Routes = () => {
         <Postage />
       </Route>
       <Route path="/profile">
-        <ProfilePage />
+        <ProfilePage self={true} />
       </Route>
-      <Route path="/profile/:id">
-        <ProfilePageId />
+      <Route path="/profileid/:id">
+        <ProfilePageId self={false}/>
       </Route>
       <Route path="/profile-edit">
         <ProfileSettings />

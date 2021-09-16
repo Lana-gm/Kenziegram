@@ -1,23 +1,46 @@
 import Header from "../../components/Header";
 import Profile from "../../components/Profile";
-import Post from "../../components/Post";
-import * as s from "./style";
-import Fade from "react-reveal/Fade";
+
+import * as S from "./style";
+
+import PictureFrame from "../../components/PictureFrame";
+import { useEffect, useState } from "react";
+import { onPostList } from "../../firebaseApi";
+import { useParams } from "react-router";
+import { useAuth } from "../../providers/Auth";
 
 const ProfilePageId = () => {
+  const { id } = useParams();
+
+  const { loggedUser } = useAuth();
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    if (id && loggedUser) {
+      let unsub = onPostList(setPosts, { uid: id });
+      return () => {
+        unsub();
+      };
+    }
+  }, [id, loggedUser]);
+
   return (
-    <s.Container>
-      <Header />
-      <Profile />
-      <div className="posts">
-        <Fade>
-          <Post options="false" />
-          <Post />
-          <Post />
-          <Post />
-        </Fade>
-      </div>
-    </s.Container>
+    <S.Main>
+      <S.Container>
+        <Header />
+        <Profile id={id} />
+        <div className="picture__wrap">
+          <div className="picture__container">
+            {/* <Fade> */}
+            {posts.map((post) => {
+              return <PictureFrame source={post.img_url} alt="uau" />;
+            })}
+            {/* </Fade> */}
+          </div>
+        </div>
+      </S.Container>
+    </S.Main>
   );
 };
 

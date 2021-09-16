@@ -1,12 +1,28 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UsersContext } from "../../providers/Users";
 import * as s from "./style";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useHistory } from "react-router-dom";
+import { useAuth } from "../../providers/Auth";
+
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > * + *": {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
 
 const Conexoes = () => {
   const [scrollHorizontal, setScrollHorizontal] = useState(0);
   const [width, setWidth] = useState();
+
+  const { loggedUser } = useAuth();
+  const classes = useStyles();
 
   const history = useHistory();
 
@@ -27,8 +43,14 @@ const Conexoes = () => {
     setWidth(scrollWidth);
   };
 
-  const handleProfile = () => {
-    history.push("/profile/:id");
+  console.log(width - scrollHorizontal);
+
+  const handleProfile = (id) => {
+    if (loggedUser.uid === id) {
+      history.push("/profile");
+    } else {
+      history.push(`/profileid/${id}`);
+    }
   };
 
   return (
@@ -38,12 +60,22 @@ const Conexoes = () => {
       </div>
       <ul id="usuariosId" onScroll={handleScroll}>
         {users.map((user, index) => (
-          <li className="usuario" key={index} onClick={handleProfile}>
-            <img
-              src={user.img_url}
-              alt="imagem do usuario"
-              className="imagem"
-            />
+          <li
+            className="usuario"
+            key={index}
+            onClick={() => handleProfile(user.key)}
+          >
+            {user.img_url ? (
+              <img
+                src={user.img_url}
+                alt="imagem do usuario"
+                className="imagem"
+              />
+            ) : (
+              <div className={classes.root}>
+                <CircularProgress className="carregamento" />
+              </div>
+            )}
             <p className="nome">{user.user}</p>
           </li>
         ))}

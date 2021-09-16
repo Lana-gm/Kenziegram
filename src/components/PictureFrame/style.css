@@ -14,11 +14,12 @@
             width: 310px;
             height: 310px;
             margin-bottom: 8px;
+            margin-right: 10px;
             transition: 0.2s ease-in-out;
         }
 
         .picture:hover {
-            filter: brightness(50%);
+            filter: brightness(70%);
         }
 
     }

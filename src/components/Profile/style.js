@@ -121,20 +121,38 @@ export const Content = styled.div`
     }
 
     .icone-editar {
-      display: inline-block;
-      color: var(--blueIcons);
-      font-size: 25px;
-      position: absolute;
-      right: 0rem;
-      top: 1rem;
+      display: block;
+      border: 1px solid rgb(68, 86, 122);
+      background: none;
+      width: 65px;
+      height: 27px;
+      color: rgb(68, 86, 122);
+      font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
     }
+
+    .name__divider {
+      display: flex;
+      align-items: center;
+    }
+
+    .nome {
+      margin-right: 20px;
+      margin-top: 0;
+    }
+
+    .icone-editar:hover {
+      border: 1px solid rgb(48, 76, 112);
+      color: rgb(48, 76, 112);
+    }
+
   }
 `;
 
 export const Container = styled.div`
   @media (min-width: 1000px) {
-    width: 73%;
+    width: 75%;
     border-bottom: 1px solid rgb(10, 10, 10);
     margin-bottom: 1rem;
     margin-top: 4.4rem;

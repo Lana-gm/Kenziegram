@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerPage = styled.div`
-  /* height: calc(100vh - 70px); */
+  height: 100%;
   background-color: var(--bg);
 
   h1 {
@@ -61,7 +61,7 @@ export const ContainerMain = styled.main`
 
   .change_picture {
     width: 100%;
-    height: 211px;
+    height: 221px;
     background-color: var(--bgLight);
     display: flex;
     flex-direction: column;
@@ -71,8 +71,8 @@ export const ContainerMain = styled.main`
     margin-bottom: 38px;
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       border-radius: 100%;
     }
   }
@@ -220,7 +220,7 @@ export const Container = styled.div`
 export const ContainerInput = styled.div`
   .alterar-foto {
     position: absolute;
-    top: 11rem;
+    top: 12rem;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -228,5 +228,10 @@ export const ContainerInput = styled.div`
   @media all and (min-width: 975px) {
     width: 500px;
     margin: 0 auto;
+
+    .alterar-foto {
+    top: 12.5rem;
+  }
+
   }
 `;

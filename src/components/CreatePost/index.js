@@ -1,24 +1,30 @@
 import * as S from "./styles";
 import KelvinImg from "../../assets/kelvin.jpg";
 import BlueButton from "../BlueButton";
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import { db, storageRef, firebaseApp } from '../../firebaseApi';
-import { useAuth } from '../../providers/Auth';
+import { db, storageRef, firebaseApp } from "../../firebaseApi";
+import { useAuth } from "../../providers/Auth";
 
-const CreatePost = ({ image, file, setIsShow, isShow }) => {
-
+const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
   const { loggedUser } = useAuth();
 
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
+  const [downloadURL, setDownloadURL] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   const history = useHistory();
 
   const handleSave = () => {
     const postFile = file;
+
     const timestamp = new Date().getTime();
-    const uploadTask = storageRef.child(`users/${loggedUser.uid}/${timestamp}${postFile.name}`).put(postFile);
+    const uploadTask = storageRef
+      .child(`users/${loggedUser.uid}/${timestamp}${postFile.name}`)
+      .put(postFile);
+
+    setDisabled(true);
 
     uploadTask.on(
       "state_changed",
@@ -27,6 +33,7 @@ const CreatePost = ({ image, file, setIsShow, isShow }) => {
         console.log("Não foi possível fazer o upload", error);
       },
       () => {
+        history.push("/home");
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
           db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
             user_id: loggedUser.uid,
@@ -46,9 +53,12 @@ const CreatePost = ({ image, file, setIsShow, isShow }) => {
         });
       }
     );
+  };
 
-    
-  }
+  const handleCancel = () => {
+    setIsShow(true);
+    setFile(null);
+  };
 
   return (
     <S.Container>
@@ -71,8 +81,8 @@ const CreatePost = ({ image, file, setIsShow, isShow }) => {
           ></textarea>
         </div>
         <div className="content__button">
-          <BlueButton text="Cancelar" />
-          <BlueButton text="Salvar" onClick={handleSave} />
+          <BlueButton text="Cancelar" onClick={handleCancel} />
+          <BlueButton disabled={disabled} text="Salvar" onClick={handleSave} />
         </div>
       </div>
     </S.Container>
