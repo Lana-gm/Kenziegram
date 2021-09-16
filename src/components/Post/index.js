@@ -7,8 +7,31 @@ import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
+import { db } from '../../firebaseApi';
+import { useEffect, useState} from 'react';
+import { useAuth } from '../../providers/Auth';
+
 export const Post = ({ options = false, source = "", post }) => {
+
+  const { loggedUser } = useAuth();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    if(loggedUser) {
+      let unsub = db
+        .collection('Users')
+        .doc(post.user_id)
+        .get().then((doc) => {
+          setUser(doc.data());
+        }).catch((error) => {
+          console.log("Error getting document:", error);
+        });
+      return unsub;
+    }    
+  }, [loggedUser]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -40,13 +63,15 @@ export const Post = ({ options = false, source = "", post }) => {
           </Menu>
         </div>
       )}
-      <div className="informacoes">
-        <img className="avatar"
-          src="https://img.freepik.com/vetores-gratis/homem-perfil-caricatura_18591-58483.jpg?size=338&ext=jpg"
-          alt="imagem do perfil"
-        />
-        <p className="nome">Kelvinho Mão de Código</p> {/* USER NAME AQUI */}
-      </div>
+      {user !== undefined && (
+        <div className="informacoes">
+          <img className="avatar"
+            src={user.img_url}
+            alt="imagem do perfil"
+          />
+          <p className="nome">{user.user}</p> {/* USER NAME AQUI */}
+        </div>
+      )}
       {post !== undefined && (
         <>
           <div className="conteiner-publicacao">
