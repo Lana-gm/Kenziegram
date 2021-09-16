@@ -35,17 +35,21 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
       () => {
         history.push("/home");
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          db.collection("Posts")
-            .doc("001")
-            .collection(loggedUser.uid)
-            .doc()
-            .set({
-              user_id: loggedUser.uid,
-              img_url: url,
-              description: description,
-              likes: 0,
-              comments: 0,
-            });
+          db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
+            user_id: loggedUser.uid,
+            img_url: url,
+            description: description,
+            likes: 0,
+            comments: 0
+          });
+          db.collection('Feed').doc().set({
+            user_id: loggedUser.uid,
+            img_url: url,
+            description: description,
+            likes: 0,
+            comments: 0
+          });
+          history.push('/home');
         });
       }
     );
