@@ -19,7 +19,11 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
         .collection('Users')
         .doc(loggedUser.uid)
         .get().then((doc) => {
-          setPosts(parseInt(doc.data().posts));
+          if (doc.data().posts !== '--') {
+            setPosts(parseInt(doc.data().posts));
+          } else {
+            setPosts(-1);
+          }          
         }).catch((error) => {
           console.log("Error getting document:", error);
         });
@@ -63,9 +67,11 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
             likes: 0,
             comments: 0
           });
-          db.collection('Users').doc(loggedUser.uid).update({
-            posts: posts + 1,
-          });
+          if (posts >= 0) {
+            db.collection('Users').doc(loggedUser.uid).update({
+              posts: posts + 1,
+            });
+          }          
           history.push('/home');
         });
       }
