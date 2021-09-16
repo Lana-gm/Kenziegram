@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import Conexoes  from "../../components/Conexoes";
+import Conexoes from "../../components/Conexoes";
 import * as s from "./styles";
 import Post from "../../components/Post";
 import Fade from "react-reveal/Fade";
@@ -25,13 +25,13 @@ const Home = () => {
     <s.Container>
       <Conexoes />
       <div className="posts">
-        <Fade>
+        {/* {<Fade>} */}
           {feed.map((post) => {
             return (
               <Post key={post.key} post={post}/>
             );
           })}          
-        </Fade>
+        {/* {</Fade>} */}
       </div>
       <Header />
     </s.Container>

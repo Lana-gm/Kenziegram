@@ -47,14 +47,18 @@ export const Post = ({ options = false, source = "", post }) => {
         />
         <p className="nome">Kelvinho Mão de Código</p> {/* USER NAME AQUI */}
       </div>
-      <div className="conteiner-publicacao">
-        <p className="texto-publicacao"> {/* DESCRIÇÃO AQUI */}
-          O pai tá on!
-        </p>
-      </div>
-      <div className="picture__container"> {/* FOTO POSTADA AQUI */}
-        <PictureFrame source="https://media-exp1.licdn.com/dms/image/C4E03AQGKw2lrXe5efA/profile-displayphoto-shrink_800_800/0/1624205145920?e=1637193600&v=beta&t=3KOWb0F-yFx4QYhDaq8B77aBkF76ZAkjcuJqG2xd-Ek" alt="uau" />
-      </div>
+      {post !== undefined && (
+        <>
+          <div className="conteiner-publicacao">
+            <p className="texto-publicacao"> {/* DESCRIÇÃO AQUI */}
+              {post.description}
+            </p>
+          </div>
+          <div className="picture__container"> {/* FOTO POSTADA AQUI */}
+            <PictureFrame source={post.img_url} alt="uau" />
+          </div>
+        </>
+      )}
 
     </s.Container>
   );
