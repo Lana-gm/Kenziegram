@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import KelvinImg from "../../assets/kelvin.jpg";
 import BlueButton from "../BlueButton";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
@@ -16,18 +15,17 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
 
   useEffect(() => {
     let unsub = db
-        .collection('Users')
-        .doc(loggedUser.uid)
-        .get().then((doc) => {
-          if (doc.data().posts !== '--') {
-            setPosts(parseInt(doc.data().posts));
-          } else {
-            setPosts(-1);
-          }          
-        }).catch((error) => {
-          console.log("Error getting document:", error);
-        });
-      return unsub;
+      .collection("Users")
+      .doc(loggedUser.uid)
+      .get()
+      .then((doc) => {
+        if (doc.data().posts !== "--") {
+          setPosts(parseInt(doc.data().posts));
+        } else {
+          setPosts(-1);
+        }
+      });
+    return unsub;
   }, [loggedUser]);
 
   const history = useHistory();
@@ -43,48 +41,54 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
     setDisabled(true);
 
     const makeid = (length) => {
-      var result           = '';
-      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var result = "";
+      var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       var charactersLength = characters.length;
-      for ( var i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * 
-        charactersLength));
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
       }
       return result;
-  }
+    };
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {},
-      (error) => {
-        console.log("Não foi possível fazer o upload", error);
-      },
+      (error) => {},
       () => {
         let id = makeid(24);
         history.push("/home");
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          db.collection('Posts').doc('001').collection(loggedUser.uid).doc(id).set({
+          db.collection("Posts")
+            .doc("001")
+            .collection(loggedUser.uid)
+            .doc(id)
+            .set({
+              user_id: loggedUser.uid,
+              created_at: timestamp,
+              img_url: url,
+              description: description,
+              likes: 0,
+              comments: 0,
+            });
+          db.collection("Feed").doc(id).set({
             user_id: loggedUser.uid,
             created_at: timestamp,
             img_url: url,
             description: description,
             likes: 0,
-            comments: 0
-          });
-          db.collection('Feed').doc(id).set({
-            user_id: loggedUser.uid,
-            created_at: timestamp,
-            img_url: url,
-            description: description,
-            likes: 0,
-            comments: 0
+            comments: 0,
           });
           if (posts >= 0) {
-            db.collection('Users').doc(loggedUser.uid).update({
-              posts: posts + 1,
-            });
-          }          
-          history.push('/home');
+            db.collection("Users")
+              .doc(loggedUser.uid)
+              .update({
+                posts: posts + 1,
+              });
+          }
+          history.push("/home");
         });
       }
     );

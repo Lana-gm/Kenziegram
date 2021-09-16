@@ -8,7 +8,6 @@ import User from "../User";
 
 const UsersContainer = ({ inputValue, setInputValue, filtered }) => {
   const { users } = useContext(UsersContext);
-  console.log(users);
   return (
     <S.Container>
       {!!filtered
