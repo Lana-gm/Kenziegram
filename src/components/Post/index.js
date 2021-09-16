@@ -1,7 +1,5 @@
 import * as s from "./style";
 import { HiDotsHorizontal } from "react-icons/hi";
-import { AiFillLike } from "react-icons/ai";
-import PictureFrame from "../PictureFrame";
 
 import React from "react";
 import Menu from "@material-ui/core/Menu";
@@ -10,7 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { db } from "../../firebaseApi";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../providers/Auth";
-
+import PictureFrame from "../PictureFrame";
 export const Post = ({ options = false, source = "", post }) => {
   const { loggedUser } = useAuth();
 
@@ -26,6 +24,9 @@ export const Post = ({ options = false, source = "", post }) => {
         .get()
         .then((doc) => {
           setUser(doc.data());
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
         });
       return unsub;
     }
@@ -79,7 +80,7 @@ export const Post = ({ options = false, source = "", post }) => {
           <div className="picture__container">
             {" "}
             {/* FOTO POSTADA AQUI */}
-            <PictureFrame source={post.img_url} alt="uau" />
+            <PictureFrame post={post} />
           </div>
         </>
       )}
