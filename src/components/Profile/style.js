@@ -121,34 +121,46 @@ export const Content = styled.div`
     }
 
     .icone-editar {
-      display: block;
-      border: 1px solid rgb(68, 86, 122);
+      display: flex;
+      border: 1px solid rgb(68,86,122);
       background: none;
-      width: 65px;
-      height: 27px;
-      color: rgb(68, 86, 122);
+      width: 125px;
+      height: 30px;
+      color: rgb(68,86,122);
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
       position: absolute;
-      right: 0;
-      top: 0;
+      left: 48%;
+      bottom: 11%;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .engrena {
+      font-size: 18px;
+      margin-top: 5px;
+      margin-right: 4px;
     }
 
     .name__divider {
       display: flex;
       align-items: center;
-      width: 10vw;
+      width: 100%;
     }
 
     .nome {
-      margin-right: 20px;
       margin-top: 0;
       width: 100%;
     }
 
     .icone-editar:hover {
       border: 1px solid rgb(48, 76, 112);
+      color: rgb(48, 76, 112);
+    }
+
+    .icone-editar:hover > span {
       color: rgb(48, 76, 112);
     }
 
@@ -165,8 +177,27 @@ export const Container = styled.div`
     padding: 0 100px 0 100px;
   }
 
+  @media (min-width: 1400px) {
+    width: 75%;
+    border-bottom: 1px solid rgb(10, 10, 10);
+    margin-bottom: 1rem;
+    margin-top: 4.4rem;
+    min-height: 216px;
+    padding: 0 100px 0 100px;
+
+    .icone-editar {
+      left: 45%;
+    }
+  }
+
   @media (min-width: 1920px) {
     width: 51%;
+
+    .icone-editar {
+      left: 48%;
+    }
+
+
   }
 
 `;
