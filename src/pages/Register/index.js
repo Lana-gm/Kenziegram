@@ -55,7 +55,7 @@ const Register = () => {
           bio: "",
           posts: 0,
           img_url:
-            "https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg",
+            "https://www.moteur.ma/media/photos/advertisers/logo/profil_forum.png",
         });
         history.push("/login");
       })
