@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import { FaArrowCircleLeft } from "react-icons/fa"
 import { MainPage } from "./style"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,7 +21,7 @@ const Register = () => {
     const { loggedUser } = useAuth();
 
     const formSchema = yup.object().shape({
-        user: yup.string().max(10, "Máximo de 10 caractéres").required("Usuário obrigatório"),
+        user: yup.string().max(18, "Máximo de 18 caractéres").required("Usuário obrigatório"),
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
         phone: yup.string(),
         password: yup.string().required("Senha obrigatória").min(8, "Senha deve ter ao menos 8 caracteres"),
@@ -49,6 +52,8 @@ const Register = () => {
                     img_url: 'https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868-1024x909.jpg'
                 });
                 history.push('/login');
+            }).catch((error) => {
+                toast(error.message);
             });
     }
 
@@ -76,6 +81,7 @@ const Register = () => {
                 <BlueButton type="submit" text="Cadastrar" />
                 <Link to="/login" className="smalltext margin">Já tem cadastro? <strong>Entre!</strong></Link>
             </form>
+            <ToastContainer />
         </MainPage>
     )
 
