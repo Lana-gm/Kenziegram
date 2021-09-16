@@ -1,6 +1,6 @@
 import * as s from "./style";
 import { BsFillGearFill } from "react-icons/bs";
-import { BsPencilSquare } from "react-icons/bs";
+import { GoGear } from "react-icons/go";
 
 import React from "react";
 import Menu from "@material-ui/core/Menu";
@@ -80,11 +80,14 @@ const Profile = ({ id = null, self = false }) => {
           </Menu>
         </div>
         <div className="cabecalho-informacoes">
-          { self &&
-            <BsPencilSquare className="icone-editar" onClick={handleEdit} />}
           <img src={userData.img_url} alt="imagem do perfil" />
           <div className="informacoes">
-            <p className="nome">{userData.user}</p>
+            <div className="name__divider">
+              <p className="nome">{userData.user}
+              </p>
+                {self &&
+                  <button className="icone-editar" onClick={handleEdit}>Editar</button>}
+            </div>
             <p className="bio">{userData.bio}</p>
             <div className="numero__container">
               <p className="numero-postagens">
