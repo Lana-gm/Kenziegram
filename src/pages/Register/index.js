@@ -68,8 +68,6 @@ const Register = () => {
     return <Redirect to="/home" />;
   }
 
-  console.log(!!errors.user);
-
   return (
     <MainPage>
       <div className="gray__gradient" />

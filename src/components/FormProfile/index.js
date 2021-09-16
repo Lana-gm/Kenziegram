@@ -28,8 +28,6 @@ const FormProfile = ({ setEdit, edit }) => {
 
     const docRef = doc(db, "Users", loggedUser.uid);
 
-    console.log(docRef);
-
     if (user === "") {
       data.user = userData.user;
     }

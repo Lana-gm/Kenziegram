@@ -36,7 +36,7 @@ export const onUserList = (setUsers) => {
 
 export const onPostList = (setPosts, user) => {
   getPostsFromFirebase = [];
-  console.log(user);
+
   return db
     .collection("Posts")
     .doc("001")
@@ -57,26 +57,27 @@ export const onPostList = (setPosts, user) => {
         }
       });
       setPosts(getPostsFromFirebase);
-  });
+    });
 };
 
 export const onFeedList = (setFeed) => {
   return db
-  .collection("Feed").orderBy("created_at", "desc")
-  .onSnapshot((querySnapshot) => {
+    .collection("Feed")
+    .orderBy("created_at", "desc")
+    .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let dataExists = false;
         for (let i = 0; i <= getFeedFromFirebase.length; i++) {
-          if(getFeedFromFirebase[i] !== undefined) {
+          if (getFeedFromFirebase[i] !== undefined) {
             if (getFeedFromFirebase[i].key === doc.id) {
               dataExists = true;
             }
-          }            
+          }
         }
-        if(!dataExists) {
-          getFeedFromFirebase.push({...doc.data(), key: doc.id,}); 
-        }                   
+        if (!dataExists) {
+          getFeedFromFirebase.push({ ...doc.data(), key: doc.id });
+        }
       });
       setFeed(getFeedFromFirebase);
-  });
+    });
 };
