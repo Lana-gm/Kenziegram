@@ -4,10 +4,11 @@ import * as s from "./style";
 import PictureFrame from "../../components/PictureFrame";
 
 import { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import { onPostList } from "../../firebaseApi";
 import { useAuth } from "../../providers/Auth";
 
-const ProfilePage = ({self = false}) => {
+const ProfilePage = ({ self = false }) => {
   const { loggedUser } = useAuth();
 
   const [posts, setPosts] = useState([]);
@@ -18,6 +19,10 @@ const ProfilePage = ({self = false}) => {
       return unsub;
     }
   }, [loggedUser]);
+
+  if (!loggedUser) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <s.Main>
