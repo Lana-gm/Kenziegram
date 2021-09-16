@@ -47,6 +47,7 @@ const FormProfile = ({ setEdit, edit }) => {
           {...register("name")}
           placeholder="Nome de usuário"
           className="input_content"
+          maxlength="20"
         />
       </div>
       <div className="change_information input_text">
@@ -66,6 +67,7 @@ const FormProfile = ({ setEdit, edit }) => {
           placeholder="Bio"
           cols="30"
           rows="10"
+          maxlength="100"
         ></textarea>
       </div>
       <button type="submit">Salvar</button>

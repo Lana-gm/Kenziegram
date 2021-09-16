@@ -1,6 +1,6 @@
 import "./App.css";
 import Routes from "./routes";
-import { GlobalStyle } from "./global";
+import { GlobalStyle } from "./styles/global";
 
 function App() {
   return (
