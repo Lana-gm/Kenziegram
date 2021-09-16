@@ -90,17 +90,14 @@ const Profile = ({ id = null, self = false }) => {
               </div>
               {self && (
                 <button className="icone-editar" onClick={handleEdit}>
-                  Editar
+                  <span className="engrena"><GoGear/></span> Editar Perfil
                 </button>
               )}
             </div>
             <p className="bio">{userData.bio}</p>
             <div className="numero__container">
               <p className="numero-postagens">
-                {userData.posts} <span>publicações</span>
-              </p>
-              <p className="numero-postagens">
-                {userData.posts} <span>amigos</span>
+                {userData.posts} <span>Publicações</span>
               </p>
             </div>
           </div>
