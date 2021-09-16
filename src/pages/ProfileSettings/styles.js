@@ -23,8 +23,8 @@ export const ContainerPage = styled.div`
 
   @media all and (min-width: 975px) {
     display: flex;
-    align-items: flex-end;
-    margin-top: 70px;
+    align-items: center;
+    margin-top: 55px;
   }
 `;
 
@@ -230,8 +230,7 @@ export const ContainerInput = styled.div`
     margin: 0 auto;
 
     .alterar-foto {
-    top: 12.5rem;
-  }
-
+      top: 12.5rem;
+    }
   }
 `;
