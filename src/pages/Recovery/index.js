@@ -30,7 +30,6 @@ const Recovery = () => {
         resolver: yupResolver(formSchema)
     });
 
-    const history = useHistory();
     const onSubmitFunction = async (data) => {
         await firebaseApp
             .auth()

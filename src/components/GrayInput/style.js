@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { AiFillExclamationCircle } from 'react-icons/ai'
 
 export const InputShape = styled.input`
     background: var(--gray);

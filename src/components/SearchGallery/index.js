@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import BlueButton from "../BlueButton";
 import { BsImages } from "react-icons/bs";
 import { MdVideoLibrary } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
@@ -27,12 +26,7 @@ const SearchGallery = ({ file, setImage, setFile, setIsShow, isShow }) => {
             <label className="add-file" for="selecao-arquivo">
               Selecione um arquivo
             </label>
-            <input
-              id="selecao-arquivo"
-              type="file"
-              onChange={handleChange}
-              accept="image/*, video.mp4"
-            ></input>
+            <input id="selecao-arquivo" type="file" onChange={handleChange}></input>
           </div>
           {/* <div className="content__progress">
             <progress className="content__progess__box"></progress>

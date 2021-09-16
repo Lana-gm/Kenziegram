@@ -3,7 +3,7 @@ import BlueButton from "../BlueButton";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { db, storageRef, firebaseApp } from "../../firebaseApi";
+import { db, storageRef } from "../../firebaseApi";
 import { useAuth } from "../../providers/Auth";
 
 const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {

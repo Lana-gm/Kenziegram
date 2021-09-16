@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { UsersContext } from "../../providers/Users";
 import * as s from "./style";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
