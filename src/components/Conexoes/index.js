@@ -60,7 +60,11 @@ const Conexoes = () => {
       </div>
       <ul id="usuariosId" onScroll={handleScroll}>
         {users.map((user, index) => (
-          <li className="usuario" key={index} onClick={handleProfile}>
+          <li
+            className="usuario"
+            key={index}
+            onClick={() => handleProfile(user.key)}
+          >
             {user.img_url ? (
               <img
                 src={user.img_url}
