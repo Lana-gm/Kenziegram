@@ -4,6 +4,9 @@ import { FaArrowCircleLeft } from 'react-icons/fa'
 import { MainPage } from "./style"
 import { Link, useHistory, Redirect } from "react-router-dom"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -35,6 +38,9 @@ const Login = () => {
             .signInWithEmailAndPassword(data.email, data.password)
             .then((user) => {
                 history.push('/home');
+            })
+            .catch((error) => {
+                toast(error.message);
             });
     }
 
@@ -59,6 +65,7 @@ const Login = () => {
                 <Link to="/recovery" className="smalltext margin">Esqueceu sua senha?</Link>
                 <Link to="/register" className="smalltext register">Não tem cadastro?</Link>
             </form>
+            <ToastContainer />
         </MainPage>
     )
 }
