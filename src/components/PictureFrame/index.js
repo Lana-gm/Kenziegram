@@ -1,14 +1,11 @@
-import './style.css'
+import "./styles.css";
 
-const PictureFrame = ({ source, alt }) => {
+const PictureFrame = ({ post }) => {
+  return (
+    <figure className="picture__frame">
+      <img className="picture" src={post.img_url} alt={post.description} />
+    </figure>
+  );
+};
 
-    return (
-            <figure className="picture__frame" >
-                <img className="picture" src={source} alt={alt} />
-            </figure>
-    )
-
-}
-
-
-export default PictureFrame
+export default PictureFrame;

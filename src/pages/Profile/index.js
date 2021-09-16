@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import Profile from "../../components/Profile";
 import * as s from "./style";
-import PictureFrame from "../../components/PictureFrame";
+import PictureGallery from "../../components/PictureGallery";
 
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
@@ -31,9 +31,7 @@ const ProfilePage = ({ self = false }) => {
         <Profile self={self} />
         <div className="picture__wrap">
           <div className="picture__container">
-            {posts.map((post) => (
-              <PictureFrame source={post.img_url} alt="uau" />
-            ))}
+            {!!posts && posts.map((post) => <PictureGallery post={post} />)}
           </div>
         </div>
       </s.Container>
