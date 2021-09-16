@@ -2,7 +2,7 @@ import Header from "../../components/Header";
 import Profile from "../../components/Profile";
 import * as s from "./style";
 import PictureGallery from "../../components/PictureGallery";
-
+import Fade from "react-reveal/Fade";
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { onPostList } from "../../firebaseApi";
@@ -31,7 +31,12 @@ const ProfilePage = ({ self = false }) => {
         <Profile self={self} />
         <div className="picture__wrap">
           <div className="picture__container">
-            {!!posts && posts.map((post) => <PictureGallery post={post} />)}
+            {!!posts &&
+              posts.map((post) => (
+                <Fade>
+                  <PictureGallery post={post} />{" "}
+                </Fade>
+              ))}
           </div>
         </div>
       </s.Container>
