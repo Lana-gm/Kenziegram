@@ -58,34 +58,36 @@ const Conexoes = () => {
       <div className="titulos">
         <p className="titulo">Conexões</p>
       </div>
-      <ul id="usuariosId" onScroll={handleScroll}>
-        {users.map((user, index) => (
-          <li
-            className="usuario"
-            key={index}
-            onClick={() => handleProfile(user.key)}
-          >
-            {user.img_url ? (
+      {users ? (
+        <ul id="usuariosId" onScroll={handleScroll}>
+          {users.map((user, index) => (
+            <li
+              className="usuario"
+              key={index}
+              onClick={() => handleProfile(user.key)}
+            >
               <img
                 src={user.img_url}
                 alt="imagem do usuario"
                 className="imagem"
               />
-            ) : (
-              <div className={classes.root}>
-                <CircularProgress className="carregamento" />
-              </div>
-            )}
-            <p className="nome">{user.user}</p>
-          </li>
-        ))}
-        {scrollHorizontal !== 0 ? (
-          <IoChevronBackCircleSharp onClick={handleBack} id="back" />
-        ) : null}
-        {scrollHorizontal !== width - 959 ? (
-          <IoChevronBackCircleSharp onClick={handleNext} id="next" />
-        ) : null}
-      </ul>
+
+              <p className="nome">{user.user}</p>
+            </li>
+          ))}
+
+          {scrollHorizontal !== 0 ? (
+            <IoChevronBackCircleSharp onClick={handleBack} id="back" />
+          ) : null}
+          {scrollHorizontal !== width - 959 ? (
+            <IoChevronBackCircleSharp onClick={handleNext} id="next" />
+          ) : null}
+        </ul>
+      ) : (
+        <div className={classes.root}>
+          <CircularProgress className="carregamento" />
+        </div>
+      )}
     </s.Container>
   );
 };
