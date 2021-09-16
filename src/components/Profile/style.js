@@ -130,16 +130,21 @@ export const Content = styled.div`
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
 
     .name__divider {
       display: flex;
       align-items: center;
+      width: 10vw;
     }
 
     .nome {
       margin-right: 20px;
       margin-top: 0;
+      width: 100%;
     }
 
     .icone-editar:hover {
