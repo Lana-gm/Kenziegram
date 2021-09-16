@@ -40,17 +40,18 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
   const handleDelete = () => {
     setAnchorEl(null);
 
-    db.collection('Posts')
-      .doc('001')
+    db.collection("Posts")
+      .doc("001")
       .collection(loggedUser.uid)
       .doc(post.key)
-      .get().then((doc) => {
-        db.collection('Feed').doc(doc.id).delete();
-      })
+      .get()
+      .then((doc) => {
+        db.collection("Feed").doc(doc.id).delete();
+      });
 
     db.collection("Posts")
       .doc("001")
-      .collection(`${loggedUser.uid}`)
+      .collection(loggedUser.uid)
       .doc(post.key)
       .delete()
       .then(() => {
@@ -62,7 +63,7 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
       });
 
     db.collection("Feed")
-      .doc(post)
+      .doc(post.key)
       .delete()
       .then(() => {
         console.log("Documento excluido com sucesso");
@@ -85,7 +86,7 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
   };
 
   const { id } = useParams();
-  //console.log(id);
+
   return (
     <S.Display>
       <div className="container">
