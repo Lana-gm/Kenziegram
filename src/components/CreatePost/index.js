@@ -11,7 +11,6 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
   const { loggedUser } = useAuth();
 
   const [description, setDescription] = useState("");
-  const [downloadURL, setDownloadURL] = useState("");
   const [disabled, setDisabled] = useState(false);
 
   const history = useHistory();
@@ -37,6 +36,7 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
           db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
             user_id: loggedUser.uid,
+            created_at: timestamp,
             img_url: url,
             description: description,
             likes: 0,
@@ -44,6 +44,7 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
           });
           db.collection('Feed').doc().set({
             user_id: loggedUser.uid,
+            created_at: timestamp,
             img_url: url,
             description: description,
             likes: 0,

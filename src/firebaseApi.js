@@ -41,6 +41,7 @@ export const onPostList = (setPosts, user) => {
     .collection("Posts")
     .doc("001")
     .collection(user.uid)
+    .orderBy("created_at", "desc")
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let dataExists = false;
@@ -61,7 +62,7 @@ export const onPostList = (setPosts, user) => {
 
 export const onFeedList = (setFeed) => {
   return db
-  .collection("Feed")
+  .collection("Feed").orderBy("created_at", "desc")
   .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let dataExists = false;
