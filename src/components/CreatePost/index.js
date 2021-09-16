@@ -42,6 +42,17 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
 
     setDisabled(true);
 
+    const makeid = (length) => {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * 
+        charactersLength));
+      }
+      return result;
+  }
+
     uploadTask.on(
       "state_changed",
       (snapshot) => {},
@@ -49,9 +60,10 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
         console.log("Não foi possível fazer o upload", error);
       },
       () => {
+        let id = makeid(24);
         history.push("/home");
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
+          db.collection('Posts').doc('001').collection(loggedUser.uid).doc(id).set({
             user_id: loggedUser.uid,
             created_at: timestamp,
             img_url: url,
@@ -59,7 +71,7 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
             likes: 0,
             comments: 0
           });
-          db.collection('Feed').doc().set({
+          db.collection('Feed').doc(id).set({
             user_id: loggedUser.uid,
             created_at: timestamp,
             img_url: url,
