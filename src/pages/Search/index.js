@@ -1,15 +1,18 @@
 import * as S from "./styles";
 
 import { useState, useContext, useEffect } from "react";
+import { Redirect } from "react-router";
 import UsersContainer from "../../components/UsersContainer";
 import Header from "../../components/Header";
 import { AiOutlineSearch } from "react-icons/ai";
 import Logo from "../../components/Logo";
 
 import { UsersContext } from "../../providers/Users";
+import { useAuth } from "../../providers/Auth";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
+  const { loggedUser } = useAuth();
 
   const { users } = useContext(UsersContext);
   const [filtered, setFiltered] = useState([]);
@@ -23,6 +26,10 @@ const Search = () => {
     );
     setFiltered(filtered);
   };
+
+  if (!loggedUser) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>

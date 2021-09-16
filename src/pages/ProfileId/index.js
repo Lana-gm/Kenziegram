@@ -3,8 +3,9 @@ import Profile from "../../components/Profile";
 
 import * as S from "./style";
 
-import PictureFrame from "../../components/PictureFrame";
+import PictureGallery from "../../components/PictureGallery";
 import { useEffect, useState } from "react";
+import { Redirect } from "react-router";
 import { onPostList } from "../../firebaseApi";
 import { useParams } from "react-router";
 import { useAuth } from "../../providers/Auth";
@@ -25,6 +26,10 @@ const ProfilePageId = () => {
     }
   }, [id, loggedUser]);
 
+  if (!loggedUser) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <S.Main>
       <S.Container>
@@ -34,7 +39,7 @@ const ProfilePageId = () => {
           <div className="picture__container">
             {/* <Fade> */}
             {posts.map((post) => {
-              return <PictureFrame source={post.img_url} alt="uau" />;
+              return <PictureGallery post={post} />;
             })}
             {/* </Fade> */}
           </div>

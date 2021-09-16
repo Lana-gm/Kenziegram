@@ -33,13 +33,8 @@ const ModalProfile = ({ setShowModal, showModal }) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => {
-        console.log("Não foi possível fazer o upload", error);
-      },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          console.log("url: ", downloadURL);
-
           db.collection("Users").doc(loggedUser.uid).update({
             img_url: downloadURL,
           });

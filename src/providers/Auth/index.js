@@ -3,7 +3,6 @@ import {
   useState,
   createContext,
   useContext,
-  useCallback,
 } from "react";
 import { firebaseApp } from "../../firebaseApi";
 

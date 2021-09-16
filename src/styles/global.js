@@ -1,10 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import Billa from "./assets/Billabong.ttf";
+import Billa from "../assets/Billabong.ttf";
 
 export const GlobalStyle = createGlobalStyle`
-
-/*font-family: 'Lato', sans-serif;
-font-family: 'Nunito Sans', sans-serif;*/
 
   :root {
     --bg: #1B1F29; // Background
@@ -35,7 +32,6 @@ font-family: 'Nunito Sans', sans-serif;*/
 
   main {
     width: 100%;
-    /* min-height: 100vh; */
   }
 
   body, input {
