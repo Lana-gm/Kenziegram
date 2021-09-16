@@ -12,6 +12,7 @@ export const MainPage = styled.main`
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 
     .gray__gradient {
         position: absolute;

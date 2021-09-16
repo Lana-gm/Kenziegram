@@ -10,6 +10,7 @@ export const MainPage = styled.main`
     background-image: url(${RecoverMobile});
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 
     .gray__gradient {
         position: absolute;
