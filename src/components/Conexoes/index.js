@@ -82,7 +82,7 @@ const Conexoes = () => {
         {scrollHorizontal !== 0 ? (
           <IoChevronBackCircleSharp onClick={handleBack} id="back" />
         ) : null}
-        {scrollHorizontal !== width - 959 ? (
+        {scrollHorizontal !== width - 554 ? (
           <IoChevronBackCircleSharp onClick={handleNext} id="next" />
         ) : null}
       </ul>
