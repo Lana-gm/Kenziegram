@@ -33,6 +33,10 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const handleDelete = () => {
     setAnchorEl(null);
 
@@ -40,6 +44,17 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
       .doc("001")
       .collection(`${loggedUser.uid}`)
       .doc(post.key)
+      .delete()
+      .then(() => {
+        console.log("Documento excluido com sucesso");
+        setIsShowModal(!isShowModal);
+      })
+      .catch((error) => {
+        console.error("não foi possível excluir um documento", error);
+      });
+
+    db.collection("Feed")
+      .doc(post)
       .delete()
       .then(() => {
         console.log("Documento excluido com sucesso");
@@ -86,7 +101,7 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
                   anchorEl={anchorEl}
                   keepMounted
                   open={Boolean(anchorEl)}
-                  onClose={handleDelete}
+                  onClose={handleClose}
                 >
                   <MenuItem onClick={handleDelete}>Excluir</MenuItem>
                 </Menu>
