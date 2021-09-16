@@ -5,12 +5,14 @@ import { useHistory, Redirect } from "react-router"
 import BlueButton from "../../components/BlueButton"
 import { useState } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { db } from '../../firebaseApi';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 import { useAuth } from '../../providers/Auth';
-import { toast } from "react-toastify"
 
 const Landing = () => {
 
@@ -66,6 +68,7 @@ const Landing = () => {
                     </button>
                 </div>
             </div>
+            <ToastContainer />
         </MainPage>
     )
 }
