@@ -3,11 +3,11 @@ import Profile from "../../components/Profile";
 import * as s from "./style";
 import PictureFrame from "../../components/PictureFrame";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { onPostList } from "../../firebaseApi";
 import { useAuth } from "../../providers/Auth";
 
-const ProfilePage = ({self = false}) => {
+const ProfilePage = ({ self = false }) => {
   const { loggedUser } = useAuth();
 
   const [posts, setPosts] = useState([]);
@@ -26,9 +26,7 @@ const ProfilePage = ({self = false}) => {
         <Profile self={self} />
         <div className="picture__wrap">
           <div className="picture__container">
-            {posts.map((post) => (
-              <PictureFrame source={post.img_url} alt="uau" />
-            ))}
+            {!!posts && posts.map((post) => <PictureFrame post={post} />)}
           </div>
         </div>
       </s.Container>
