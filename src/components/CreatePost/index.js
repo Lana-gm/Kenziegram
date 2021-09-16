@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import KelvinImg from "../../assets/kelvin.jpg";
 import BlueButton from "../BlueButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { db, storageRef, firebaseApp } from "../../firebaseApi";
@@ -11,8 +11,20 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
   const { loggedUser } = useAuth();
 
   const [description, setDescription] = useState("");
-  const [downloadURL, setDownloadURL] = useState("");
   const [disabled, setDisabled] = useState(false);
+  const [posts, setPosts] = useState(0);
+
+  useEffect(() => {
+    let unsub = db
+        .collection('Users')
+        .doc(loggedUser.uid)
+        .get().then((doc) => {
+          setPosts(parseInt(doc.data().posts));
+        }).catch((error) => {
+          console.log("Error getting document:", error);
+        });
+      return unsub;
+  }, [loggedUser]);
 
   const history = useHistory();
 
@@ -35,17 +47,26 @@ const CreatePost = ({ image, file, setFile, setIsShow, isShow }) => {
       () => {
         history.push("/home");
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          db.collection("Posts")
-            .doc("001")
-            .collection(loggedUser.uid)
-            .doc()
-            .set({
-              user_id: loggedUser.uid,
-              img_url: url,
-              description: description,
-              likes: 0,
-              comments: 0,
-            });
+          db.collection('Posts').doc('001').collection(loggedUser.uid).doc().set({
+            user_id: loggedUser.uid,
+            created_at: timestamp,
+            img_url: url,
+            description: description,
+            likes: 0,
+            comments: 0
+          });
+          db.collection('Feed').doc().set({
+            user_id: loggedUser.uid,
+            created_at: timestamp,
+            img_url: url,
+            description: description,
+            likes: 0,
+            comments: 0
+          });
+          db.collection('Users').doc(loggedUser.uid).update({
+            posts: posts + 1,
+          });
+          history.push('/home');
         });
       }
     );

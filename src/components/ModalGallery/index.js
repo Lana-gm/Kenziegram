@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FiMoreHorizontal, FiArrowLeft } from "react-icons/fi";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../providers/Auth";
 import { db } from "../../firebaseApi";
 import { useParams } from "react-router-dom";
@@ -11,7 +11,23 @@ import { useParams } from "react-router-dom";
 const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const [posts, setPosts] = useState(0);
+
   const { loggedUser } = useAuth();
+
+  useEffect(() => {
+    let unsub = db
+      .collection("Users")
+      .doc(loggedUser.uid)
+      .get()
+      .then((doc) => {
+        setPosts(parseInt(doc.data().posts));
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    return unsub;
+  }, [loggedUser]);
 
   const handleClickOptions = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,6 +48,12 @@ const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
       .catch((error) => {
         console.log("não");
         console.error("não foi possível excluir um documento", error);
+      });
+
+    db.collection("Users")
+      .doc(loggedUser.uid)
+      .update({
+        posts: posts - 1,
       });
   };
 

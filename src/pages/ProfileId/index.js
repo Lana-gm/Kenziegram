@@ -3,7 +3,7 @@ import Profile from "../../components/Profile";
 
 import * as S from "./style";
 
-import PictureFrame from "../../components/PictureFrame";
+import PictureGallery from "../../components/PictureGallery";
 import { useEffect, useState } from "react";
 import { onPostList } from "../../firebaseApi";
 import { useParams } from "react-router";
@@ -34,7 +34,7 @@ const ProfilePageId = () => {
           <div className="picture__container">
             {/* <Fade> */}
             {posts.map((post) => {
-              return <PictureFrame source={post.img_url} alt="uau" />;
+              return <PictureGallery post={post} />;
             })}
             {/* </Fade> */}
           </div>

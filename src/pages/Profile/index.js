@@ -1,9 +1,9 @@
 import Header from "../../components/Header";
 import Profile from "../../components/Profile";
 import * as s from "./style";
-import PictureFrame from "../../components/PictureFrame";
+import PictureGallery from "../../components/PictureGallery";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { onPostList } from "../../firebaseApi";
 import { useAuth } from "../../providers/Auth";
 
@@ -26,7 +26,7 @@ const ProfilePage = ({ self = false }) => {
         <Profile self={self} />
         <div className="picture__wrap">
           <div className="picture__container">
-            {!!posts && posts.map((post) => <PictureFrame post={post} />)}
+            {!!posts && posts.map((post) => <PictureGallery post={post} />)}
           </div>
         </div>
       </s.Container>
