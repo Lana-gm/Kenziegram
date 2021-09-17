@@ -20,10 +20,9 @@ export const Container = styled.div`
   }
 
   #usuariosId {
-    /* min-width: 175px; */
+    min-height: 100px;
     display: flex;
     margin-top: 1rem;
-    /* margin-right: 1rem; */
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -33,9 +32,7 @@ export const Container = styled.div`
   }
 
   .usuario {
-    /* margin-right: 0.5rem;
-    margin-left: 0.5rem; */
-    min-width:5.5rem;
+    min-width: 5.5rem;
     height: 6.8rem;
     cursor: pointer;
   }

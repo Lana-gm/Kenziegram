@@ -81,7 +81,8 @@ const Login = () => {
           Não tem <span className="bold">cadastro?</span>
         </Link>
         <Link to="/" className="smalltext initial">
-          <span className="bold">Inicio</span>
+          Voltar para a tela
+          <span className="bold"> Inicial</span>
         </Link>
       </form>
       <ToastContainer />
