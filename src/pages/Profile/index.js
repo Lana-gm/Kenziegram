@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import Profile from "../../components/Profile";
 import * as s from "./style";
 import PictureGallery from "../../components/PictureGallery";
-
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { onPostList } from "../../firebaseApi";

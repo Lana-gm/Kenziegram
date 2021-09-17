@@ -29,11 +29,13 @@ const Home = () => {
     <s.Container>
       <Conexoes />
       <div className="posts">
-        {/* {<Fade>} */}
         {feed.map((post) => {
-          return <Post key={post.key} post={post} />;
+          return (
+            <Fade>
+              <Post key={post.key} post={post} />;
+            </Fade>
+          );
         })}
-        {/* {</Fade>} */}
       </div>
       <Header />
     </s.Container>

@@ -1,8 +1,6 @@
 import Header from "../../components/Header";
 import Profile from "../../components/Profile";
-
 import * as S from "./style";
-
 import PictureGallery from "../../components/PictureGallery";
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router";
@@ -37,11 +35,9 @@ const ProfilePageId = () => {
         <Profile id={id} />
         <div className="picture__wrap">
           <div className="picture__container">
-            {/* <Fade> */}
             {posts.map((post) => {
               return <PictureGallery post={post} />;
             })}
-            {/* </Fade> */}
           </div>
         </div>
       </S.Container>
