@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../providers/Auth";
 import { db } from "../../firebaseApi";
 import { useParams } from "react-router-dom";
+import { doc } from "firebase/firestore";
 
 const ModalGallery = ({ isShowModal, setIsShowModal, post }) => {
   const [anchorEl, setAnchorEl] = useState(null);
