@@ -1,7 +1,7 @@
 import GrayInput from "../../components/GrayInput";
 import BlueButton from "../../components/BlueButton";
 import { FaArrowCircleLeft } from "react-icons/fa";
-import { MainPage } from "./style";
+import * as S from "./style";
 import { Link, useHistory, Redirect } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -51,7 +51,7 @@ const Login = () => {
   }
 
   return (
-    <MainPage>
+    <S.MainPage>
       <div className="gray__gradient" />
       <Link className="mobile__return" to="/">
         <FaArrowCircleLeft className="arrow__button" />
@@ -67,12 +67,14 @@ const Login = () => {
           placeholder={"Email"}
           register={register}
         />
+        <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
         <GrayInput
           type="password"
           name="password"
           placeholder={"Senha"}
           register={register}
         />
+        <S.ErrorMessage>{errors.password?.message}</S.ErrorMessage>
         <BlueButton type="submit" text="Entrar" />
         <Link to="/recovery" className="smalltext margin">
           Esqueceu sua <span className="bold">senha?</span>
@@ -86,7 +88,7 @@ const Login = () => {
         </Link>
       </form>
       <ToastContainer />
-    </MainPage>
+    </S.MainPage>
   );
 };
 

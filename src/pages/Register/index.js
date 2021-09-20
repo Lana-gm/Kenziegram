@@ -2,7 +2,7 @@ import GrayInput from "../../components/GrayInput";
 import BlueButton from "../../components/BlueButton";
 import { Link } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
-import { MainPage } from "./style";
+import * as S from "./style";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -69,7 +69,7 @@ const Register = () => {
   }
 
   return (
-    <MainPage>
+    <S.MainPage>
       <div className="gray__gradient" />
       <Link className="mobile__return" to="/">
         <FaArrowCircleLeft className="arrow__button" />
@@ -85,6 +85,7 @@ const Register = () => {
           placeholder={"Nome de Usuário"}
           register={register}
         />
+        <S.ErrorMessage>{errors.user?.message}</S.ErrorMessage>
         <GrayInput
           type="email"
           error={!!errors.email}
@@ -92,6 +93,7 @@ const Register = () => {
           placeholder={"Email"}
           register={register}
         />
+        <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
         <GrayInput
           type="text"
           error={!!errors.phone}
@@ -106,6 +108,7 @@ const Register = () => {
           placeholder={"Senha"}
           register={register}
         />
+        <S.ErrorMessage>{errors.password?.message}</S.ErrorMessage>
         <GrayInput
           type="password"
           error={!!errors.confirm}
@@ -113,13 +116,14 @@ const Register = () => {
           placeholder={"Confirme sua Senha"}
           register={register}
         />
+        <S.ErrorMessage>{errors.confirm?.message}</S.ErrorMessage>
         <BlueButton type="submit" text="Cadastrar" />
         <Link to="/login" className="smalltext margin">
           Já tem cadastro? <strong>Entre!</strong>
         </Link>
       </form>
       <ToastContainer />
-    </MainPage>
+    </S.MainPage>
   );
 };
 

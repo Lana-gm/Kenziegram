@@ -61,7 +61,7 @@ export const MainPage = styled.main`
 
   .mobile__return {
     position: absolute;
-    top: 10%;
+    top: 4%;
     left: 7%;
     font-size: 40px;
     color: white;
@@ -82,4 +82,9 @@ export const MainPage = styled.main`
       margin: 0 0 50px 0;
     }
   }
+`;
+
+export const ErrorMessage = styled.span`
+  font-size: 14px;
+  color: tomato;
 `;
