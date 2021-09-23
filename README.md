@@ -1,4 +1,4 @@
-# Frontend Challenge
+# Kenziegram
 
 ## Installation
 
